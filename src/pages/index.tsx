@@ -1,12 +1,15 @@
 import Head from 'next/head';
+import Button from '@material-ui/core/Button';
+
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Artha | Home</title>
+        <title>Home | Artha</title>
       </Head>
-      <h1>Artha</h1>
+
+      <h1>Página Principal</h1>
     </>
   )
 }
