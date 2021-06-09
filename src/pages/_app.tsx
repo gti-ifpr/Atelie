@@ -1,23 +1,15 @@
-import { AppProps } from 'next/app';
-import { Header } from '../components/header';
-import { Grid } from '@material-ui/core';
+import { AppProps } from 'next/app'
+import { Header } from '../components/Header'
 
+import '../styles/global.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Grid container direction="column">
+    <>
+      <Header />
 
-      <Grid item>
-        <Header />
-      </Grid>
-
-      <Grid item container>
-        <Grid>
-          <Component {...pageProps} />
-        </Grid>
-      </Grid>
-    </Grid>
-
+      <Component {...pageProps} />
+    </>
   )
 }
 

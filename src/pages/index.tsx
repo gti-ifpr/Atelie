@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import Button from '@material-ui/core/Button';
 
+import styles from './home.module.scss'
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
         <title>Home | Artha</title>
       </Head>
 
-      <h1>Página Principal</h1>
+      <h1 className={styles.title}>Página Principal</h1>
     </>
   )
 }
