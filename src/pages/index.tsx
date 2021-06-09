@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { JobsTable } from '../components/JobsTable';
 
 import styles from './home.module.scss'
 
@@ -8,8 +9,9 @@ export default function Home() {
       <Head>
         <title>Home | Artha</title>
       </Head>
-
-      <h1 className={styles.title}>Página Principal</h1>
+      <main className={styles.contentContainer}>
+        <JobsTable />
+      </main>
     </>
   )
 }
