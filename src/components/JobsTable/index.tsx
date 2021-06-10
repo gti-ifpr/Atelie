@@ -1,23 +1,26 @@
+import Link from 'next/link';
 import styles from './styles.module.scss';
 
 export function JobsTable() {
     return (
         <div className={styles.jobsContent}>
-            <div className={styles.card}>
-                <div className={styles.cardHeader}>
-                    <p>André</p>
-                    <span className={styles.active}>Prova Ativa</span>
-                </div>
-                <div className={styles.testColumn}>
-                    <span>Prova</span>
-                    <p>Molde</p>
-                </div>
-                <div className={styles.deadlineColumn}>
-                    <span>Prazo</span>
-                    <p>8 dias para entrega</p>
-                </div>
-            </div>
-            <div className={styles.card}>
+            <Link href={'/jobs/andre'}>
+                <button className={styles.card}>
+                    <div className={styles.cardHeader}>
+                        <p>André</p>
+                        <span className={styles.active}>Prova Ativa</span>
+                    </div>
+                    <div className={styles.testColumn}>
+                        <span>Prova</span>
+                        <p>Molde</p>
+                    </div>
+                    <div className={styles.deadlineColumn}>
+                        <span>Prazo</span>
+                        <p>8 dias para entrega</p>
+                    </div>
+                </button>
+            </Link>
+            <button className={styles.card}>
                 <div className={styles.cardHeader}>
                     <p>Vitor</p>
                     <span className={styles.active}>Prova Ativa</span>
@@ -30,8 +33,8 @@ export function JobsTable() {
                     <span>Prazo</span>
                     <p>5 dias para entrega</p>
                 </div>
-            </div>
-            <div className={styles.card}>
+            </button>
+            <button className={styles.card}>
                 <div className={styles.cardHeader}>
                     <p>Madi</p>
                     <span className={styles.finished}>Prova Encerrada</span>
@@ -44,8 +47,8 @@ export function JobsTable() {
                     <span>Prazo</span>
                     <p>Prazo encerrado</p>
                 </div>
-            </div>
+            </button>
 
-        </div>
+        </div >
     )
 }
