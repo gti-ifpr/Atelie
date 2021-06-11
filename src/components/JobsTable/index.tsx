@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import styles from './styles.module.scss';
 
-export function JobsTable() {
+
+
+export function JobsTable(jobs) {
     return (
         <div className={styles.jobsContent}>
             <Link href={'/jobs/andre'}>
@@ -52,3 +54,4 @@ export function JobsTable() {
         </div >
     )
 }
+
