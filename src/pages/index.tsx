@@ -29,7 +29,7 @@ export default function Home({ jobs }: JobsTableProps) {
         {jobs.map(job => {
           return (
             <div key={job.id} className={styles.jobsContent}>
-              <Link href={`/jobs/andre`}>
+              <Link href={`/jobs/${job.id}`}>
                 <button className={styles.card}>
                   <div className={styles.cardHeader}>
                     <p>{job.cliente}</p>
@@ -55,7 +55,13 @@ export default function Home({ jobs }: JobsTableProps) {
 
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const { data } = await api.get('/jobs')
+  const { data } = await api.get('/jobs', {
+    params: {
+      _limit: 12,
+      _sort: 'data',
+      _order: 'incr',
+    }
+  })
 
   return {
     props: {

@@ -1,5 +1,3 @@
-import { useRouter } from 'next/dist/client/router';
-import Link from 'next/link';
 import { ActiveLink } from '../ActiveLink'
 
 import styles from './styles.module.scss';

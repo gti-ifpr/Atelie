@@ -5,22 +5,22 @@
             "cliente": "André",
             "tecido": "Tecido 2",
             "prova": "Molde",
-            "data": "2021-06-10",
+            "data_inicio": "2021-06-10",
             "data_entrega": "2021-06-15"
         },
         {
             "id": "vitor",
             "cliente": "Vitor",
-            "tecido": "Tecido 2",
+            "tecido": "2",
             "prova": "Prova 2",
-            "data": "2021-06-10",
+            "data_inicio": "2021-06-10",
             "data_entrega": "2021-06-20"
         }
     ],
     "stock": [
         {
-            "id": "tecido-2",
-            "tecido": "Tecido 2"
+            "id": 1,
+            "quantidade": 3
         }
     ]
 }

@@ -1,0 +1,25 @@
+.jobContainer {
+    max-width: 1120px;
+  
+    height: calc(100vh - 4rem); 
+    margin: 0 auto;
+    background: var(--white);
+    padding: 1rem;
+
+    h1 {
+        text-align: center;
+    }
+
+    .contentContainer{
+        max-width: 720px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    span {
+        font-weight: 500;
+        color: var(--gray-300);
+    }
+}
