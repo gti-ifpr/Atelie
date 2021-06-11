@@ -1,9 +1,23 @@
+import { useState } from 'react';
 import { ActiveLink } from '../ActiveLink'
+import { NewJobModal } from '../NewJobModal';
 
 import styles from './styles.module.scss';
 
+type HeaderProps = {
+    onOpenNewJobModal: () => void;
+}
 
 export function Header() {
+    const [isNewJobModalOpen, setIsNewJobModalOpen] = useState(false);
+
+    function handleOpenNewJobModal() {
+        setIsNewJobModalOpen(true);
+    }
+
+    function handleCloseNewJobModal() {
+        setIsNewJobModalOpen(false);
+    }
 
     return (
         <header className={styles.headerContainer}>
@@ -19,6 +33,15 @@ export function Header() {
                         <a>Fornecedor</a>
                     </ActiveLink>
                 </nav>
+
+                <button type="button" onClick={handleOpenNewJobModal}>
+                    Nova Prova
+                </button>
+
+                <NewJobModal
+                    isOpen={isNewJobModalOpen}
+                    onRequestClose={handleCloseNewJobModal}
+                />
             </div>
         </header>
     )
