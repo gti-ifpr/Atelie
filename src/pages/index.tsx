@@ -1,10 +1,10 @@
 import Head from 'next/head';
-import { JobsTable } from '../components/JobsTable';
+import { api } from '../services/api';
+import { GetServerSideProps } from 'next';
+import React from 'react';
+import Link from 'next/link';
 
 import styles from './home.module.scss'
-import { api } from '../services/api';
-
-import { GetServerSideProps } from 'next';
 
 type Job = {
   id: string;
@@ -17,15 +17,37 @@ type JobsTableProps = {
 }
 
 
-export default function Home(props: JobsTableProps) {
-
+export default function Home({ jobs }: JobsTableProps) {
   return (
     <>
       <Head>
         <title>Home | Artha</title>
       </Head>
+
       <main className={styles.contentContainer}>
-        <JobsTable jobs={props} />
+
+        {jobs.map(job => {
+          return (
+            <div key={job.id} className={styles.jobsContent}>
+              <Link href={`/jobs/andre`}>
+                <button className={styles.card}>
+                  <div className={styles.cardHeader}>
+                    <p>{job.cliente}</p>
+                    <span className={styles.active}>Prova Ativa</span>
+                  </div>
+                  <div className={styles.testColumn}>
+                    <span>Prova</span>
+                    <p>{job.prova}</p>
+                  </div>
+                  <div className={styles.deadlineColumn}>
+                    <span>Prazo</span>
+                    <p>8 dias para entrega</p>
+                  </div>
+                </button>
+              </Link>
+            </div>
+          )
+        })}
       </main>
     </>
   )
@@ -33,13 +55,7 @@ export default function Home(props: JobsTableProps) {
 
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const { data } = await api.get('/jobs', {
-    params: {
-      _limit: 12,
-      _sort: 'data',
-      _order: 'incr'
-    }
-  })
+  const { data } = await api.get('/jobs')
 
   return {
     props: {
