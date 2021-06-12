@@ -4,10 +4,6 @@ import { NewJobModal } from '../NewJobModal';
 
 import styles from './styles.module.scss';
 
-type HeaderProps = {
-    onOpenNewJobModal: () => void;
-}
-
 export function Header() {
     const [isNewJobModalOpen, setIsNewJobModalOpen] = useState(false);
 
@@ -25,6 +21,9 @@ export function Header() {
                 <nav>
                     <ActiveLink activeClassName={styles.active} href="/">
                         <a>Home</a>
+                    </ActiveLink>
+                    <ActiveLink activeClassName={styles.active} href="/clientes">
+                        <a>Clientes</a>
                     </ActiveLink>
                     <ActiveLink activeClassName={styles.active} href="/estoque">
                         <a>Estoque</a>

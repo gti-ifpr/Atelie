@@ -1,0 +1,43 @@
+.contentContainer {
+    max-width: 1120px;
+  
+    height: calc(100vh - 4rem); 
+    margin: 0 auto;
+
+    
+    .card {
+        width: 100%;
+        padding: 1rem;
+        margin: 1rem;
+        background: var(--white);
+        border: 1px solid var(--white);;
+        border-radius: 3px;
+
+       .name {
+        margin-bottom: 0.5rem;
+       }
+
+       .contats{
+           max-width: 800px;
+           display: flex;
+           justify-content: space-between;
+       }
+
+       .address {
+        max-width: 760px;
+        display: flex;
+        justify-content: space-between;
+       }
+
+       p {
+          margin-bottom: 0.25rem;
+       }
+       
+
+       span {
+        display: flex;
+         font-weight: 500;
+         color: var(--gray-300);
+     }
+    }
+}

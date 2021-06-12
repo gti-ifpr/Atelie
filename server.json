@@ -5,16 +5,30 @@
             "cliente": "André",
             "tecido": "Tecido 2",
             "prova": "Molde",
-            "data_inicio": "2021-06-10",
-            "data_entrega": "2021-06-15"
+            "data_inicio": "2021-06-12",
+            "data_entrega": "2021-06-18"
         },
         {
-            "id": "vitor",
-            "cliente": "Vitor",
-            "tecido": "2",
-            "prova": "Prova 2",
-            "data_inicio": "2021-06-10",
-            "data_entrega": "2021-06-20"
+            "id": "oi",
+            "cliente": "André",
+            "tecido": "Tecido 2",
+            "prova": "Molde",
+            "data_inicio": "2021-06-12",
+            "data_entrega": "2021-06-18"
+        }
+    ],
+    "clients": [
+        {
+            "id": "vitor-1",
+            "nome": "Vitor",
+            "sobrenome": "Akira",
+            "email": "vitorakira1@gmail.com",
+            "telefone": "(41) 99682-9554",
+            "endereco": {
+                "endereco": "Rua das Palmeiras, ap 203",
+                "cidade": "Pinhais",
+                "cep": "83365-165"
+            }
         }
     ],
     "stock": [
