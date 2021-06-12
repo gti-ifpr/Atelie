@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import Modal from 'react-modal';
 import { AppProps } from 'next/app'
 import { Header } from '../components/Header'
 

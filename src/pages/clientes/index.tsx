@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { api } from "../../services/api";
+import { ClientHeader } from '../../components/Client/ClientHeader'
 
 import styles from './styles.module.scss';
 
@@ -23,7 +24,6 @@ type ClientTableProps = {
 }
 
 export default function Clients({ clients }: ClientTableProps) {
-    console.log(clients);
     return (
         <>
             <Head>
@@ -31,6 +31,8 @@ export default function Clients({ clients }: ClientTableProps) {
             </Head>
 
             <main className={styles.contentContainer}>
+
+                <ClientHeader />
 
                 {clients.map(client => {
                     return (
