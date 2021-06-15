@@ -17,6 +17,14 @@
       "data_entrega": "2021-06-18"
     }
   ],
+  "schedule": [
+    {
+      "horario_inicio": "15:15",
+      "horario_termino": "15:30",
+      "data_agendada": "2021-12-17",
+      "id": 1
+    }
+  ],
   "clients": [
     {
       "id": "1",

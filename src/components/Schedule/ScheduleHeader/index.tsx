@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { NewClientModal } from "../NewClientModal";
+import { NewScheduleModal } from "../NewScheduleModal";
 
-import styles from './styles.module.scss'
+import styles from './styles.module.scss';
 
-export function ClientHeader() {
+export function ScheduleHeader() {
     const [isNewClientModalOpen, setIsNewClientModalOpen] = useState(false);
 
     function handleOpenNewClientModal() {
@@ -19,10 +19,10 @@ export function ClientHeader() {
             <div className={styles.contentContainer}>
                 <input type="text" />
                 <button type="button" onClick={handleOpenNewClientModal}>
-                    Cadastrar Novo Cliente
+                    Cadastrar Na Agenda
                 </button>
             </div>
-            <NewClientModal
+            <NewScheduleModal
                 isOpen={isNewClientModalOpen}
                 onRequestClose={handleCloseNewClientModal}
             />
