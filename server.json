@@ -1,40 +1,52 @@
 {
-    "jobs": [
-        {
-            "id": "andre",
-            "cliente": "André",
-            "tecido": "Tecido 2",
-            "prova": "Molde",
-            "data_inicio": "2021-06-12",
-            "data_entrega": "2021-06-18"
-        },
-        {
-            "id": "oi",
-            "cliente": "André",
-            "tecido": "Tecido 2",
-            "prova": "Molde",
-            "data_inicio": "2021-06-12",
-            "data_entrega": "2021-06-18"
-        }
-    ],
-    "clients": [
-        {
-            "id": "vitor-1",
-            "nome": "Vitor",
-            "sobrenome": "Akira",
-            "email": "vitorakira1@gmail.com",
-            "telefone": "(41) 99682-9554",
-            "endereco": {
-                "endereco": "Rua das Palmeiras, ap 203",
-                "cidade": "Pinhais",
-                "cep": "83365-165"
-            }
-        }
-    ],
-    "stock": [
-        {
-            "id": 1,
-            "quantidade": 3
-        }
-    ]
+  "jobs": [
+    {
+      "id": "andre",
+      "cliente": "André",
+      "tecido": "Tecido 2",
+      "prova": "Molde",
+      "data_inicio": "2021-06-12",
+      "data_entrega": "2021-06-18"
+    },
+    {
+      "id": "oi",
+      "cliente": "André",
+      "tecido": "Tecido 2",
+      "prova": "Molde",
+      "data_inicio": "2021-06-12",
+      "data_entrega": "2021-06-18"
+    }
+  ],
+  "clients": [
+    {
+      "id": "1",
+      "nome": "Rejane",
+      "sobrenome": "Mari",
+      "email": "rejane@gmail.com",
+      "telefone": "(41) 99955-9272",
+      "endereco": {
+        "endereco": "Rua das Palmeiras, ap 203",
+        "cidade": "Pinhais",
+        "cep": "83365-165"
+      }
+    },
+    {
+      "nome": "Vitor",
+      "sobrenome": "Akira",
+      "email": "vitorakira1@gmail.com",
+      "telefone": "+5541996829554",
+      "endereco": {
+        "endereco": "Rua das Palmeiras, n 496, ap 203 bl 08",
+        "cidade": "Pinhais",
+        "cep": "83325-165"
+      },
+      "id": "lghK3EH"
+    }
+  ],
+  "stock": [
+    {
+      "id": 1,
+      "quantidade": 3
+    }
+  ]
 }

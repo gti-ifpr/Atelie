@@ -48,7 +48,7 @@ export default function Clients({ clients }: ClientTableProps) {
                                         <p>{client.email}</p>
                                     </div>
                                     <div>
-                                        <span>Telefone: </span>
+                                        <span className={styles.span}>Telefone: </span>
                                         <p>{client.telefone}</p>
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@ export default function Clients({ clients }: ClientTableProps) {
                                         <p>{client.endereco.cidade}</p>
                                     </div>
                                     <div>
-                                        <span>CEP: </span>
+                                        <span className={styles.span}>CEP: </span>
                                         <p>{client.endereco.cep}</p>
                                     </div>
                                 </div>
@@ -78,7 +78,7 @@ export default function Clients({ clients }: ClientTableProps) {
 export const getServerSideProps: GetServerSideProps = async () => {
     const { data } = await api.get('/clients', {
         params: {
-            _limit: 12,
+            _limit: 5,
             _sort: 'data',
             _order: 'incr',
         }
