@@ -2,11 +2,14 @@ import Modal from 'react-modal'
 import { FiX } from 'react-icons/fi';
 import { api } from '../../../services/api';
 import { useEffect, useState, FormEvent } from 'react';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField from '@material-ui/core/TextField';
 
 import styles from './styles.module.scss'
+import React from 'react';
 
 type Client = {
-    id: string;
+    id: number;
     nome: string;
     sobrenome: string;
     email: string;
@@ -18,8 +21,12 @@ type Client = {
     }
 }
 
-type ClientTableProps = {
-    clients: Client[];
+type Compromisso = {
+    id: number;
+    horarioInicio: string;
+    horarioTermino: string;
+    dataAgendada: string;
+    slectedClient: number;
 }
 
 type NewScheduleModalProps = {
@@ -28,10 +35,11 @@ type NewScheduleModalProps = {
 }
 
 export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalProps) {
-    const [clients, setClients] = useState([])
-    const [horarioInicio, setHorarioInicio] = useState('')
-    const [horarioTermino, setHorarioTermino] = useState('')
-    const [dataAgendada, setDataAgendada] = useState('')
+    const [clients, setClients] = useState([]);
+    const [horarioInicio, setHorarioInicio] = useState('');
+    const [horarioTermino, setHorarioTermino] = useState('');
+    const [dataAgendada, setDataAgendada] = useState('');
+    const [selectedClient, setClient] = useState(clients[0]);
 
     useEffect(() => {
         api.get('/clients')
@@ -42,6 +50,7 @@ export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalPro
         event.preventDefault();
 
         const data = {
+            cliente_selecionado: selectedClient.id,
             horario_inicio: horarioInicio,
             horario_termino: horarioTermino,
             data_agendada: dataAgendada,
@@ -50,7 +59,7 @@ export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalPro
         await api.post('/schedule', data);
 
         onRequestClose();
-        window.location.reload();
+        //window.location.reload();
 
         setHorarioInicio('');
         setHorarioTermino('');
@@ -70,11 +79,22 @@ export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalPro
                 <h1>Cadastrar Novo Compromisso</h1>
 
                 <form onSubmit={handleCreateNewSchedule}>
-                    <select name="clients" id="clients">
-                        {clients.map(client => (
-                            <option key={client.id}>{client.nome} {client.sobrenome}</option>
-                        ))}
-                    </select>
+
+                    <Autocomplete
+                        value={selectedClient}
+                        onChange={(_, client: Client) => {
+                            setClient(client);
+                        }}
+
+                        id="combo-box-demo"
+                        options={clients as Client[]}
+                        getOptionLabel={(client) => client.nome}
+                        renderOption={(client) => `${client.nome} ${client.sobrenome}`}
+
+                        style={{ width: '100%' }}
+                        renderInput={(params) => <TextField {...params} label="Cliente" variant="outlined" />}
+                    />
+
                     <div className={styles.time}>
                         <div>
                             <span>Horário Ínicio:</span>
@@ -98,12 +118,12 @@ export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalPro
                     <span>Data do Agendamento: </span>
                     <input
                         type="date"
-                        placeholder="Nome"
+                        placeholder="Data do Agendamento"
                         value={dataAgendada}
                         onChange={event => setDataAgendada(event.target.value)}
                     />
                     <button type="submit">
-                        Cadastrar Cliente
+                        Cadastrar Compromisso
                     </button>
                 </form>
             </div>

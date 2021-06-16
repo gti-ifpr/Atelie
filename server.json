@@ -23,21 +23,16 @@
       "horario_termino": "15:30",
       "data_agendada": "2021-12-17",
       "id": 1
+    },
+    {
+      "cliente_selecionado": 2,
+      "horario_inicio": "16:00",
+      "horario_termino": "16:30",
+      "data_agendada": "2022-12-17",
+      "id": 2
     }
   ],
   "clients": [
-    {
-      "id": "1",
-      "nome": "Rejane",
-      "sobrenome": "Mari",
-      "email": "rejane@gmail.com",
-      "telefone": "(41) 99955-9272",
-      "endereco": {
-        "endereco": "Rua das Palmeiras, ap 203",
-        "cidade": "Pinhais",
-        "cep": "83365-165"
-      }
-    },
     {
       "nome": "Vitor",
       "sobrenome": "Akira",
@@ -48,7 +43,19 @@
         "cidade": "Pinhais",
         "cep": "83325-165"
       },
-      "id": "lghK3EH"
+      "id": 1
+    },
+    {
+      "nome": "Rejane",
+      "sobrenome": "Mari",
+      "email": "rejanemyamada@gmail.com",
+      "telefone": "+5541999559272",
+      "endereco": {
+        "endereco": "rua das palmeiras",
+        "cidade": "Pinhais",
+        "cep": "83325-165"
+      },
+      "id": 2
     }
   ],
   "stock": [

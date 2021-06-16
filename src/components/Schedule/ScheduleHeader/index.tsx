@@ -17,7 +17,7 @@ export function ScheduleHeader() {
     return (
         <>
             <div className={styles.contentContainer}>
-                <input type="text" />
+
                 <button type="button" onClick={handleOpenNewClientModal}>
                     Cadastrar Na Agenda
                 </button>
