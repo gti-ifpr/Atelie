@@ -84,13 +84,7 @@ export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalPro
         setDataAgendada('');
     }
 
-    const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-        setCompromissoStatus(event.target.value as string);
-    };
 
-    const handleChangeType = (event: React.ChangeEvent<{ value: unknown }>) => {
-        setCompromissoType(event.target.value as string);
-    };
 
     return (
         <Modal
@@ -127,7 +121,9 @@ export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalPro
                             labelId="label"
                             id="demo-simple-select"
                             value={compromissoStatus}
-                            onChange={handleChange}
+                            onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
+                                setCompromissoStatus(event.target.value as string)
+                            }}
                         >
                             <MenuItem value={CompromissoStatus.confirmado}>Confirmado</MenuItem>
                             <MenuItem value={CompromissoStatus.aconfirmar}>A confirmar</MenuItem>
@@ -141,7 +137,9 @@ export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalPro
                             labelId="labelTipo"
                             id="demo-simple-select"
                             value={compromissoType}
-                            onChange={handleChangeType}
+                            onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
+                                setCompromissoType(event.target.value as string)
+                            }}
                         >
                             <MenuItem value={CompromissoType.ajuste}>Ajuste</MenuItem>
                             <MenuItem value={CompromissoType.medida}>Medida</MenuItem>
