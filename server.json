@@ -19,17 +19,20 @@
   ],
   "schedule": [
     {
-      "horario_inicio": "15:15",
-      "horario_termino": "15:30",
-      "data_agendada": "2021-12-17",
-      "id": 1
-    },
-    {
-      "cliente_selecionado": 2,
-      "horario_inicio": "16:00",
-      "horario_termino": "16:30",
+      "compromisso_status": "CONFIRMADO",
+      "cliente_selecionado": 1,
+      "horario_inicio": "15:30",
+      "horario_termino": "15:45",
       "data_agendada": "2022-12-17",
       "id": 2
+    },
+    {
+      "compromisso_status": "ACONFIRMAR",
+      "cliente_selecionado": 1,
+      "horario_inicio": "15:15",
+      "horario_termino": "15:30",
+      "data_agendada": "2022-12-17",
+      "id": 3
     }
   ],
   "clients": [

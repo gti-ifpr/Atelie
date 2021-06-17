@@ -3,10 +3,22 @@ import { FiX } from 'react-icons/fi';
 import { api } from '../../../services/api';
 import { useEffect, useState, FormEvent } from 'react';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import TextField from '@material-ui/core/TextField';
+import { TextField, FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
 
 import styles from './styles.module.scss'
 import React from 'react';
+
+
+enum CompromissoType {
+    ajuste = "AJUSTE",
+    medida = "MEDIDA",
+    orcamento = "ORCAMENTO"
+}
+enum CompromissoStatus {
+    confirmado = "CONFIRMADO",
+    aconfirmar = "ACONFIRMAR",
+    cancelado = "CANCELADO"
+}
 
 type Client = {
     id: number;
@@ -27,6 +39,8 @@ type Compromisso = {
     horarioTermino: string;
     dataAgendada: string;
     slectedClient: number;
+    tipo: CompromissoType;
+    status: CompromissoStatus;
 }
 
 type NewScheduleModalProps = {
@@ -37,9 +51,10 @@ type NewScheduleModalProps = {
 export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalProps) {
     const [clients, setClients] = useState([]);
     const [horarioInicio, setHorarioInicio] = useState('');
+    const [compromissoStatus, setCompromissoStatus] = useState(CompromissoStatus.aconfirmar);
     const [horarioTermino, setHorarioTermino] = useState('');
     const [dataAgendada, setDataAgendada] = useState('');
-    const [selectedClient, setClient] = useState(clients[0]);
+    const [selectedClient, setClient] = useState(null);
 
     useEffect(() => {
         api.get('/clients')
@@ -50,6 +65,7 @@ export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalPro
         event.preventDefault();
 
         const data = {
+            compromisso_status: compromissoStatus,
             cliente_selecionado: selectedClient.id,
             horario_inicio: horarioInicio,
             horario_termino: horarioTermino,
@@ -94,6 +110,20 @@ export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalPro
                         style={{ width: '100%' }}
                         renderInput={(params) => <TextField {...params} label="Cliente" variant="outlined" />}
                     />
+
+                    <FormControl>
+                        <InputLabel id="demo-simple-select-label">Status</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={compromissoStatus}
+                            onChange={(_, status: Compromisso) => { setCompromissoStatus(status.status) }}
+                        >
+                            <MenuItem value={CompromissoStatus.confirmado}>Confirmado</MenuItem>
+                            <MenuItem value={CompromissoStatus.aconfirmar}>A confirmar</MenuItem>
+                            <MenuItem value={CompromissoStatus.cancelado}>Cancelado</MenuItem>
+                        </Select>
+                    </FormControl>
 
                     <div className={styles.time}>
                         <div>
