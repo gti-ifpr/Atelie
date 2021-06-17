@@ -51,7 +51,7 @@ type NewScheduleModalProps = {
 export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalProps) {
     const [clients, setClients] = useState([]);
     const [horarioInicio, setHorarioInicio] = useState('');
-    const [compromissoStatus, setCompromissoStatus] = useState(CompromissoStatus.aconfirmar);
+    const [compromissoStatus, setCompromissoStatus] = useState('');
     const [horarioTermino, setHorarioTermino] = useState('');
     const [dataAgendada, setDataAgendada] = useState('');
     const [selectedClient, setClient] = useState(null);
@@ -81,6 +81,10 @@ export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalPro
         setHorarioTermino('');
         setDataAgendada('');
     }
+
+    const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+        setCompromissoStatus(event.target.value as string);
+    };
 
     return (
         <Modal
@@ -112,12 +116,12 @@ export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalPro
                     />
 
                     <FormControl>
-                        <InputLabel id="demo-simple-select-label">Status</InputLabel>
+                        <InputLabel id="label">Status</InputLabel>
                         <Select
-                            labelId="demo-simple-select-label"
+                            labelId="label"
                             id="demo-simple-select"
                             value={compromissoStatus}
-                            onChange={(_, status: Compromisso) => { setCompromissoStatus(status.status) }}
+                            onChange={handleChange}
                         >
                             <MenuItem value={CompromissoStatus.confirmado}>Confirmado</MenuItem>
                             <MenuItem value={CompromissoStatus.aconfirmar}>A confirmar</MenuItem>
