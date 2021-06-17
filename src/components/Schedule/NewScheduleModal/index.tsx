@@ -52,6 +52,7 @@ export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalPro
     const [clients, setClients] = useState([]);
     const [horarioInicio, setHorarioInicio] = useState('');
     const [compromissoStatus, setCompromissoStatus] = useState('');
+    const [compromissoType, setCompromissoType] = useState('');
     const [horarioTermino, setHorarioTermino] = useState('');
     const [dataAgendada, setDataAgendada] = useState('');
     const [selectedClient, setClient] = useState(null);
@@ -66,6 +67,7 @@ export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalPro
 
         const data = {
             compromisso_status: compromissoStatus,
+            tipo_compromisso: compromissoType,
             cliente_selecionado: selectedClient.id,
             horario_inicio: horarioInicio,
             horario_termino: horarioTermino,
@@ -84,6 +86,10 @@ export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalPro
 
     const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         setCompromissoStatus(event.target.value as string);
+    };
+
+    const handleChangeType = (event: React.ChangeEvent<{ value: unknown }>) => {
+        setCompromissoType(event.target.value as string);
     };
 
     return (
@@ -126,6 +132,20 @@ export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalPro
                             <MenuItem value={CompromissoStatus.confirmado}>Confirmado</MenuItem>
                             <MenuItem value={CompromissoStatus.aconfirmar}>A confirmar</MenuItem>
                             <MenuItem value={CompromissoStatus.cancelado}>Cancelado</MenuItem>
+                        </Select>
+                    </FormControl>
+
+                    <FormControl>
+                        <InputLabel id="labelTipo">Tipo</InputLabel>
+                        <Select
+                            labelId="labelTipo"
+                            id="demo-simple-select"
+                            value={compromissoType}
+                            onChange={handleChangeType}
+                        >
+                            <MenuItem value={CompromissoType.ajuste}>Ajuste</MenuItem>
+                            <MenuItem value={CompromissoType.medida}>Medida</MenuItem>
+                            <MenuItem value={CompromissoType.orcamento}>Orçamento</MenuItem>
                         </Select>
                     </FormControl>
 
