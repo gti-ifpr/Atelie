@@ -26,15 +26,6 @@
       "horario_termino": "15:45",
       "data_agendada": "2022-12-17",
       "id": 2
-    },
-    {
-      "compromisso_status": "ACONFIRMAR",
-      "tipo_compromisso": "MEDIDA",
-      "cliente_selecionado": 1,
-      "horario_inicio": "16:30",
-      "horario_termino": "16:30",
-      "data_agendada": "2022-12-17",
-      "id": 3
     }
   ],
   "clients": [
