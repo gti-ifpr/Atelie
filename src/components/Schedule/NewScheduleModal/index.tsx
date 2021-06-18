@@ -77,11 +77,14 @@ export function NewScheduleModal({ isOpen, onRequestClose }: NewScheduleModalPro
         await api.post('/schedule', data);
 
         onRequestClose();
-        //window.location.reload();
+        window.location.reload();
 
         setHorarioInicio('');
         setHorarioTermino('');
         setDataAgendada('');
+        setCompromissoStatus('');
+        setCompromissoType('');
+        setClient(null);
     }
 
 

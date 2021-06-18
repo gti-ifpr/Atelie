@@ -16,14 +16,13 @@ type Client = {
         cidade: string;
         cep: string;
     }
-
 }
 
-type ClientTableProps = {
+type ClientProps = {
     clients: Client[];
 }
 
-export default function Clients({ clients }: ClientTableProps) {
+export default function Clients({ clients }: ClientProps) {
     return (
         <>
             <Head>

@@ -28,9 +28,9 @@
       "id": 2
     },
     {
-      "compromisso_status": "CANCELADO",
+      "compromisso_status": "ACONFIRMAR",
       "tipo_compromisso": "MEDIDA",
-      "cliente_selecionado": 2,
+      "cliente_selecionado": 1,
       "horario_inicio": "16:30",
       "horario_termino": "16:30",
       "data_agendada": "2022-12-17",
