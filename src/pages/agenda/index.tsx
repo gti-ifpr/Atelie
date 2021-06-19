@@ -19,6 +19,7 @@ type CompromissoProps = {
 }
 
 export default function Agenda({ schedule }: CompromissoProps) {
+    const [filtrarPorDia, setFiltrarPorDia] = useState('')
 
     const diaDeHoje = new Date().toLocaleDateString('pt-BR', {
         day: '2-digit',
@@ -27,9 +28,6 @@ export default function Agenda({ schedule }: CompromissoProps) {
     });
 
     const compromissosDoDia = schedule.filter(compromisso => compromisso.dataAgendada === diaDeHoje)
-
-
-
 
     return (
         <>
@@ -40,7 +38,7 @@ export default function Agenda({ schedule }: CompromissoProps) {
             <main>
                 <ScheduleHeader />
 
-                <button>
+                <button onClick={() => setFiltrarPorDia('hoje')}>
                     Hoje
                 </button>
                 <table>
@@ -54,6 +52,23 @@ export default function Agenda({ schedule }: CompromissoProps) {
                         </tr>
                     </thead>
                     <tbody>
+
+                        {
+                            if(filtrarPorDia === 'hoje') {
+                            compromissosDoDia.map(schedule => (
+                                <tr key={schedule.id}>
+                                    <td>{schedule.selectedClient}</td>
+                                    <td>{schedule.horarioInicio} - {schedule.horarioTermino}</td>
+                                    <td>{schedule.tipo}</td>
+                                    <td>{schedule.status}</td>
+                                    <td>{schedule.dataAgendada}</td>
+                                </tr>
+                            )
+                        }
+                        }
+                        }
+
+
                         {schedule.map(schedule => (
                             <tr key={schedule.id}>
                                 <td>{schedule.selectedClient}</td>
