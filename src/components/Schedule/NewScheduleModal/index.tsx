@@ -71,7 +71,7 @@ export function NewScheduleModal({
     );
     const [compromissoType, setCompromissoType] = useState("");
     const [horarioTermino, setHorarioTermino] = useState("");
-    const [dataAgendada, setDataAgendada] = useState(0);
+    const [dataAgendada, setDataAgendada] = useState(undefined);
     const [selectedClient, setClient] = useState(null);
 
     const materialUiStyles = useStyles();
@@ -82,6 +82,7 @@ export function NewScheduleModal({
 
     const dia = new Date(dataAgendada);
     const diaEmNumero = dia.getDate();
+    console.log(dia)
 
     async function handleCreateNewSchedule(event: FormEvent) {
         event.preventDefault();
@@ -102,7 +103,7 @@ export function NewScheduleModal({
 
         setHorarioInicio("");
         setHorarioTermino("");
-        setDataAgendada(0);
+        setDataAgendada(undefined);
     }
 
     return (
@@ -206,8 +207,8 @@ export function NewScheduleModal({
                         type="date"
                         placeholder="Data do Agendamento"
                         value={dataAgendada}
-                        onChange={(date: number | null) => {
-                            setDataAgendada(date)
+                        onChange={(event) => {
+                            setDataAgendada(Date.parse(event.target.value));
                         }}
                     />
                     <button type="submit">Cadastrar Compromisso</button>
