@@ -53,7 +53,7 @@ export default function Agenda({ schedule }: CompromissoProps) {
                     </thead>
                     <tbody>
 
-                        {
+                        {/* {
                             if(filtrarPorDia === 'hoje') {
                             compromissosDoDia.map(schedule => (
                                 <tr key={schedule.id}>
@@ -66,7 +66,7 @@ export default function Agenda({ schedule }: CompromissoProps) {
                             )
                         }
                         }
-                        }
+                        } */}
 
 
                         {schedule.map(schedule => (
