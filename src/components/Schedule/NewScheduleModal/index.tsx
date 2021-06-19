@@ -42,7 +42,7 @@ type Compromisso = {
     id: number;
     horarioInicio: string;
     horarioTermino: string;
-    dataAgendada: string;
+    dataAgendada: number;
     slectedClient: number;
     tipo: CompromissoType;
     status: CompromissoStatus;
@@ -71,7 +71,7 @@ export function NewScheduleModal({
     );
     const [compromissoType, setCompromissoType] = useState("");
     const [horarioTermino, setHorarioTermino] = useState("");
-    const [dataAgendada, setDataAgendada] = useState("");
+    const [dataAgendada, setDataAgendada] = useState(0);
     const [selectedClient, setClient] = useState(null);
 
     const materialUiStyles = useStyles();
@@ -79,6 +79,9 @@ export function NewScheduleModal({
     useEffect(() => {
         api.get("/clients").then((response) => setClients(response.data));
     }, []);
+
+    const dia = new Date(dataAgendada);
+    const diaEmNumero = dia.getDate();
 
     async function handleCreateNewSchedule(event: FormEvent) {
         event.preventDefault();
@@ -89,7 +92,7 @@ export function NewScheduleModal({
             cliente_selecionado: selectedClient.id,
             horario_inicio: horarioInicio,
             horario_termino: horarioTermino,
-            data_agendada: new Date(`${dataAgendada} EDT`),
+            data_agendada: diaEmNumero,
         };
 
         await api.post("/schedule", data);
@@ -99,7 +102,7 @@ export function NewScheduleModal({
 
         setHorarioInicio("");
         setHorarioTermino("");
-        setDataAgendada("");
+        setDataAgendada(0);
     }
 
     return (
@@ -203,7 +206,9 @@ export function NewScheduleModal({
                         type="date"
                         placeholder="Data do Agendamento"
                         value={dataAgendada}
-                        onChange={(event) => setDataAgendada(event.target.value)}
+                        onChange={(date: number | null) => {
+                            setDataAgendada(date)
+                        }}
                     />
                     <button type="submit">Cadastrar Compromisso</button>
                 </form>

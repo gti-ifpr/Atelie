@@ -24,8 +24,17 @@
       "cliente_selecionado": 1,
       "horario_inicio": "16:15",
       "horario_termino": "16:30",
-      "data_agendada": "2021-06-19T04:00:00.000Z",
+      "data_agendada": 16,
       "id": 1
+    },
+    {
+      "compromisso_status": "CONFIRMADO",
+      "tipo_compromisso": "ORCAMENTO",
+      "cliente_selecionado": 1,
+      "horario_inicio": "18:15",
+      "horario_termino": "18:30",
+      "data_agendada": 16,
+      "id": 2
     }
   ],
   "clients": [
