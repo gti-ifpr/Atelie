@@ -19,15 +19,17 @@ type CompromissoProps = {
 }
 
 export default function Agenda({ schedule }: CompromissoProps) {
-    const [day, setDay] = useState('');
 
-    function checkIfIsToday(day) {
-        return day === new Date().toLocaleDateString('pt-BR', {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric'
-        });
-    }
+    const diaDeHoje = new Date().toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+
+    const compromissosDoDia = schedule.filter(compromisso => compromisso.dataAgendada === diaDeHoje)
+
+
+
 
     return (
         <>
@@ -58,7 +60,7 @@ export default function Agenda({ schedule }: CompromissoProps) {
                                 <td>{schedule.horarioInicio} - {schedule.horarioTermino}</td>
                                 <td>{schedule.tipo}</td>
                                 <td>{schedule.status}</td>
-                                <td></td>
+                                <td>{schedule.dataAgendada}</td>
                             </tr>
                         ))}
                     </tbody>
@@ -77,6 +79,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
         }
     })
 
+
     const compromissos = data.map(compromisso => {
         return {
             id: compromisso.id,
@@ -92,6 +95,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
             status: compromisso.compromisso_status,
         };
     })
+
 
     return {
         props: {

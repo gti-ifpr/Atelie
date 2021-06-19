@@ -19,13 +19,13 @@
   ],
   "schedule": [
     {
-      "compromisso_status": "ACONFIRMAR",
-      "tipo_compromisso": "AJUSTE",
+      "compromisso_status": "CONFIRMADO",
+      "tipo_compromisso": "ORCAMENTO",
       "cliente_selecionado": 1,
-      "horario_inicio": "15:30",
-      "horario_termino": "15:45",
-      "data_agendada": "2022-12-17",
-      "id": 2
+      "horario_inicio": "16:15",
+      "horario_termino": "16:30",
+      "data_agendada": "2021-06-19T04:00:00.000Z",
+      "id": 1
     }
   ],
   "clients": [
