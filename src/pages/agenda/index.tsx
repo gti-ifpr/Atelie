@@ -1,8 +1,8 @@
-import { GetServerSideProps } from 'next'
-import Head from 'next/head'
-import { useState } from 'react'
-import { ScheduleHeader } from '../../components/Schedule/ScheduleHeader'
-import { api } from '../../services/api'
+import { GetServerSideProps } from "next";
+import Head from "next/head";
+import { useState } from "react";
+import { ScheduleHeader } from "../../components/Schedule/ScheduleHeader";
+import { api } from "../../services/api";
 
 type Compromisso = {
     id: number;
@@ -12,22 +12,24 @@ type Compromisso = {
     selectedClient: number;
     tipo: string;
     status: string;
-}
+};
 
 type CompromissoProps = {
     schedule: Compromisso[];
-}
+};
 
 export default function Agenda({ schedule }: CompromissoProps) {
-    const [filtrarPorDia, setFiltrarPorDia] = useState('')
+    const [filtrarPorDia, setFiltrarPorDia] = useState("");
 
-    const diaDeHoje = new Date().toLocaleDateString('pt-BR', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric'
+    const diaDeHoje = new Date().toLocaleDateString("pt-BR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
     });
 
-    const compromissosDoDia = schedule.filter(compromisso => compromisso.dataAgendada === diaDeHoje)
+    const compromissosDoDia = schedule.filter(
+        (compromisso) => compromisso.dataAgendada === diaDeHoje
+    );
 
     return (
         <>
@@ -38,9 +40,7 @@ export default function Agenda({ schedule }: CompromissoProps) {
             <main>
                 <ScheduleHeader />
 
-                <button onClick={() => setFiltrarPorDia('hoje')}>
-                    Hoje
-                </button>
+                <button onClick={() => setFiltrarPorDia("hoje")}>Hoje</button>
                 <table>
                     <thead>
                         <tr>
@@ -52,27 +52,25 @@ export default function Agenda({ schedule }: CompromissoProps) {
                         </tr>
                     </thead>
                     <tbody>
-
-                        {/* {
-                            if(filtrarPorDia === 'hoje') {
-                            compromissosDoDia.map(schedule => (
+                        {filtrarPorDia === "hoje" &&
+                            compromissosDoDia.map((schedule) => (
                                 <tr key={schedule.id}>
                                     <td>{schedule.selectedClient}</td>
-                                    <td>{schedule.horarioInicio} - {schedule.horarioTermino}</td>
+                                    <td>
+                                        {schedule.horarioInicio} - {schedule.horarioTermino}
+                                    </td>
                                     <td>{schedule.tipo}</td>
                                     <td>{schedule.status}</td>
                                     <td>{schedule.dataAgendada}</td>
                                 </tr>
-                            )
-                        }
-                        }
-                        } */}
+                            ))}
 
-
-                        {schedule.map(schedule => (
+                        {schedule.map((schedule) => (
                             <tr key={schedule.id}>
                                 <td>{schedule.selectedClient}</td>
-                                <td>{schedule.horarioInicio} - {schedule.horarioTermino}</td>
+                                <td>
+                                    {schedule.horarioInicio} - {schedule.horarioTermino}
+                                </td>
                                 <td>{schedule.tipo}</td>
                                 <td>{schedule.status}</td>
                                 <td>{schedule.dataAgendada}</td>
@@ -82,39 +80,40 @@ export default function Agenda({ schedule }: CompromissoProps) {
                 </table>
             </main>
         </>
-    )
+    );
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    const { data } = await api.get('/schedule', {
+    const { data } = await api.get("/schedule", {
         params: {
             _limit: 5,
-            _sort: 'data',
-            _order: 'incr',
-        }
-    })
+            _sort: "data",
+            _order: "incr",
+        },
+    });
 
-
-    const compromissos = data.map(compromisso => {
+    const compromissos = data.map((compromisso) => {
         return {
             id: compromisso.id,
             horarioInicio: compromisso.horario_inicio,
             horarioTermino: compromisso.horario_termino,
-            dataAgendada: new Date(compromisso.data_agendada).toLocaleDateString('pt-BR', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric'
-            }),
+            dataAgendada: new Date(compromisso.data_agendada).toLocaleDateString(
+                "pt-BR",
+                {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric",
+                }
+            ),
             selectedClient: compromisso.cliente_selecionado,
             tipo: compromisso.tipo_compromisso,
             status: compromisso.compromisso_status,
         };
-    })
-
+    });
 
     return {
         props: {
             schedule: compromissos,
-        }
-    }
-}
+        },
+    };
+};
