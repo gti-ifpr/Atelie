@@ -17,7 +17,26 @@
       "data_entrega": "2021-06-18"
     }
   ],
-  "schedule": [],
+  "schedule": [
+    {
+      "compromisso_status": "CONFIRMADO",
+      "tipo_compromisso": "ORCAMENTO",
+      "cliente_selecionado": 1,
+      "horario_inicio": "15:15",
+      "horario_termino": "15:30",
+      "data_agendada": "2021-06-21T05:00:00.000Z",
+      "id": 1
+    },
+    {
+      "compromisso_status": "CONFIRMADO",
+      "tipo_compromisso": "ORCAMENTO",
+      "cliente_selecionado": 2,
+      "horario_inicio": "16:15",
+      "horario_termino": "16:30",
+      "data_agendada": "2021-06-22T05:00:00.000Z",
+      "id": 2
+    }
+  ],
   "clients": [
     {
       "nome": "Vitor",

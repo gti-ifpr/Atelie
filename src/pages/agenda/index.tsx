@@ -19,7 +19,7 @@ type CompromissoProps = {
 };
 
 export default function Agenda({ schedule }: CompromissoProps) {
-    const [filtrarPorDia, setFiltrarPorDia] = useState("");
+    const [filtrarPorDia, setFiltrarPorDia] = useState("hoje");
 
     const diaDeHoje = new Date().toLocaleDateString("pt-BR", {
         day: "2-digit",
@@ -31,6 +31,8 @@ export default function Agenda({ schedule }: CompromissoProps) {
         (compromisso) => compromisso.dataAgendada === diaDeHoje
     );
 
+    const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
+
     return (
         <>
             <Head>
@@ -41,11 +43,13 @@ export default function Agenda({ schedule }: CompromissoProps) {
                 <ScheduleHeader />
 
                 <button onClick={() => setFiltrarPorDia("hoje")}>Hoje</button>
+                <button onClick={() => setFiltrarPorDia("semana")}>Semana</button>
+                <button onClick={() => setFiltrarPorDia("todos")}>Todos</button>
                 <table>
                     <thead>
                         <tr>
                             <th>Cliente</th>
-                            <th>Ínicio-Termino</th>
+                            <th>Ínicio-Término</th>
                             <th>Tipo</th>
                             <th>Status</th>
                             <th></th>
@@ -65,17 +69,31 @@ export default function Agenda({ schedule }: CompromissoProps) {
                                 </tr>
                             ))}
 
-                        {schedule.map((schedule) => (
-                            <tr key={schedule.id}>
-                                <td>{schedule.selectedClient}</td>
-                                <td>
-                                    {schedule.horarioInicio} - {schedule.horarioTermino}
-                                </td>
-                                <td>{schedule.tipo}</td>
-                                <td>{schedule.status}</td>
-                                <td>{schedule.dataAgendada}</td>
-                            </tr>
-                        ))}
+                        {filtrarPorDia === "todos" &&
+                            schedule.map((schedule) => (
+                                <tr key={schedule.id}>
+                                    <td>{schedule.selectedClient}</td>
+                                    <td>
+                                        {schedule.horarioInicio} - {schedule.horarioTermino}
+                                    </td>
+                                    <td>{schedule.tipo}</td>
+                                    <td>{schedule.status}</td>
+                                    <td>{schedule.dataAgendada}</td>
+                                </tr>
+                            ))}
+
+                        {filtrarPorDia === "semana" &&
+                            schedule.map((schedule) => (
+                                <tr key={schedule.id}>
+                                    <td>{schedule.selectedClient}</td>
+                                    <td>
+                                        {schedule.horarioInicio} - {schedule.horarioTermino}
+                                    </td>
+                                    <td>{schedule.tipo}</td>
+                                    <td>{schedule.status}</td>
+                                    <td>{schedule.dataAgendada}</td>
+                                </tr>
+                            ))}
                     </tbody>
                 </table>
             </main>
