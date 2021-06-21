@@ -89,7 +89,7 @@ export function NewScheduleModal({
             cliente_selecionado: selectedClient.id,
             horario_inicio: horarioInicio,
             horario_termino: horarioTermino,
-            data_agendada: dataAgendada,
+            data_agendada: new Date(`${dataAgendada} EST`),
         };
 
         await api.post("/schedule", data);

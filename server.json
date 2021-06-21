@@ -17,17 +17,7 @@
       "data_entrega": "2021-06-18"
     }
   ],
-  "schedule": [
-    {
-      "compromisso_status": "CONFIRMADO",
-      "tipo_compromisso": "MEDIDA",
-      "cliente_selecionado": 1,
-      "horario_inicio": "17:12",
-      "horario_termino": "17:30",
-      "data_agendada": null,
-      "id": 1
-    }
-  ],
+  "schedule": [],
   "clients": [
     {
       "nome": "Vitor",
