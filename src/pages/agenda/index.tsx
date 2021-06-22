@@ -31,8 +31,6 @@ export default function Agenda({ schedule }: CompromissoProps) {
         (compromisso) => compromisso.dataAgendada === diaDeHoje
     );
 
-    const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
-
     return (
         <>
             <Head>
@@ -79,6 +77,8 @@ export default function Agenda({ schedule }: CompromissoProps) {
                                     <td>{schedule.tipo}</td>
                                     <td>{schedule.status}</td>
                                     <td>{schedule.dataAgendada}</td>
+
+
                                 </tr>
                             ))}
 
@@ -92,6 +92,8 @@ export default function Agenda({ schedule }: CompromissoProps) {
                                     <td>{schedule.tipo}</td>
                                     <td>{schedule.status}</td>
                                     <td>{schedule.dataAgendada}</td>
+
+                                    {console.log(schedule.dataAgendada)}
                                 </tr>
                             ))}
                     </tbody>

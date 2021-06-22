@@ -83,13 +83,14 @@ export function NewScheduleModal({
     async function handleCreateNewSchedule(event: FormEvent) {
         event.preventDefault();
 
+
         const data = {
             compromisso_status: compromissoStatus,
             tipo_compromisso: compromissoType,
             cliente_selecionado: selectedClient.id,
             horario_inicio: horarioInicio,
             horario_termino: horarioTermino,
-            data_agendada: new Date(`${dataAgendada} EST`),
+            data_agendada: dataAgendada,
         };
 
         await api.post("/schedule", data);
@@ -100,7 +101,13 @@ export function NewScheduleModal({
         setHorarioInicio("");
         setHorarioTermino("");
         setDataAgendada('');
+
+        /* const date = new Date(`${dataAgendada} GMT`);
+        const dateNumber = date.getTime()
+        console.log(String(new Date(dateNumber))) */
     }
+
+
 
     return (
         <Modal
@@ -204,6 +211,13 @@ export function NewScheduleModal({
                         placeholder="Data do Agendamento"
                         value={dataAgendada}
                         onChange={(event) => {
+                            /* const date = new Date(`${event.target.value} EST`);
+                            const withTimeZoneDate = date.getTime() + date.getTimezoneOffset() * 60 * 1000;
+                            console.log(new Date(withTimeZoneDate)); */
+
+                            //console.log(`${event.target.value} EST`)
+
+                            console.log(new Intl.DateTimeFormat('pt-BR').format(new Date(event.target.value)))
                             setDataAgendada(event.target.value);
                         }}
                     />
