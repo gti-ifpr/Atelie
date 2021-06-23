@@ -3,17 +3,13 @@ import { FiX } from "react-icons/fi";
 import { api } from "../../../services/api";
 import { useEffect, useState, FormEvent } from "react";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import {
-    TextField,
-    FormControl,
-    InputLabel,
-    MenuItem,
-    Select,
-    makeStyles,
-} from "@material-ui/core";
+import { TextField, FormControl, InputLabel, MenuItem, Select, makeStyles, } from "@material-ui/core";
 
+import { addZero } from '../../../utils/AddZeroToDate';
 import styles from "./styles.module.scss";
 import React from "react";
+import { getCurrentHourInString } from "../../../utils/getCurrentHourInString";
+import { getCurrentDateHourInString } from "../../../utils/getCurrentDateInString";
 
 enum CompromissoType {
     AJUSTE = "AJUSTE",
@@ -76,12 +72,7 @@ export function NewScheduleModal({
 
     const materialUiStyles = useStyles();
 
-    function addZero(i) {
-        if (i < 10) {
-            i = "0" + i;
-        }
-        return i;
-    }
+
 
     useEffect(() => {
         api.get("/clients").then((response) => setClients(response.data));
@@ -92,12 +83,12 @@ export function NewScheduleModal({
         event.preventDefault();
 
         let currentDate = new Date();
-        let dateNow = addZero(currentDate.getFullYear()) + '-' + addZero((currentDate.getMonth() + 1)) + '-' + addZero(currentDate.getDate())
-        let hoursNow = addZero(currentDate.getHours()) + ":" + addZero(currentDate.getMinutes());
+        let dateNow = getCurrentDateHourInString(currentDate);
 
-        if (dataAgendada < dateNow || (dataAgendada == dateNow && horarioInicio < hoursNow)) {
+        if (dataAgendada < dateNow ||
+            (dataAgendada == dateNow &&
+                horarioInicio < getCurrentHourInString(currentDate))) {
             alert("Erro: Data inválida")
-
         } else {
             const data = {
                 compromisso_status: compromissoStatus,
