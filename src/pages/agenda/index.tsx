@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { ScheduleHeader } from "../../components/Schedule/ScheduleHeader";
 import { api } from "../../services/api";
 
@@ -66,7 +66,9 @@ export default function Agenda({ compromissos }: CompromissoProps) {
   const [compromissoFilter, setCompromissoFilter] =
     useState<FilterType>("hoje");
 
-  compromissos = filterCompromissoByType(compromissoFilter, compromissos);
+  useEffect(() => {
+    compromissos = filterCompromissoByType(compromissoFilter, compromissos);
+  }, [compromissoFilter]);
 
   return (
     <>
