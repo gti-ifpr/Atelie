@@ -23,45 +23,18 @@
       "tipo_compromisso": "ORCAMENTO",
       "cliente_selecionado": 1,
       "horario_inicio": "15:15",
-      "horario_termino": "15:15",
+      "horario_termino": "15:30",
       "data_agendada": "2021-06-22",
       "id": 1
     },
     {
       "compromisso_status": "CONFIRMADO",
-      "tipo_compromisso": "ORCAMENTO",
+      "tipo_compromisso": "AJUSTE",
       "cliente_selecionado": 1,
-      "horario_inicio": "15:15",
-      "horario_termino": "15:15",
-      "data_agendada": "2021-06-23",
+      "horario_inicio": "16:20",
+      "horario_termino": "16:30",
+      "data_agendada": "2021-06-22",
       "id": 2
-    },
-    {
-      "compromisso_status": "CONFIRMADO",
-      "tipo_compromisso": "ORCAMENTO",
-      "cliente_selecionado": 1,
-      "horario_inicio": "15:15",
-      "horario_termino": "15:15",
-      "data_agendada": "2021-06-21",
-      "id": 3
-    },
-    {
-      "compromisso_status": "CONFIRMADO",
-      "tipo_compromisso": "MEDIDA",
-      "cliente_selecionado": 1,
-      "horario_inicio": "15:15",
-      "horario_termino": "15:30",
-      "data_agendada": "2021-06-21",
-      "id": 4
-    },
-    {
-      "compromisso_status": "CONFIRMADO",
-      "tipo_compromisso": "ORCAMENTO",
-      "cliente_selecionado": 1,
-      "horario_inicio": "15:15",
-      "horario_termino": "15:15",
-      "data_agendada": "2021-06-21",
-      "id": 5
     }
   ],
   "clients": [

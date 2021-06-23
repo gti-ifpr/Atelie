@@ -76,38 +76,48 @@ export function NewScheduleModal({
 
     const materialUiStyles = useStyles();
 
+    function addZero(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+
     useEffect(() => {
         api.get("/clients").then((response) => setClients(response.data));
     }, []);
 
     async function handleCreateNewSchedule(event: FormEvent) {
+        //TODO: se dia < hoje erro de data invalida || se dia == hoje e hora < agora erro
         event.preventDefault();
 
+        let currentDate = new Date();
+        let dateNow = addZero(currentDate.getFullYear()) + '-' + addZero((currentDate.getMonth() + 1)) + '-' + addZero(currentDate.getDate())
+        let hoursNow = addZero(currentDate.getHours()) + ":" + addZero(currentDate.getMinutes());
 
-        const data = {
-            compromisso_status: compromissoStatus,
-            tipo_compromisso: compromissoType,
-            cliente_selecionado: selectedClient.id,
-            horario_inicio: horarioInicio,
-            horario_termino: horarioTermino,
-            data_agendada: dataAgendada,
-        };
+        if (dataAgendada < dateNow || (dataAgendada == dateNow && horarioInicio < hoursNow)) {
+            alert("Erro: Data inválida")
 
-        await api.post("/schedule", data);
+        } else {
+            const data = {
+                compromisso_status: compromissoStatus,
+                tipo_compromisso: compromissoType,
+                cliente_selecionado: selectedClient.id,
+                horario_inicio: horarioInicio,
+                horario_termino: horarioTermino,
+                data_agendada: dataAgendada,
+            };
 
-        onRequestClose();
-        //window.location.reload();
+            await api.post("/schedule", data);
+
+            onRequestClose();
+            //window.location.reload();
+        }
 
         setHorarioInicio("");
         setHorarioTermino("");
         setDataAgendada('');
-
-        /* const date = new Date(`${dataAgendada} GMT`);
-        const dateNumber = date.getTime()
-        console.log(String(new Date(dateNumber))) */
     }
-
-
 
     return (
         <Modal
@@ -211,14 +221,10 @@ export function NewScheduleModal({
                         placeholder="Data do Agendamento"
                         value={dataAgendada}
                         onChange={(event) => {
-                            /* const date = new Date(`${event.target.value} EST`);
-                            const withTimeZoneDate = date.getTime() + date.getTimezoneOffset() * 60 * 1000;
-                            console.log(new Date(withTimeZoneDate)); */
-
-                            //console.log(`${event.target.value} EST`)
-
-                            console.log(new Intl.DateTimeFormat('pt-BR').format(new Date(event.target.value)))
-                            setDataAgendada(event.target.value);
+                            const newDate = Date.parse(event.target.value);
+                            if (!isNaN(newDate)) {
+                                setDataAgendada(event.target.value);
+                            }
                         }}
                     />
                     <button type="submit">Cadastrar Compromisso</button>
