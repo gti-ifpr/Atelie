@@ -80,6 +80,24 @@
       "horario_termino": "15:45",
       "data_agendada": "2021-06-26",
       "id": 7
+    },
+    {
+      "compromisso_status": "CONFIRMADO",
+      "tipo_compromisso": "ORCAMENTO",
+      "cliente_selecionado": 1,
+      "horario_inicio": "20:16",
+      "horario_termino": "20:30",
+      "data_agendada": "2021-06-23",
+      "id": 8
+    },
+    {
+      "compromisso_status": "CONFIRMADO",
+      "tipo_compromisso": "ORCAMENTO",
+      "cliente_selecionado": 1,
+      "horario_inicio": "15:15",
+      "horario_termino": "15:30",
+      "data_agendada": "2021-07-01",
+      "id": 9
     }
   ],
   "clients": [

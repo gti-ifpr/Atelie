@@ -5,7 +5,6 @@ import { useEffect, useState, FormEvent } from "react";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { TextField, FormControl, InputLabel, MenuItem, Select, makeStyles, } from "@material-ui/core";
 
-import { addZero } from '../../../utils/AddZeroToDate';
 import styles from "./styles.module.scss";
 import React from "react";
 import { getCurrentHourInString } from "../../../utils/getCurrentHourInString";

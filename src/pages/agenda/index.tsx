@@ -4,6 +4,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import { ScheduleHeader } from "../../components/Schedule/ScheduleHeader";
 import { api } from "../../services/api";
 import { getCurrentDateHourInString } from "../../utils/getCurrentDateInString";
+import { getFirstDayOfTheWeek } from "../../utils/getFirstDayOfTheWeek";
 
 type Compromisso = {
     id: number;
@@ -11,6 +12,7 @@ type Compromisso = {
     horarioTermino: string;
     dataAgendadaString: string;
     dataAgendadaDayOfTheWeek: number;
+    dataAgendadaCurrentDate: number;
     selectedClient: number;
     tipo: string;
     status: string;
@@ -34,28 +36,31 @@ const CompromissoRow: FunctionComponent<{ compromisso: Compromisso }> = ({
                 </td>
                 <td>{compromisso.tipo}</td>
                 <td>{compromisso.status}</td>
-                <td>{compromisso.dataAgendadaString}</td>
+                <td>{compromisso.dataAgendadaCurrentDate}</td>
             </tr>
         </>
     );
 };
 
+
 function filterCompromissoByType(
     filterType: FilterType,
-    compromissos: Compromisso[]
+    compromissos: Compromisso[],
+    selectedDayOfTheWeek: number
 ) {
     switch (filterType) {
         case "hoje":
             return compromissos.filter(
-                (compromisso) =>
-                    compromisso.dataAgendadaString ===
-                    getCurrentDateHourInString(new Date()) //TODO Filtrar por dia
-            );
+                (compromisso) => compromisso.dataAgendadaString === getCurrentDateHourInString(new Date()));
         case "semana":
+            const { firstDayOfTheWeek, lastDayOfTheWeek } = getFirstDayOfTheWeek(new Date());
+
+            console.log(compromissos)
             return compromissos.filter(
                 (compromisso) =>
-                    compromisso.dataAgendadaString ===
-                    "getCurrentDateHourInString(new Date())" //TODO Filtrar por semana
+                ((compromisso.dataAgendadaCurrentDate >= firstDayOfTheWeek &&
+                    compromisso.dataAgendadaCurrentDate <= lastDayOfTheWeek) &&
+                    (compromisso.dataAgendadaDayOfTheWeek === selectedDayOfTheWeek))
             );
         default:
             return compromissos;
@@ -63,14 +68,17 @@ function filterCompromissoByType(
 }
 
 export default function Agenda({ compromissos }: CompromissoProps) {
-    const [compromissoFilter, setCompromissoFilter] =
-        useState<FilterType>("hoje");
+    const [compromissoFilter, setCompromissoFilter] = useState<FilterType>("hoje");
+
+    const [compromissosFiltrados, setCompromissosFiltrados] = useState<Compromisso[]>([])
+    const [selectedDayOfTheWeek, setSelectedDayOfTheWeek] = useState<number>(0)
+
 
     useEffect(() => {
-        compromissos = filterCompromissoByType(compromissoFilter, compromissos);
-    }, [compromissoFilter]);
-
-    console.log(getCurrentDateHourInString(new Date()));
+        setCompromissosFiltrados(
+            filterCompromissoByType(compromissoFilter, compromissos, selectedDayOfTheWeek)
+        )
+    }, [compromissoFilter, selectedDayOfTheWeek]);
 
     return (
         <>
@@ -84,6 +92,17 @@ export default function Agenda({ compromissos }: CompromissoProps) {
                 <button onClick={() => setCompromissoFilter("hoje")}>Hoje</button>
                 <button onClick={() => setCompromissoFilter("semana")}>Semana</button>
                 <button onClick={() => setCompromissoFilter("semFiltro")}>Todos</button>
+                {(compromissoFilter === "semana") &&
+                    <>
+                        <button onClick={() => setSelectedDayOfTheWeek(0)}>Segunda</button>
+                        <button onClick={() => setSelectedDayOfTheWeek(1)}>Terça</button>
+                        <button onClick={() => setSelectedDayOfTheWeek(2)}>Quarta</button>
+                        <button onClick={() => setSelectedDayOfTheWeek(3)}>Quinta</button>
+                        <button onClick={() => setSelectedDayOfTheWeek(4)}>Sexta</button>
+                        <button onClick={() => setSelectedDayOfTheWeek(5)}>Sábado</button>
+                        <button onClick={() => setSelectedDayOfTheWeek(6)}>Domingo</button>
+                    </>
+                }
                 <table>
                     <thead>
                         <tr>
@@ -95,7 +114,7 @@ export default function Agenda({ compromissos }: CompromissoProps) {
                         </tr>
                     </thead>
                     <tbody>
-                        {compromissos.map((compromisso) => (
+                        {compromissosFiltrados.map((compromisso) => (
                             <CompromissoRow key={compromisso.id} compromisso={compromisso} />
                         ))}
                     </tbody>
@@ -120,6 +139,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
             horarioTermino: compromisso.horario_termino,
             dataAgendadaString: compromisso.data_agendada,
             dataAgendadaDayOfTheWeek: new Date(compromisso.data_agendada).getDay(),
+            dataAgendadaCurrentDate: new Date(compromisso.data_agendada).getDate() + 1,
             selectedClient: compromisso.cliente_selecionado,
             tipo: compromisso.tipo_compromisso,
             status: compromisso.compromisso_status,
