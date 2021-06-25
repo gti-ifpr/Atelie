@@ -96,20 +96,20 @@ export default function Agenda({ compromissos }: CompromissoProps) {
                 <ScheduleHeader />
 
                 <div className={styles.filterType}>
-                    <Button onClick={() => setCompromissoFilter("hoje")}>Hoje</Button>
-                    <Button onClick={() => setCompromissoFilter("semana")}>Semana</Button>
-                    <Button onClick={() => setCompromissoFilter("semFiltro")}>Todos</Button>
+                    <Button isActive={compromissoFilter === "hoje"} onClick={() => setCompromissoFilter("hoje")}>Hoje</Button>
+                    <Button isActive={compromissoFilter === "semana"} onClick={() => setCompromissoFilter("semana")}>Semana</Button>
+                    <Button isActive={compromissoFilter === "semFiltro"} onClick={() => setCompromissoFilter("semFiltro")}>Todos</Button>
                 </div>
 
                 {(compromissoFilter === "semana") &&
                     <div className={styles.weekFilterType}>
-                        <Button onClick={() => setSelectedDayOfTheWeek(0)}>Domingo</Button>
-                        <Button onClick={() => setSelectedDayOfTheWeek(1)}>Segunda</Button>
-                        <Button onClick={() => setSelectedDayOfTheWeek(2)}>Terça</Button>
-                        <Button onClick={() => setSelectedDayOfTheWeek(3)}>Quarta</Button>
-                        <Button onClick={() => setSelectedDayOfTheWeek(4)}>Quinta</Button>
-                        <Button onClick={() => setSelectedDayOfTheWeek(5)}>Sexta</Button>
-                        <Button onClick={() => setSelectedDayOfTheWeek(6)}>Sábado</Button>
+                        <Button isActive={selectedDayOfTheWeek === 0} onClick={() => setSelectedDayOfTheWeek(0)}>Domingo</Button>
+                        <Button isActive={selectedDayOfTheWeek === 1} onClick={() => setSelectedDayOfTheWeek(1)}>Segunda</Button>
+                        <Button isActive={selectedDayOfTheWeek === 2} onClick={() => setSelectedDayOfTheWeek(2)}>Terça</Button>
+                        <Button isActive={selectedDayOfTheWeek === 3} onClick={() => setSelectedDayOfTheWeek(3)}>Quarta</Button>
+                        <Button isActive={selectedDayOfTheWeek === 4} onClick={() => setSelectedDayOfTheWeek(4)}>Quinta</Button>
+                        <Button isActive={selectedDayOfTheWeek === 5} onClick={() => setSelectedDayOfTheWeek(5)}>Sexta</Button>
+                        <Button isActive={selectedDayOfTheWeek === 6} onClick={() => setSelectedDayOfTheWeek(6)}>Sábado</Button>
                     </div>
                 }
                 <table>

@@ -23,6 +23,7 @@ export function ScheduleHeader() {
                     Cadastrar Na Agenda
                 </Button>
             </div>
+
             <NewScheduleModal
                 isOpen={isNewClientModalOpen}
                 onRequestClose={handleCloseNewClientModal}

@@ -13,3 +13,7 @@
         filter: brightness(0.8);
     } 
 }
+
+.active {
+    border: 2px solid var(--yellow-800);
+}
