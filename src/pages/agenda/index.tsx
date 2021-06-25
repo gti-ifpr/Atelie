@@ -1,9 +1,12 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState, Fragment } from "react";
 import { ScheduleHeader } from "../../components/Schedule/ScheduleHeader";
 import { api } from "../../services/api";
 import { addOneDay } from "../../utils/addOneDay";
+import { Button } from "../../components/Button";
+
+import styles from './styles.module.scss'
 
 import { getCurrentDateHourInString } from "../../utils/getCurrentDateInString";
 import { getFirstDayOfTheWeek } from "../../utils/getFirstDayOfTheWeek";
@@ -12,6 +15,7 @@ type Compromisso = {
     id: number;
     horarioInicio: string;
     horarioTermino: string;
+    dataAgendadaPtBr: string;
     dataAgendadaString: string;
     dataAgendadaDayOfTheWeek: number;
     dataAgendadaCurrentDate: number;
@@ -38,7 +42,7 @@ const CompromissoRow: FunctionComponent<{ compromisso: Compromisso }> = ({
                 </td>
                 <td>{compromisso.tipo}</td>
                 <td>{compromisso.status}</td>
-                <td>{compromisso.dataAgendadaDayOfTheWeek}</td>
+                <td>{compromisso.dataAgendadaPtBr}</td>
                 <td>{compromisso.dataAgendadaCurrentDate}</td>
             </tr>
         </>
@@ -88,22 +92,25 @@ export default function Agenda({ compromissos }: CompromissoProps) {
                 <title>Agenda | Artha</title>
             </Head>
 
-            <main>
+            <main className={styles.contentContainer}>
                 <ScheduleHeader />
 
-                <button onClick={() => setCompromissoFilter("hoje")}>Hoje</button>
-                <button onClick={() => setCompromissoFilter("semana")}>Semana</button>
-                <button onClick={() => setCompromissoFilter("semFiltro")}>Todos</button>
+                <div className={styles.filterType}>
+                    <Button onClick={() => setCompromissoFilter("hoje")}>Hoje</Button>
+                    <Button onClick={() => setCompromissoFilter("semana")}>Semana</Button>
+                    <Button onClick={() => setCompromissoFilter("semFiltro")}>Todos</Button>
+                </div>
+
                 {(compromissoFilter === "semana") &&
-                    <>
-                        <button onClick={() => setSelectedDayOfTheWeek(0)}>Domingo</button>
-                        <button onClick={() => setSelectedDayOfTheWeek(1)}>Segunda</button>
-                        <button onClick={() => setSelectedDayOfTheWeek(2)}>Terça</button>
-                        <button onClick={() => setSelectedDayOfTheWeek(3)}>Quarta</button>
-                        <button onClick={() => setSelectedDayOfTheWeek(4)}>Quinta</button>
-                        <button onClick={() => setSelectedDayOfTheWeek(5)}>Sexta</button>
-                        <button onClick={() => setSelectedDayOfTheWeek(6)}>Sábado</button>
-                    </>
+                    <div className={styles.weekFilterType}>
+                        <Button onClick={() => setSelectedDayOfTheWeek(0)}>Domingo</Button>
+                        <Button onClick={() => setSelectedDayOfTheWeek(1)}>Segunda</Button>
+                        <Button onClick={() => setSelectedDayOfTheWeek(2)}>Terça</Button>
+                        <Button onClick={() => setSelectedDayOfTheWeek(3)}>Quarta</Button>
+                        <Button onClick={() => setSelectedDayOfTheWeek(4)}>Quinta</Button>
+                        <Button onClick={() => setSelectedDayOfTheWeek(5)}>Sexta</Button>
+                        <Button onClick={() => setSelectedDayOfTheWeek(6)}>Sábado</Button>
+                    </div>
                 }
                 <table>
                     <thead>
@@ -112,7 +119,7 @@ export default function Agenda({ compromissos }: CompromissoProps) {
                             <th>Ínicio-Término</th>
                             <th>Tipo</th>
                             <th>Status</th>
-                            <th></th>
+                            <th>Data</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -141,6 +148,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
             horarioInicio: compromisso.horario_inicio,
             horarioTermino: compromisso.horario_termino,
             dataAgendadaString: compromisso.data_agendada,
+            dataAgendadaPtBr: new Date(addOneDay(compromisso.data_agendada)).toLocaleDateString('pt-BR'),
             dataAgendadaDayOfTheWeek: new Date(addOneDay(compromisso.data_agendada)).getDay(),
             dataAgendadaCurrentDate: new Date(addOneDay(compromisso.data_agendada)).getDate(),
             selectedClient: compromisso.cliente_selecionado,

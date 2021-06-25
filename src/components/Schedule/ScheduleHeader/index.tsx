@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NewScheduleModal } from "../NewScheduleModal";
+import { Button } from "../../Button";
 
 import styles from './styles.module.scss';
 
@@ -18,9 +19,9 @@ export function ScheduleHeader() {
         <>
             <div className={styles.contentContainer}>
 
-                <button type="button" onClick={handleOpenNewClientModal}>
+                <Button type="button" onClick={handleOpenNewClientModal}>
                     Cadastrar Na Agenda
-                </button>
+                </Button>
             </div>
             <NewScheduleModal
                 isOpen={isNewClientModalOpen}

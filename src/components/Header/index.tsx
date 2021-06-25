@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ActiveLink } from '../ActiveLink'
 import { NewJobModal } from '../NewJobModal';
+import { Button } from '../Button'
 
 import styles from './styles.module.scss';
 
@@ -36,9 +37,9 @@ export function Header() {
                     </ActiveLink>
                 </nav>
 
-                <button type="button" onClick={handleOpenNewJobModal}>
+                <Button type="button" onClick={handleOpenNewJobModal}>
                     Nova Prova
-                </button>
+                </Button>
 
                 <NewJobModal
                     isOpen={isNewJobModalOpen}
