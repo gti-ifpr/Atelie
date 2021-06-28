@@ -24,7 +24,7 @@
       "cliente_selecionado": 1,
       "horario_inicio": "15:30",
       "horario_termino": "15:45",
-      "data_agendada": "2021-06-20",
+      "data_agendada": "2021-06-27",
       "id": 1
     },
     {
@@ -33,7 +33,7 @@
       "cliente_selecionado": 2,
       "horario_inicio": "15:30",
       "horario_termino": "15:45",
-      "data_agendada": "2021-06-21",
+      "data_agendada": "2021-06-28",
       "id": 2
     },
     {
@@ -42,7 +42,7 @@
       "cliente_selecionado": 3,
       "horario_inicio": "15:30",
       "horario_termino": "15:45",
-      "data_agendada": "2021-06-22",
+      "data_agendada": "2021-06-29",
       "id": 3
     },
     {
@@ -51,7 +51,7 @@
       "cliente_selecionado": 4,
       "horario_inicio": "15:30",
       "horario_termino": "15:45",
-      "data_agendada": "2021-06-23",
+      "data_agendada": "2021-06-30",
       "id": 4
     },
     {
@@ -60,7 +60,7 @@
       "cliente_selecionado": 5,
       "horario_inicio": "15:30",
       "horario_termino": "15:45",
-      "data_agendada": "2021-06-24",
+      "data_agendada": "2021-07-01",
       "id": 5
     },
     {
@@ -69,7 +69,7 @@
       "cliente_selecionado": 6,
       "horario_inicio": "15:30",
       "horario_termino": "15:45",
-      "data_agendada": "2021-06-25",
+      "data_agendada": "2021-07-02",
       "id": 6
     },
     {
@@ -78,7 +78,7 @@
       "cliente_selecionado": 7,
       "horario_inicio": "15:30",
       "horario_termino": "15:45",
-      "data_agendada": "2021-06-26",
+      "data_agendada": "2021-07-03",
       "id": 7
     },
     {
@@ -98,6 +98,15 @@
       "horario_termino": "15:30",
       "data_agendada": "2021-07-01",
       "id": 9
+    },
+    {
+      "compromisso_status": "CONFIRMADO",
+      "tipo_compromisso": "AJUSTE",
+      "cliente_selecionado": 3,
+      "horario_inicio": "15:15",
+      "horario_termino": "15:30",
+      "data_agendada": "2021-06-26",
+      "id": 10
     }
   ],
   "clients": [
@@ -124,6 +133,18 @@
         "cep": "83325-165"
       },
       "id": 2
+    },
+    {
+      "nome": "André",
+      "sobrenome": "Akira",
+      "email": "vitorakira1@gmail.com",
+      "telefone": "+5541996829554",
+      "endereco": {
+        "endereco": "Rua das Palmeiras, n 496, ap 203 bl 08",
+        "cidade": "Pinhais",
+        "cep": "83325-165"
+      },
+      "id": 3
     }
   ],
   "stock": [

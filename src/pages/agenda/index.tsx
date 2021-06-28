@@ -43,7 +43,7 @@ const CompromissoRow: FunctionComponent<{ compromisso: Compromisso }> = ({
                 <td>{compromisso.tipo}</td>
                 <td>{compromisso.status}</td>
                 <td>{compromisso.dataAgendadaPtBr}</td>
-                <td>{compromisso.dataAgendadaCurrentDate}</td>
+                <td>{compromisso.dataAgendadaDayOfTheWeek}</td>
             </tr>
         </>
     );
@@ -59,6 +59,7 @@ function filterCompromissoByType(
         case "hoje":
             return compromissos.filter(
                 (compromisso) => compromisso.dataAgendadaString === getCurrentDateHourInString(new Date()));
+
         case "semana":
             const { firstDayOfTheWeek, lastDayOfTheWeek } = getFirstDayOfTheWeek(new Date());
 
