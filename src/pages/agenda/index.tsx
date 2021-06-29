@@ -74,12 +74,29 @@ function filterCompromissoByType(
     }
 }
 
-export default function Agenda({ compromissos }: CompromissoProps) {
+export default function Agenda(/* { compromissos }: CompromissoProps */) {
     const [compromissoFilter, setCompromissoFilter] = useState<FilterType>("hoje");
 
     const [compromissosFiltrados, setCompromissosFiltrados] = useState<Compromisso[]>([])
+    const [compromissos, setCompromissos] = useState<Compromisso[]>([])
     const [selectedDayOfTheWeek, setSelectedDayOfTheWeek] = useState<number>(0)
 
+    useEffect(() => {
+        api.get("/schedule").then((response) => setCompromissos(response.data.map((compromisso) => {
+            return {
+                id: compromisso.id,
+                horarioInicio: compromisso.horario_inicio,
+                horarioTermino: compromisso.horario_termino,
+                dataAgendadaString: compromisso.data_agendada,
+                dataAgendadaPtBr: new Date(addOneDay(compromisso.data_agendada)).toLocaleDateString('pt-BR'),
+                dataAgendadaDayOfTheWeek: new Date(addOneDay(compromisso.data_agendada)).getDay(),
+                dataAgendadaCurrentDate: new Date(addOneDay(compromisso.data_agendada)).getTime(),
+                selectedClient: compromisso.cliente_selecionado,
+                tipo: compromisso.tipo_compromisso,
+                status: compromisso.compromisso_status,
+            };
+        })))
+    }, []);
 
     useEffect(() => {
         setCompromissosFiltrados(
@@ -134,6 +151,7 @@ export default function Agenda({ compromissos }: CompromissoProps) {
         </>
     );
 }
+
 
 export const getServerSideProps: GetServerSideProps = async () => {
     const { data } = await api.get("/schedule", {
