@@ -43,7 +43,7 @@ const CompromissoRow: FunctionComponent<{ compromisso: Compromisso }> = ({
                 <td>{compromisso.tipo}</td>
                 <td>{compromisso.status}</td>
                 <td>{compromisso.dataAgendadaPtBr}</td>
-                <td>{compromisso.dataAgendadaDayOfTheWeek}</td>
+                <td>{compromisso.dataAgendadaCurrentDate}</td>
             </tr>
         </>
     );
@@ -65,8 +65,8 @@ function filterCompromissoByType(
 
             return compromissos.filter(
                 (compromisso) =>
-                ((compromisso.dataAgendadaCurrentDate >= firstDayOfTheWeek &&
-                    compromisso.dataAgendadaCurrentDate <= lastDayOfTheWeek) &&
+                ((compromisso.dataAgendadaCurrentDate >= new Date(addOneDay(firstDayOfTheWeek)).getTime() &&
+                    compromisso.dataAgendadaCurrentDate <= new Date(addOneDay(lastDayOfTheWeek)).getTime()) &&
                     (compromisso.dataAgendadaDayOfTheWeek === selectedDayOfTheWeek))
             );
         default:
@@ -151,7 +151,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
             dataAgendadaString: compromisso.data_agendada,
             dataAgendadaPtBr: new Date(addOneDay(compromisso.data_agendada)).toLocaleDateString('pt-BR'),
             dataAgendadaDayOfTheWeek: new Date(addOneDay(compromisso.data_agendada)).getDay(),
-            dataAgendadaCurrentDate: new Date(addOneDay(compromisso.data_agendada)).getDate(),
+            dataAgendadaCurrentDate: new Date(addOneDay(compromisso.data_agendada)).getTime(),
             selectedClient: compromisso.cliente_selecionado,
             tipo: compromisso.tipo_compromisso,
             status: compromisso.compromisso_status,
