@@ -152,7 +152,7 @@ export default function Agenda(/* { compromissos }: CompromissoProps */) {
     );
 }
 
-
+/*
 export const getServerSideProps: GetServerSideProps = async () => {
     const { data } = await api.get("/schedule", {
         params: {
@@ -182,3 +182,4 @@ export const getServerSideProps: GetServerSideProps = async () => {
         },
     };
 };
+ */
