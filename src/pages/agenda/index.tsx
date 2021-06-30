@@ -6,10 +6,11 @@ import { api } from "../../services/api";
 import { addOneDay } from "../../utils/addOneDay";
 import { Button } from "../../components/Button";
 
-import styles from './styles.module.scss'
-
-import { getCurrentDateHourInString } from "../../utils/getCurrentDateInString";
+import { getCurrentDateInString } from "../../utils/getCurrentDateInString";
 import { getFirstDayOfTheWeek } from "../../utils/getFirstDayOfTheWeek";
+import { isDayAndHourLessThenToday } from "../../utils/isDayAndHourLessThenToday";
+
+import styles from './styles.module.scss'
 
 type Compromisso = {
     id: number;
@@ -24,10 +25,6 @@ type Compromisso = {
     status: string;
 };
 
-type CompromissoProps = {
-    compromissos: Compromisso[];
-};
-
 type FilterType = "hoje" | "semana" | "semFiltro";
 
 const CompromissoRow: FunctionComponent<{ compromisso: Compromisso }> = ({
@@ -35,7 +32,10 @@ const CompromissoRow: FunctionComponent<{ compromisso: Compromisso }> = ({
 }) => {
     return (
         <>
-            <tr key={compromisso.id}>
+            <tr
+                key={compromisso.id}
+                className={isDayAndHourLessThenToday(compromisso.dataAgendadaString, compromisso.horarioInicio) ? styles.dayAndHourLessThenToday : ''}
+            >
                 <td>{compromisso.selectedClient}</td>
                 <td>
                     {compromisso.horarioInicio} - {compromisso.horarioTermino}
@@ -43,7 +43,7 @@ const CompromissoRow: FunctionComponent<{ compromisso: Compromisso }> = ({
                 <td>{compromisso.tipo}</td>
                 <td>{compromisso.status}</td>
                 <td>{compromisso.dataAgendadaPtBr}</td>
-                <td>{compromisso.dataAgendadaCurrentDate}</td>
+                <td></td>
             </tr>
         </>
     );
@@ -53,12 +53,12 @@ const CompromissoRow: FunctionComponent<{ compromisso: Compromisso }> = ({
 function filterCompromissoByType(
     filterType: FilterType,
     compromissos: Compromisso[],
-    selectedDayOfTheWeek: number
+    selectedDayOfTheWeek: number,
 ) {
     switch (filterType) {
         case "hoje":
             return compromissos.filter(
-                (compromisso) => compromisso.dataAgendadaString === getCurrentDateHourInString(new Date()));
+                (compromisso) => compromisso.dataAgendadaString === getCurrentDateInString(new Date()));
 
         case "semana":
             const { firstDayOfTheWeek, lastDayOfTheWeek } = getFirstDayOfTheWeek(new Date());

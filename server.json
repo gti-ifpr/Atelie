@@ -107,6 +107,15 @@
       "horario_termino": "15:30",
       "data_agendada": "2021-06-26",
       "id": 10
+    },
+    {
+      "compromisso_status": "CONFIRMADO",
+      "tipo_compromisso": "MEDIDA",
+      "cliente_selecionado": 1,
+      "horario_inicio": "15:15",
+      "horario_termino": "15:30",
+      "data_agendada": "2021-06-30",
+      "id": 11
     }
   ],
   "clients": [

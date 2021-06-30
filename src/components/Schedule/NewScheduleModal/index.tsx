@@ -8,7 +8,8 @@ import { TextField, FormControl, InputLabel, MenuItem, Select, makeStyles, } fro
 import styles from "./styles.module.scss";
 import React from "react";
 import { getCurrentHourInString } from "../../../utils/getCurrentHourInString";
-import { getCurrentDateHourInString } from "../../../utils/getCurrentDateInString";
+import { getCurrentDateInString } from "../../../utils/getCurrentDateInString";
+import { isDayAndHourLessThenToday } from "../../../utils/isDayAndHourLessThenToday";
 
 enum CompromissoType {
     AJUSTE = "AJUSTE",
@@ -67,7 +68,7 @@ export function NewScheduleModal({
     const [compromissoType, setCompromissoType] = useState("");
     const [horarioTermino, setHorarioTermino] = useState("");
     const [dataAgendada, setDataAgendada] = useState('');
-    const [selectedClient, setClient] = useState(null);
+    const [selectedClient, setSelectedClient] = useState(null);
 
     const materialUiStyles = useStyles();
 
@@ -81,12 +82,8 @@ export function NewScheduleModal({
         //TODO: se dia < hoje erro de data invalida || se dia == hoje e hora < agora erro
         event.preventDefault();
 
-        let currentDate = new Date();
-        let dateNow = getCurrentDateHourInString(currentDate);
 
-        if (dataAgendada < dateNow ||
-            (dataAgendada == dateNow &&
-                horarioInicio < getCurrentHourInString(currentDate))) {
+        if (isDayAndHourLessThenToday(dataAgendada, horarioInicio)) {
             alert("Erro: Data inválida")
         } else {
             const data = {
@@ -107,6 +104,7 @@ export function NewScheduleModal({
         setHorarioInicio("");
         setHorarioTermino("");
         setDataAgendada('');
+        setSelectedClient(null);
     }
 
     return (
@@ -130,7 +128,7 @@ export function NewScheduleModal({
                     <Autocomplete
                         value={selectedClient}
                         onChange={(_, client: Client) => {
-                            setClient(client);
+                            setSelectedClient(client);
                         }}
                         id="combo-box-demo"
                         options={clients as Client[]}
