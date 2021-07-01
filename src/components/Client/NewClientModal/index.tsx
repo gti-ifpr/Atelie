@@ -5,6 +5,7 @@ import styles from './styles.module.scss';
 
 
 import { FiX } from 'react-icons/fi';
+import { useClient } from '../../../hooks/useClient';
 
 type NewClientModalProps = {
     isOpen: boolean;
@@ -20,10 +21,12 @@ export function NewClientModal({ isOpen, onRequestClose }: NewClientModalProps) 
     const [cidade, setCidade] = useState('')
     const [cep, setCep] = useState('')
 
+    const { createClient } = useClient();
+
     async function handleCreateNewClient(event: FormEvent) {
         event.preventDefault();
 
-        const data = {
+        await createClient({
             nome: name,
             sobrenome,
             email,
@@ -33,13 +36,9 @@ export function NewClientModal({ isOpen, onRequestClose }: NewClientModalProps) 
                 cidade,
                 cep
             }
-        };
+        })
 
-        const response = await api.post('/clients', data);
-
-        console.log(response.data);
         onRequestClose();
-        window.location.reload();
 
         setName('');
         setSobrenome('');

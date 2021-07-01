@@ -7,7 +7,5 @@ export function getFirstDayOfTheWeek(day: Date) {
 
     const firstDayOfTheWeek = getCurrentDateInString(new Date(day.setDate(date - week)));
     const lastDayOfTheWeek = getCurrentDateInString(new Date(day.setDate(new Date(firstDayOfTheWeek).getDate() + 7)));
-
-    console.log(firstDayOfTheWeek, lastDayOfTheWeek)
     return ({ firstDayOfTheWeek, lastDayOfTheWeek })
 }

@@ -1,15 +1,15 @@
 import Modal from "react-modal";
 import { FiX } from "react-icons/fi";
-import { api } from "../../../services/api";
-import { useEffect, useState, FormEvent } from "react";
+import { useState, FormEvent, useContext } from "react";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { TextField, FormControl, InputLabel, MenuItem, Select, makeStyles, } from "@material-ui/core";
 
 import styles from "./styles.module.scss";
 import React from "react";
-import { getCurrentHourInString } from "../../../utils/getCurrentHourInString";
-import { getCurrentDateInString } from "../../../utils/getCurrentDateInString";
 import { isDayAndHourLessThenToday } from "../../../utils/isDayAndHourLessThenToday";
+
+import { useCommitment } from "../../../hooks/useCommitment";
+import { useClient } from "../../../hooks/useClient";
 
 enum CompromissoType {
     AJUSTE = "AJUSTE",
@@ -34,16 +34,6 @@ type Client = {
     };
 };
 
-type Compromisso = {
-    id: number;
-    horarioInicio: string;
-    horarioTermino: string;
-    dataAgendada: number;
-    slectedClient: number;
-    tipo: CompromissoType;
-    status: CompromissoStatus;
-};
-
 type NewScheduleModalProps = {
     isOpen: boolean;
     onRequestClose: () => void;
@@ -60,7 +50,7 @@ export function NewScheduleModal({
     isOpen,
     onRequestClose,
 }: NewScheduleModalProps) {
-    const [clients, setClients] = useState([]);
+
     const [horarioInicio, setHorarioInicio] = useState("");
     const [compromissoStatus, setCompromissoStatus] = useState(
         CompromissoStatus.CONFIRMADO
@@ -70,39 +60,33 @@ export function NewScheduleModal({
     const [dataAgendada, setDataAgendada] = useState('');
     const [selectedClient, setSelectedClient] = useState(null);
 
+    const { createCommitment } = useCommitment();
+    const { clients } = useClient();
+
     const materialUiStyles = useStyles();
 
 
 
-    useEffect(() => {
-        api.get("/clients").then((response) => setClients(response.data));
-    }, []);
-
     async function handleCreateNewSchedule(event: FormEvent) {
-        //TODO: se dia < hoje erro de data invalida || se dia == hoje e hora < agora erro
         event.preventDefault();
-
 
         if (isDayAndHourLessThenToday(dataAgendada, horarioInicio)) {
             alert("Erro: Data inválida")
         } else {
-            const data = {
+            await createCommitment({
                 compromisso_status: compromissoStatus,
                 tipo_compromisso: compromissoType,
                 cliente_selecionado: selectedClient.id,
                 horario_inicio: horarioInicio,
                 horario_termino: horarioTermino,
                 data_agendada: dataAgendada,
-            };
-
-            await api.post("/schedule", data);
+            })
 
             onRequestClose();
-            //window.location.reload();
         }
 
-        setHorarioInicio("");
-        setHorarioTermino("");
+        setHorarioInicio('');
+        setHorarioTermino('');
         setDataAgendada('');
         setSelectedClient(null);
     }
@@ -202,7 +186,7 @@ export function NewScheduleModal({
                             />
                         </div>
                     </div>
-                    <span>Data do Agendamento: </span>
+                    <span>Data do Agendamento:</span>
                     <input
                         required
                         type="date"

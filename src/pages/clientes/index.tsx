@@ -4,25 +4,11 @@ import { api } from "../../services/api";
 import { ClientHeader } from '../../components/Client/ClientHeader'
 
 import styles from './styles.module.scss';
+import { useClient } from "../../hooks/useClient";
 
-type Client = {
-    id: string;
-    nome: string;
-    sobrenome: string;
-    email: string;
-    telefone: string;
-    endereco: {
-        endereco: string;
-        cidade: string;
-        cep: string;
-    }
-}
+export default function Clients() {
+    const { clients } = useClient()
 
-type ClientProps = {
-    clients: Client[];
-}
-
-export default function Clients({ clients }: ClientProps) {
     return (
         <>
             <Head>
@@ -72,20 +58,4 @@ export default function Clients({ clients }: ClientProps) {
     );
 
 
-}
-
-export const getServerSideProps: GetServerSideProps = async () => {
-    const { data } = await api.get('/clients', {
-        params: {
-            _limit: 5,
-            _sort: 'data',
-            _order: 'incr',
-        }
-    })
-
-    return {
-        props: {
-            clients: data,
-        }
-    }
 }
