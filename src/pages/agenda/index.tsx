@@ -80,6 +80,19 @@ export default function Agenda(/* { compromissos }: CompromissoProps */) {
 
     const { compromissos } = useCommitment();
 
+    /* return {
+        id: compromisso.id,
+        horarioInicio: compromisso.horarioInicio,
+        horarioTermino: compromisso.horarioTermino,
+        dataAgendadaString: compromisso.data,
+        dataAgendadaPtBr: new Date(addOneDay(compromisso.data_agendada)).toLocaleDateString('pt-BR'),
+        dataAgendadaDayOfTheWeek: new Date(addOneDay(compromisso.dataAgendada)).getDay(),
+        dataAgendadaCurrentDate: new Date(addOneDay(compromisso.data_agendada)).getTime(),
+        selectedClient: compromisso.cliente_selecionado,
+        tipo: compromisso.tipo_compromisso,
+        status: compromisso.compromisso_status,
+    } */
+
     useEffect(() => {
         setCompromissosFiltrados(
             filterCompromissoByType(compromissoFilter, compromissos, selectedDayOfTheWeek)

@@ -82,16 +82,31 @@
       "id": 7
     },
     {
-      "nome": "Pocoyo",
-      "sobrenome": "Akira",
-      "email": "vitorakira1@gmail.com",
-      "telefone": "+5541996829554",
-      "endereco": {
-        "endereco": "Rua das Palmeiras, n 496, ap 203 bl 08",
-        "cidade": "Pinhais",
-        "cep": "83325-165"
-      },
-      "id": 8
+      "compromisso_status": "CONFIRMADO",
+      "tipo_compromisso": "ORCAMENTO",
+      "cliente_selecionado": 1,
+      "horario_inicio": "16:16",
+      "horario_termino": "16:16",
+      "data_agendada": "2021-07-01",
+      "id": 9
+    },
+    {
+      "compromisso_status": "CONFIRMADO",
+      "tipo_compromisso": "ORCAMENTO",
+      "cliente_selecionado": 1,
+      "horario_inicio": "15:15",
+      "horario_termino": "15:30",
+      "data_agendada": "2021-07-02",
+      "id": 10
+    },
+    {
+      "compromisso_status": "CONFIRMADO",
+      "tipo_compromisso": "ORCAMENTO",
+      "cliente_selecionado": 1,
+      "horario_inicio": "15:15",
+      "horario_termino": "15:15",
+      "data_agendada": "2021-07-02",
+      "id": 11
     }
   ],
   "clients": [
@@ -118,6 +133,18 @@
         "cep": "83325-165"
       },
       "id": 2
+    },
+    {
+      "nome": "Pocoyo",
+      "sobrenome": "Akira",
+      "email": "vitorakira1@gmail.com",
+      "telefone": "+5541996829554",
+      "endereco": {
+        "endereco": "Rua das Palmeiras, n 496, ap 203 bl 08",
+        "cidade": "Pinhais",
+        "cep": "83325-165"
+      },
+      "id": 3
     }
   ],
   "stock": [

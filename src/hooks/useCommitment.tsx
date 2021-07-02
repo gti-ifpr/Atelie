@@ -2,7 +2,17 @@ import { createContext, useEffect, useState, ReactNode, useContext } from 'react
 import { api } from '../services/api';
 import { addOneDay } from '../utils/addOneDay';
 
-type Commitment = {
+type CommitmentFromBd = {
+    id: number;
+    compromisso_status: string,
+    tipo_compromisso: string,
+    cliente_selecionado: number,
+    horario_inicio: string,
+    horario_termino: string,
+    data_agendada: string,
+};
+
+type CommitmentReturn = {
     id: number;
     horarioInicio: string;
     horarioTermino: string;
@@ -15,21 +25,14 @@ type Commitment = {
     status: string;
 };
 
-type CommitmentInput = {
-    compromisso_status: string,
-    tipo_compromisso: string,
-    cliente_selecionado: number,
-    horario_inicio: string,
-    horario_termino: string,
-    data_agendada: string,
-}
+type CommitmentInput = Omit<CommitmentFromBd, 'id'>
 
 type CommitmentProviderProps = {
     children: ReactNode;
 }
 
 type CommitmentContextData = {
-    compromissos: Commitment[];
+    compromissos: CommitmentReturn[];
     createCommitment: (compromisso: CommitmentInput) => Promise<void>;
 }
 
@@ -38,23 +41,10 @@ const CommitmentContext = createContext<CommitmentContextData>(
 );
 
 export function CommitmentProvider({ children }: CommitmentProviderProps) {
-    const [compromissos, setCompromissos] = useState<Commitment[]>([])
+    const [compromissosFromBD, setCompromissos] = useState<CommitmentFromBd[]>([])
 
     useEffect(() => {
-        api.get("/schedule").then((response) => setCompromissos(response.data.map((compromisso) => {
-            return {
-                id: compromisso.id,
-                horarioInicio: compromisso.horario_inicio,
-                horarioTermino: compromisso.horario_termino,
-                dataAgendadaString: compromisso.data_agendada,
-                dataAgendadaPtBr: new Date(addOneDay(compromisso.data_agendada)).toLocaleDateString('pt-BR'),
-                dataAgendadaDayOfTheWeek: new Date(addOneDay(compromisso.data_agendada)).getDay(),
-                dataAgendadaCurrentDate: new Date(addOneDay(compromisso.data_agendada)).getTime(),
-                selectedClient: compromisso.cliente_selecionado,
-                tipo: compromisso.tipo_compromisso,
-                status: compromisso.compromisso_status,
-            };
-        })))
+        api.get("/schedule").then((response) => setCompromissos(response.data))
     }, []);
 
     async function createCommitment(commitmentInput: CommitmentInput) {
@@ -62,9 +52,24 @@ export function CommitmentProvider({ children }: CommitmentProviderProps) {
 
         setCompromissos([
             data,
-            ...compromissos,
+            ...compromissosFromBD,
         ]);
     }
+
+    const compromissos: CommitmentReturn[] = compromissosFromBD.map((compromisso) => {
+        return {
+            id: compromisso.id,
+            horarioInicio: compromisso.horario_inicio,
+            horarioTermino: compromisso.horario_termino,
+            dataAgendadaString: compromisso.data_agendada,
+            dataAgendadaPtBr: new Date(addOneDay(compromisso.data_agendada)).toLocaleDateString('pt-BR'),
+            dataAgendadaDayOfTheWeek: new Date(addOneDay(compromisso.data_agendada)).getDay(),
+            dataAgendadaCurrentDate: new Date(addOneDay(compromisso.data_agendada)).getTime(),
+            selectedClient: compromisso.cliente_selecionado,
+            tipo: compromisso.tipo_compromisso,
+            status: compromisso.compromisso_status,
+        };
+    });
 
     return (
         <CommitmentContext.Provider value={{ compromissos, createCommitment }}>

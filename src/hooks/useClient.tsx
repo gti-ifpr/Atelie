@@ -37,7 +37,7 @@ export function ClientProvider({ children }: ClientProviderProps) {
     }, []);
 
     async function createClient(client: ClientInput) {
-        const { data } = await api.post("/schedule", client);
+        const { data } = await api.post("/clients", client);
 
         setClients([
             ...clients,
