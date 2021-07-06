@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { FunctionComponent, useEffect, useState, Fragment, useContext } from "react";
-import { ScheduleHeader } from "../../components/Schedule/ScheduleHeader";
+import { ScheduleHeader } from "../../components/Schedule/ScheduleHeader/ScheduleHeader";
 import { addOneDay } from "../../utils/addOneDay";
-import { Button } from "../../components/Button";
+import { Button } from "../../components/Button/button";
 
 import { getCurrentDateInString } from "../../utils/getCurrentDateInString";
 import { getFirstDayOfTheWeek } from "../../utils/getFirstDayOfTheWeek";

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { NewScheduleModal } from "../NewScheduleModal";
-import { Button } from "../../Button";
+import { NewScheduleModal } from "../NewScheduleModal/NewScheduleModal";
+import { Button } from "../../Button/button";
 
 import styles from './styles.module.scss';
 
