@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NewClientModal } from "../NewClientModal";
+import { NewClientModal } from "../NewClientModal/newClientModal";
 
 import styles from './styles.module.scss'
 

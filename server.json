@@ -7,14 +7,6 @@
       "prova": "Molde",
       "data_inicio": "2021-06-12",
       "data_entrega": "2021-06-18"
-    },
-    {
-      "id": "oi",
-      "cliente": "André",
-      "tecido": "Tecido 2",
-      "prova": "Molde",
-      "data_inicio": "2021-06-12",
-      "data_entrega": "2021-06-18"
     }
   ],
   "schedule": [
@@ -35,105 +27,6 @@
       "horario_termino": "15:30",
       "data_agendada": "2021-07-01",
       "id": 2
-    },
-    {
-      "compromisso_status": "CONFIRMADO",
-      "tipo_compromisso": "ORCAMENTO",
-      "cliente_selecionado": 2,
-      "horario_inicio": "15:15",
-      "horario_termino": "15:30",
-      "data_agendada": "2021-07-01",
-      "id": 3
-    },
-    {
-      "compromisso_status": "CONFIRMADO",
-      "tipo_compromisso": "ORCAMENTO",
-      "cliente_selecionado": 1,
-      "horario_inicio": "15:15",
-      "horario_termino": "15:30",
-      "data_agendada": "2021-07-01",
-      "id": 4
-    },
-    {
-      "compromisso_status": "CONFIRMADO",
-      "tipo_compromisso": "ORCAMENTO",
-      "cliente_selecionado": 1,
-      "horario_inicio": "15:15",
-      "horario_termino": "15:30",
-      "data_agendada": "2021-07-01",
-      "id": 5
-    },
-    {
-      "compromisso_status": "CONFIRMADO",
-      "tipo_compromisso": "MEDIDA",
-      "cliente_selecionado": 1,
-      "horario_inicio": "15:15",
-      "horario_termino": "15:30",
-      "data_agendada": "2021-07-01",
-      "id": 6
-    },
-    {
-      "compromisso_status": "CONFIRMADO",
-      "tipo_compromisso": "ORCAMENTO",
-      "cliente_selecionado": 2,
-      "horario_inicio": "15:15",
-      "horario_termino": "15:30",
-      "data_agendada": "2021-07-01",
-      "id": 7
-    },
-    {
-      "compromisso_status": "CONFIRMADO",
-      "tipo_compromisso": "ORCAMENTO",
-      "cliente_selecionado": 1,
-      "horario_inicio": "16:16",
-      "horario_termino": "16:16",
-      "data_agendada": "2021-07-01",
-      "id": 9
-    },
-    {
-      "compromisso_status": "CONFIRMADO",
-      "tipo_compromisso": "ORCAMENTO",
-      "cliente_selecionado": 1,
-      "horario_inicio": "15:15",
-      "horario_termino": "15:30",
-      "data_agendada": "2021-07-02",
-      "id": 10
-    },
-    {
-      "compromisso_status": "CONFIRMADO",
-      "tipo_compromisso": "ORCAMENTO",
-      "cliente_selecionado": 1,
-      "horario_inicio": "15:15",
-      "horario_termino": "15:15",
-      "data_agendada": "2021-07-02",
-      "id": 11
-    },
-    {
-      "compromisso_status": "CONFIRMADO",
-      "tipo_compromisso": "ORCAMENTO",
-      "cliente_selecionado": 2,
-      "horario_inicio": "15:15",
-      "horario_termino": "15:15",
-      "data_agendada": "2021-07-02",
-      "id": 12
-    },
-    {
-      "compromisso_status": "CONFIRMADO",
-      "tipo_compromisso": "ORCAMENTO",
-      "cliente_selecionado": 1,
-      "horario_inicio": "15:15",
-      "horario_termino": "15:15",
-      "data_agendada": "2021-07-03",
-      "id": 13
-    },
-    {
-      "compromisso_status": "CONFIRMADO",
-      "tipo_compromisso": "ORCAMENTO",
-      "cliente_selecionado": 1,
-      "horario_inicio": "15:15",
-      "horario_termino": "15:15",
-      "data_agendada": "2021-07-02",
-      "id": 14
     }
   ],
   "clients": [
@@ -172,6 +65,16 @@
         "cep": "83325-165"
       },
       "id": 3
+    }
+  ],
+  "colecao": [
+    {
+      "nome": "Lua",
+      "id": 1
+    },
+    {
+      "nome": "Planetas",
+      "id": 2
     }
   ],
   "stock": [

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ActiveLink } from '../ActiveLink'
-import { NewJobModal } from '../NewJobModal';
-import { Button } from '../Button'
+import { NewJobModal } from '../NewJobModal/newJobModal';
+import { Button } from '../Button/button'
 
 import styles from './styles.module.scss';
 

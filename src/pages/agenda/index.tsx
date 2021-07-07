@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { FunctionComponent, useEffect, useState, Fragment, useContext } from "react";
-import { ScheduleHeader } from "../../components/Schedule/ScheduleHeader/ScheduleHeader";
+import { ScheduleHeader } from "../../components/Schedule/ScheduleHeader/scheduleHeader";
 import { addOneDay } from "../../utils/addOneDay";
 import { Button } from "../../components/Button/button";
 
@@ -79,19 +79,6 @@ export default function Agenda(/* { compromissos }: CompromissoProps */) {
     const [selectedDayOfTheWeek, setSelectedDayOfTheWeek] = useState<number>(0)
 
     const { compromissos } = useCommitment();
-
-    /* return {
-        id: compromisso.id,
-        horarioInicio: compromisso.horarioInicio,
-        horarioTermino: compromisso.horarioTermino,
-        dataAgendadaString: compromisso.data,
-        dataAgendadaPtBr: new Date(addOneDay(compromisso.data_agendada)).toLocaleDateString('pt-BR'),
-        dataAgendadaDayOfTheWeek: new Date(addOneDay(compromisso.dataAgendada)).getDay(),
-        dataAgendadaCurrentDate: new Date(addOneDay(compromisso.data_agendada)).getTime(),
-        selectedClient: compromisso.cliente_selecionado,
-        tipo: compromisso.tipo_compromisso,
-        status: compromisso.compromisso_status,
-    } */
 
     useEffect(() => {
         setCompromissosFiltrados(

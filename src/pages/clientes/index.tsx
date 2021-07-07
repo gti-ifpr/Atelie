@@ -1,7 +1,5 @@
-import { GetServerSideProps } from "next";
 import Head from "next/head";
-import { api } from "../../services/api";
-import { ClientHeader } from '../../components/Client/ClientHeader'
+import { ClientHeader } from '../../components/Client/ClientHeader/clientHeader'
 
 import styles from './styles.module.scss';
 import { useClient } from "../../hooks/useClient";
