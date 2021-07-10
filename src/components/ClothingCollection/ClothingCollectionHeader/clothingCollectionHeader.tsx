@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NewClothingCollectionModal } from "../NewClothingCollectionModal/newClothingCollectionModal";
+import { NewClothModal } from "../NewClothModal/newClothModal";
 import { Button } from "../../Button/button";
 
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -15,6 +16,7 @@ type ClothingCollection = {
 
 export function ClothingCollectionHeader() {
     const [isNewClothingCollectionModalOpen, setIsNewClothingCollectionModalOpen] = useState(false);
+    const [isNewClothModalOpen, setIsNewClothModalOpen] = useState(false);
 
     function handleOpenNewClothingCollectionModal() {
         setIsNewClothingCollectionModalOpen(true);
@@ -24,9 +26,19 @@ export function ClothingCollectionHeader() {
         setIsNewClothingCollectionModalOpen(false);
     }
 
+    function handleOpenNewClothModal() {
+        setIsNewClothModalOpen(true);
+    }
+
+    function handleCloseNewClothModal() {
+        setIsNewClothModalOpen(false);
+    }
+
     const { clothingCollections } = useClothingCollections()
 
     const [selectedClothingCollection, setSelectedClothingCollection] = useState(null);
+
+    console.log(selectedClothingCollection)
 
     return (
         <>
@@ -55,11 +67,19 @@ export function ClothingCollectionHeader() {
                 <Button type="button" onClick={handleOpenNewClothingCollectionModal}>
                     Cadastrar Nova Coleção
                 </Button>
+
+                <Button type="button" onClick={handleOpenNewClothModal}>
+                    Cadastrar Nova Roupa
+                </Button>
             </div>
 
             <NewClothingCollectionModal
                 isOpen={isNewClothingCollectionModalOpen}
                 onRequestClose={handleCloseNewClothingCollectionModal}
+            />
+            <NewClothModal
+                isOpen={isNewClothModalOpen}
+                onRequestClose={handleCloseNewClothModal}
             />
         </>
     )

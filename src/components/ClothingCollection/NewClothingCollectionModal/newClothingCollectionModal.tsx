@@ -7,29 +7,6 @@ import React from "react";
 
 import { useClothingCollections } from "../../../hooks/useClothingCollections";
 
-enum CompromissoType {
-    AJUSTE = "AJUSTE",
-    MEDIDA = "MEDIDA",
-    ORCAMENTO = "ORCAMENTO",
-}
-enum CompromissoStatus {
-    CONFIRMADO = "CONFIRMADO",
-    CANCELADO = "CANCELADO",
-}
-
-type Client = {
-    id: number;
-    nome: string;
-    sobrenome: string;
-    email: string;
-    telefone: string;
-    endereco: {
-        endereco: string;
-        cidade: string;
-        cep: string;
-    };
-};
-
 type NewScheduleModalProps = {
     isOpen: boolean;
     onRequestClose: () => void;
@@ -74,7 +51,7 @@ export function NewClothingCollectionModal({
                 <h1>Cadastrar Nova Coleção</h1>
 
                 <form autoComplete="off" onSubmit={handleCreateNewSchedule}>
-                    <span>Horário Término:</span>
+                    <span>Nome da Coleção:</span>
                     <input
                         required
                         placeholder="Nome"

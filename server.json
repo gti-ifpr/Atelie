@@ -77,6 +77,18 @@
       "id": 2
     }
   ],
+  "roupas": [
+    {
+      "nome": "Satélite",
+      "colecao": 1,
+      "id": 1
+    },
+    {
+      "nome": "Terra",
+      "colecao": 2,
+      "id": 2
+    }
+  ],
   "stock": [
     {
       "id": 1,

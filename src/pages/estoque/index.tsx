@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { ClothingCollectionHeader } from "../../components/ClothingCollection/ClothingCollectionHeader/clothingCollectionHeader";
+import { useCloth } from "../../hooks/useCloth";
 
 type ClothingCollection = {
     id: number;
@@ -7,6 +8,7 @@ type ClothingCollection = {
 }
 
 export default function Stock() {
+    const { cloths } = useCloth()
 
     return (
         <>
@@ -17,7 +19,11 @@ export default function Stock() {
             <main>
                 <ClothingCollectionHeader />
 
-                <h1>Lista de roupas em estoque</h1>
+                {cloths.map(cloth => {
+                    return (
+                        <h1>{cloth.nome} {cloth.colecao}</h1>
+                    )
+                })}
             </main>
         </>
     );
