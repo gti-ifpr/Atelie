@@ -35,6 +35,9 @@ export function Header() {
                     <ActiveLink activeClassName={styles.active} href="/fornecedor">
                         <a>Fornecedor</a>
                     </ActiveLink>
+                    <ActiveLink activeClassName={styles.active} href="/vendas">
+                        <a>Vendas</a>
+                    </ActiveLink>
                 </nav>
 
                 <Button type="button" onClick={handleOpenNewJobModal}>

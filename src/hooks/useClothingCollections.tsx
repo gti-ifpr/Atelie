@@ -14,7 +14,7 @@ type ClothingCollectionInput = Omit<ClothingCollection, 'id'>
 
 type ClothingCollectionContextData = {
     clothingCollections: ClothingCollection[];
-    createClothingCollection: (compromisso: ClothingCollectionInput) => Promise<void>;
+    createClothingCollection: (clothCollection: ClothingCollectionInput) => Promise<void>;
 }
 
 const ClothingCollectionContext = createContext<ClothingCollectionContextData>(

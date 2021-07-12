@@ -69,7 +69,7 @@
   ],
   "colecao": [
     {
-      "nome": "Lua",
+      "nome": "Flores",
       "id": 1
     },
     {
@@ -79,7 +79,7 @@
   ],
   "roupas": [
     {
-      "nome": "Satélite",
+      "nome": "Girassol",
       "colecao": 1,
       "id": 1
     },
@@ -87,6 +87,16 @@
       "nome": "Terra",
       "colecao": 2,
       "id": 2
+    },
+    {
+      "nome": "Lírio",
+      "colecao": 1,
+      "id": 3
+    },
+    {
+      "nome": "Rosa",
+      "colecao": 1,
+      "id": 4
     }
   ],
   "stock": [

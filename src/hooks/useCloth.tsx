@@ -15,7 +15,7 @@ type ClothInput = Omit<Cloth, 'id'>
 
 type ClothContextData = {
     cloths: Cloth[];
-    createCloth: (compromisso: ClothInput) => Promise<void>;
+    createCloth: (cloth: ClothInput) => Promise<void>;
 }
 
 const ClothContext = createContext<ClothContextData>(
@@ -29,8 +29,8 @@ export function ClothProvider({ children }: ClothProviderProps) {
         api.get("/roupas").then((response) => setCloths(response.data));
     }, []);
 
-    async function createCloth(clothingCollection: ClothInput) {
-        const { data } = await api.post("/roupas", clothingCollection);
+    async function createCloth(clothing: ClothInput) {
+        const { data } = await api.post("/roupas", clothing);
 
         setCloths([
             ...cloths,

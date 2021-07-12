@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { FunctionComponent, useEffect, useState, Fragment, useContext } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { ScheduleHeader } from "../../components/Schedule/ScheduleHeader/scheduleHeader";
 import { addOneDay } from "../../utils/addOneDay";
 import { Button } from "../../components/Button/button";
@@ -32,7 +32,6 @@ const CompromissoRow: FunctionComponent<{ compromisso: Compromisso }> = ({
     return (
         <>
             <tr
-                key={compromisso.id}
                 className={isDayAndHourLessThenToday(compromisso.dataAgendadaString, compromisso.horarioInicio) ? styles.dayAndHourLessThenToday : ''}
             >
                 <td>{compromisso.selectedClient}</td>

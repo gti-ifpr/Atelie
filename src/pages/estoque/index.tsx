@@ -1,14 +1,35 @@
 import Head from "next/head";
+import { useEffect, FunctionComponent, useState } from "react";
 import { ClothingCollectionHeader } from "../../components/ClothingCollection/ClothingCollectionHeader/clothingCollectionHeader";
 import { useCloth } from "../../hooks/useCloth";
+import { useFilterClothByCollection } from "../../hooks/useFilterClothByCollection";
 
-type ClothingCollection = {
+type Cloth = {
     id: number;
     nome: string;
+    colecao: number
 }
+
+const ClothRow: FunctionComponent<{ cloth: Cloth }> = ({
+    cloth,
+}) => {
+    return (
+        <h1>{cloth.nome}</h1>
+    );
+};
 
 export default function Stock() {
     const { cloths } = useCloth()
+    const { filterClothByCollection, selectedClothingCollection } = useFilterClothByCollection()
+    const [filteredCloths, setFilteredCloths] = useState<Cloth[]>([])
+
+
+
+    useEffect(() => {
+        setFilteredCloths(
+            filterClothByCollection(cloths, selectedClothingCollection)
+        )
+    }, [selectedClothingCollection])
 
     return (
         <>
@@ -19,11 +40,15 @@ export default function Stock() {
             <main>
                 <ClothingCollectionHeader />
 
-                {cloths.map(cloth => {
-                    return (
-                        <h1>{cloth.nome} {cloth.colecao}</h1>
-                    )
-                })}
+                {selectedClothingCollection ?
+                    filteredCloths.map(cloth => (
+                        <ClothRow key={cloth.id} cloth={cloth} />
+                    ))
+                    :
+                    cloths.map(cloth => (
+                        <ClothRow key={cloth.id} cloth={cloth} />
+                    ))
+                }
             </main>
         </>
     );

@@ -8,6 +8,7 @@ import { TextField } from "@material-ui/core";
 
 import styles from './styles.module.scss';
 import { useClothingCollections } from "../../../hooks/useClothingCollections";
+import { useFilterClothByCollection } from "../../../hooks/useFilterClothByCollection";
 
 type ClothingCollection = {
     id: number;
@@ -35,10 +36,8 @@ export function ClothingCollectionHeader() {
     }
 
     const { clothingCollections } = useClothingCollections()
+    const { selectedClothingCollection, setSelectedClothingCollection } = useFilterClothByCollection()
 
-    const [selectedClothingCollection, setSelectedClothingCollection] = useState(null);
-
-    console.log(selectedClothingCollection)
 
     return (
         <>
