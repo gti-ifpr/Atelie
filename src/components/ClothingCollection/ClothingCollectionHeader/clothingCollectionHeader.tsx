@@ -62,14 +62,15 @@ export function ClothingCollectionHeader() {
                     )}
                 />
 
+                <div>
+                    <Button type="button" onClick={handleOpenNewClothingCollectionModal}>
+                        Cadastrar Nova Coleção
+                    </Button>
 
-                <Button type="button" onClick={handleOpenNewClothingCollectionModal}>
-                    Cadastrar Nova Coleção
-                </Button>
-
-                <Button type="button" onClick={handleOpenNewClothModal}>
-                    Cadastrar Nova Roupa
-                </Button>
+                    <Button type="button" onClick={handleOpenNewClothModal}>
+                        Cadastrar Nova Roupa
+                    </Button>
+                </div>
             </div>
 
             <NewClothingCollectionModal

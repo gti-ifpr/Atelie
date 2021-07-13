@@ -4,6 +4,8 @@ import { ClothingCollectionHeader } from "../../components/ClothingCollection/Cl
 import { useCloth } from "../../hooks/useCloth";
 import { useFilterClothByCollection } from "../../hooks/useFilterClothByCollection";
 
+import styles from './styles.module.scss'
+
 type Cloth = {
     id: number;
     nome: string;
@@ -14,7 +16,9 @@ const ClothRow: FunctionComponent<{ cloth: Cloth }> = ({
     cloth,
 }) => {
     return (
-        <h1>{cloth.nome}</h1>
+        <div className={styles.card}>
+            <p>{cloth.nome}</p>
+        </div>
     );
 };
 
@@ -37,7 +41,7 @@ export default function Stock() {
                 <title>Estoque | Artha</title>
             </Head>
 
-            <main>
+            <main className={styles.contentContainer}>
                 <ClothingCollectionHeader />
 
                 {selectedClothingCollection ?

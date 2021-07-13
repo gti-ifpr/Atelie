@@ -10,6 +10,7 @@ import React from "react";
 
 import { useClothingCollections } from "../../../hooks/useClothingCollections";
 import { useFilterClothByCollection } from "../../../hooks/useFilterClothByCollection";
+import { useSale } from "../../../hooks/useSale";
 import { useCloth } from "../../../hooks/useCloth";
 
 type ClothingCollection = {
@@ -34,16 +35,21 @@ export function NewSalesModal({
     onRequestClose,
 }: NewScheduleModalProps) {
 
-    const [nome, setNome] = useState("");
     const [filteredCloths, setFilteredCloths] = useState<Cloth[]>([])
     const [selectedCloth, setSelectedCloth] = useState<Cloth>()
 
     const { selectedClothingCollection, setSelectedClothingCollection, filterClothByCollection } = useFilterClothByCollection()
     const { clothingCollections } = useClothingCollections()
     const { cloths } = useCloth()
+    const { createSale } = useSale()
 
     async function handleCreateNewSchedule(event: FormEvent) {
         event.preventDefault();
+
+        await createSale({
+            colecao: selectedClothingCollection.id,
+            roupa: selectedCloth.id
+        });
 
         onRequestClose();
     }
@@ -111,19 +117,7 @@ export function NewSalesModal({
                             />
                         )}
                     />
-
-
-
-                    <span>Nome da Coleção:</span>
-
-                    <input
-                        required
-                        placeholder="Nome"
-                        value={nome}
-                        onChange={(event) => setNome(event.target.value)}
-                    />
-                    <button type="submit">Cadastrar Coleção</button>
-
+                    <button type="submit">Cadastrar Venda</button>
                 </form>
             </div>
         </Modal>

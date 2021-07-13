@@ -75,6 +75,10 @@
     {
       "nome": "Planetas",
       "id": 2
+    },
+    {
+      "nome": "Elementos",
+      "id": 3
     }
   ],
   "roupas": [
@@ -96,6 +100,38 @@
     {
       "nome": "Rosa",
       "colecao": 1,
+      "id": 4
+    },
+    {
+      "nome": "Fogo",
+      "colecao": 3,
+      "id": 5
+    },
+    {
+      "nome": "Marte",
+      "colecao": 2,
+      "id": 6
+    }
+  ],
+  "vendas": [
+    {
+      "colecao": 1,
+      "roupa": 1,
+      "id": 1
+    },
+    {
+      "colecao": 1,
+      "roupa": 1,
+      "id": 2
+    },
+    {
+      "colecao": 2,
+      "roupa": 2,
+      "id": 3
+    },
+    {
+      "colecao": 3,
+      "roupa": 5,
       "id": 4
     }
   ],

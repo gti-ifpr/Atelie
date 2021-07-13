@@ -6,6 +6,7 @@ import { ClothingCollectionsProvider } from '../hooks/useClothingCollections'
 import { FilterClothByCollectionProvider } from '../hooks/useFilterClothByCollection'
 import { ClothProvider } from '../hooks/useCloth'
 import { CommitmentProvider } from '../hooks/useCommitment'
+import { SaleProvider } from '../hooks/useSale'
 
 import '../styles/global.scss';
 
@@ -17,10 +18,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ClothingCollectionsProvider>
           <ClothProvider>
             <FilterClothByCollectionProvider>
-              <Header />
+              <SaleProvider>
+                <Header />
 
 
-              <Component {...pageProps} />
+                <Component {...pageProps} />
+              </SaleProvider>
             </FilterClothByCollectionProvider>
           </ClothProvider>
         </ClothingCollectionsProvider>
