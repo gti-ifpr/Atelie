@@ -12,11 +12,28 @@
         border: 1px solid var(--white);
         border-radius: 3px;
 
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
        p {
         margin-bottom: 0.5rem;
         font-weight: 500;
-        font-size: 2rem;
+        font-size: 1.5rem;
         text-align: center;
        }
+
+       div{
+        span {
+            display: flex;
+             font-weight: 500;
+             color: var(--gray-300);
+        }
+
+        p{
+            font-size: 1rem;
+        }
+       }
+       
     }
 }

@@ -9,7 +9,9 @@ import styles from './styles.module.scss'
 type Cloth = {
     id: number;
     nome: string;
-    colecao: number
+    colecao: number;
+    quantidade: number;
+    tamanho: number;
 }
 
 const ClothRow: FunctionComponent<{ cloth: Cloth }> = ({
@@ -18,6 +20,16 @@ const ClothRow: FunctionComponent<{ cloth: Cloth }> = ({
     return (
         <div className={styles.card}>
             <p>{cloth.nome}</p>
+            <div className={styles.specificationsCard}>
+                <div>
+                    <span>Tamanho: </span>
+                    <p>{cloth.tamanho}</p>
+                </div>
+                <div>
+                    <span>Quantidade: </span>
+                    <p>{cloth.quantidade}</p>
+                </div>
+            </div>
         </div>
     );
 };

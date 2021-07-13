@@ -85,50 +85,33 @@
     {
       "nome": "Girassol",
       "colecao": 1,
-      "id": 1
-    },
-    {
-      "nome": "Terra",
-      "colecao": 2,
-      "id": 2
-    },
-    {
-      "nome": "Lírio",
-      "colecao": 1,
-      "id": 3
+      "quantidade": 1,
+      "tamanho": 44,
+      "id": 7
     },
     {
       "nome": "Rosa",
       "colecao": 1,
-      "id": 4
+      "quantidade": 1,
+      "tamanho": 36,
+      "id": 8
     },
     {
       "nome": "Fogo",
       "colecao": 3,
-      "id": 5
+      "quantidade": 1,
+      "tamanho": 36,
+      "id": 9
     },
     {
-      "nome": "Marte",
-      "colecao": 2,
-      "id": 6
+      "nome": "Lírio",
+      "colecao": 1,
+      "quantidade": 5,
+      "tamanho": 38,
+      "id": 10
     }
   ],
   "vendas": [
-    {
-      "colecao": 1,
-      "roupa": 1,
-      "id": 1
-    },
-    {
-      "colecao": 1,
-      "roupa": 1,
-      "id": 2
-    },
-    {
-      "colecao": 2,
-      "roupa": 2,
-      "id": 3
-    },
     {
       "colecao": 3,
       "roupa": 5,

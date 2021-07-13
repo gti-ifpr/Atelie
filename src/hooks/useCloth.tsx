@@ -4,7 +4,9 @@ import { api } from "../services/api";
 type Cloth = {
     id: number;
     nome: string;
-    colecao: number
+    colecao: number;
+    quantidade: number;
+    tamanho: number;
 }
 
 type ClothProviderProps = {

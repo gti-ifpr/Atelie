@@ -19,7 +19,7 @@ type NewScheduleModalProps = {
 type ClothingCollection = {
     id: number;
     nome: string;
-};
+}
 
 
 export function NewClothModal({
@@ -28,6 +28,8 @@ export function NewClothModal({
 }: NewScheduleModalProps) {
 
     const [nome, setNome] = useState("");
+    const [tamanho, setTamanho] = useState(null);
+    const [quantidade, setQuantidade] = useState(null);
     const [selectedClothingCollection, setSelectedClothingCollection] = useState<ClothingCollection>(null);
 
     const { clothingCollections } = useClothingCollections()
@@ -39,12 +41,17 @@ export function NewClothModal({
 
         await createCloth({
             nome: nome,
-            colecao: selectedClothingCollection.id
+            colecao: selectedClothingCollection.id,
+            quantidade: quantidade,
+            tamanho: tamanho
         })
 
         onRequestClose();
 
         setNome('');
+        setTamanho(null);
+        setQuantidade(null);
+        setSelectedClothingCollection(null);
     }
 
     return (
@@ -91,6 +98,22 @@ export function NewClothModal({
                             placeholder="Nome"
                             value={nome}
                             onChange={(event) => setNome(event.target.value)}
+                        />
+                        <span>Tamanho:</span>
+                        <input
+                            required
+                            placeholder="Tamanho"
+                            value={tamanho}
+                            type="number"
+                            onChange={(event) => setTamanho(Number(event.target.value))}
+                        />
+                        <span>Quantidade:</span>
+                        <input
+                            required
+                            type="number"
+                            placeholder="Quantidade"
+                            value={quantidade}
+                            onChange={(event) => setQuantidade(Number(event.target.value))}
                         />
                         <button type="submit">Cadastrar Roupa</button>
                     </div>
