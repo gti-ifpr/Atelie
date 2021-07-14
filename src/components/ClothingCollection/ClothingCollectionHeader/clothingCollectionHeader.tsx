@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NewClothingCollectionModal } from "../NewClothingCollectionModal/newClothingCollectionModal";
 import { NewClothModal } from "../NewClothModal/newClothModal";
 import { Button } from "../../Button/button";
@@ -21,23 +21,27 @@ export function ClothingCollectionHeader() {
 
     function handleOpenNewClothingCollectionModal() {
         setIsNewClothingCollectionModalOpen(true);
-    }
+    };
 
     function handleCloseNewClothingCollectionModal() {
         setIsNewClothingCollectionModalOpen(false);
-    }
+    };
 
     function handleOpenNewClothModal() {
         setIsNewClothModalOpen(true);
-    }
+    };
 
     function handleCloseNewClothModal() {
         setIsNewClothModalOpen(false);
-    }
+    };
 
-    const { clothingCollections } = useClothingCollections()
-    const { selectedClothingCollection, setSelectedClothingCollection } = useFilterClothByCollection()
+    const { clothingCollections } = useClothingCollections();
+    const { selectedClothingCollection, setSelectedClothingCollection } = useFilterClothByCollection();
 
+
+    useEffect(() => {
+        setSelectedClothingCollection(null)
+    }, []);
 
     return (
         <>

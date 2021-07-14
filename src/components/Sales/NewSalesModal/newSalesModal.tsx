@@ -54,6 +54,11 @@ export function NewSalesModal({
         onRequestClose();
     }
 
+
+    useEffect(() => {
+        setSelectedClothingCollection(null)
+    }, []);
+
     useEffect(() => {
         setFilteredCloths(
             filterClothByCollection(cloths, selectedClothingCollection)
