@@ -10,7 +10,6 @@ type Cloth = {
     id: number;
     nome: string;
     colecao: number;
-    quantidade: number;
     tamanho: number;
 }
 
@@ -26,8 +25,7 @@ const ClothRow: FunctionComponent<{ cloth: Cloth }> = ({
                     <p>{cloth.tamanho}</p>
                 </div>
                 <div>
-                    <span>Quantidade: </span>
-                    <p>{cloth.quantidade}</p>
+
                 </div>
             </div>
         </div>

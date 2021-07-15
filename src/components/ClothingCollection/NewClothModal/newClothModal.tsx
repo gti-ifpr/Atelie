@@ -42,8 +42,9 @@ export function NewClothModal({
         await createCloth({
             nome: nome,
             colecao: selectedClothingCollection.id,
-            quantidade: quantidade,
             tamanho: tamanho
+        }, {
+            quantidade: quantidade
         })
 
         onRequestClose();
