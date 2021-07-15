@@ -28,8 +28,8 @@ export function NewClothModal({
 }: NewScheduleModalProps) {
 
     const [nome, setNome] = useState("");
-    const [tamanho, setTamanho] = useState(null);
-    const [quantidade, setQuantidade] = useState(null);
+    const [tamanho, setTamanho] = useState(0);
+    const [quantidade, setQuantidade] = useState(0);
     const [selectedClothingCollection, setSelectedClothingCollection] = useState<ClothingCollection>(null);
 
     const { clothingCollections } = useClothingCollections()
@@ -50,8 +50,8 @@ export function NewClothModal({
         onRequestClose();
 
         setNome('');
-        setTamanho(null);
-        setQuantidade(null);
+        setTamanho(0);
+        setQuantidade(0);
         setSelectedClothingCollection(null);
     }
 

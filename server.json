@@ -133,6 +133,24 @@
       "colecao": 2,
       "tamanho": 1,
       "id": 8
+    },
+    {
+      "nome": "hjaskdh",
+      "colecao": 3,
+      "tamanho": 1,
+      "id": 9
+    },
+    {
+      "nome": "hsjdhas",
+      "colecao": 3,
+      "tamanho": 20,
+      "id": 10
+    },
+    {
+      "nome": "hjkhasd",
+      "colecao": 1,
+      "tamanho": 2,
+      "id": 11
     }
   ],
   "stock": [
@@ -164,6 +182,18 @@
     {
       "quantidade": 500,
       "id": 8
+    },
+    {
+      "quantidade": 1,
+      "id": 9
+    },
+    {
+      "quantidade": 20,
+      "id": 10
+    },
+    {
+      "quantidade": 2,
+      "id": 11
     }
   ],
   "vendas": [
