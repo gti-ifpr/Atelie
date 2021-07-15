@@ -4,6 +4,10 @@
     height: calc(100vh - 4rem); 
     margin: 0 auto;
 
+    .cardContainer {
+        max-width: 925px;
+        margin: 0 auto;
+    }
     .card {
         width: 100%;
         padding: 1rem;

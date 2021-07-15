@@ -109,6 +109,13 @@
       "quantidade": 5,
       "tamanho": 38,
       "id": 10
+    },
+    {
+      "nome": "Lírio",
+      "colecao": 1,
+      "quantidade": 2,
+      "tamanho": 35,
+      "id": 11
     }
   ],
   "vendas": [
@@ -116,6 +123,16 @@
       "colecao": 3,
       "roupa": 5,
       "id": 4
+    },
+    {
+      "colecao": 3,
+      "roupa": 9,
+      "id": 5
+    },
+    {
+      "colecao": 1,
+      "roupa": 7,
+      "id": 6
     }
   ],
   "stock": [

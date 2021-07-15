@@ -116,7 +116,7 @@ export function NewScheduleModal({
                         }}
                         id="combo-box-demo"
                         options={clients as Client[]}
-                        getOptionLabel={(client) => client.nome}
+                        getOptionLabel={(client) => `${client.nome} ${client.sobrenome}`}
                         renderOption={(client) => `${client.nome} ${client.sobrenome}`}
                         style={{ width: "100%" }}
                         renderInput={(params) => (

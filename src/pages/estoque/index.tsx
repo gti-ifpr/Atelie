@@ -39,8 +39,6 @@ export default function Stock() {
     const { filterClothByCollection, selectedClothingCollection } = useFilterClothByCollection()
     const [filteredCloths, setFilteredCloths] = useState<Cloth[]>([])
 
-
-
     useEffect(() => {
         setFilteredCloths(
             filterClothByCollection(cloths, selectedClothingCollection)
@@ -55,16 +53,17 @@ export default function Stock() {
 
             <main className={styles.contentContainer}>
                 <ClothingCollectionHeader />
-
-                {selectedClothingCollection ?
-                    filteredCloths.map(cloth => (
-                        <ClothRow key={cloth.id} cloth={cloth} />
-                    ))
-                    :
-                    cloths.map(cloth => (
-                        <ClothRow key={cloth.id} cloth={cloth} />
-                    ))
-                }
+                <div className={styles.cardContainer}>
+                    {selectedClothingCollection ?
+                        filteredCloths.map(cloth => (
+                            <ClothRow key={cloth.id} cloth={cloth} />
+                        ))
+                        :
+                        cloths.map(cloth => (
+                            <ClothRow key={cloth.id} cloth={cloth} />
+                        ))
+                    }
+                </div>
             </main>
         </>
     );

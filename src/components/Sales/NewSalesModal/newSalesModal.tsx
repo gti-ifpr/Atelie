@@ -21,8 +21,10 @@ type ClothingCollection = {
 type Cloth = {
     id: number;
     nome: string;
-    colecao: number
-}
+    colecao: number;
+    quantidade: number;
+    tamanho: number;
+};
 
 type NewScheduleModalProps = {
     isOpen: boolean;
@@ -35,13 +37,13 @@ export function NewSalesModal({
     onRequestClose,
 }: NewScheduleModalProps) {
 
-    const [filteredCloths, setFilteredCloths] = useState<Cloth[]>([])
-    const [selectedCloth, setSelectedCloth] = useState<Cloth>()
+    const [filteredCloths, setFilteredCloths] = useState<Cloth[]>([]);
+    const [selectedCloth, setSelectedCloth] = useState<Cloth>(null);
 
-    const { selectedClothingCollection, setSelectedClothingCollection, filterClothByCollection } = useFilterClothByCollection()
-    const { clothingCollections } = useClothingCollections()
-    const { cloths } = useCloth()
-    const { createSale } = useSale()
+    const { selectedClothingCollection, setSelectedClothingCollection, filterClothByCollection } = useFilterClothByCollection();
+    const { clothingCollections } = useClothingCollections();
+    const { cloths } = useCloth();
+    const { createSale } = useSale();
 
     async function handleCreateNewSchedule(event: FormEvent) {
         event.preventDefault();
@@ -110,8 +112,8 @@ export function NewSalesModal({
                         }}
                         id="combo-box-demo"
                         options={filteredCloths as Cloth[]}
-                        getOptionLabel={(cloth) => cloth.nome}
-                        renderOption={(cloth) => cloth.nome}
+                        getOptionLabel={(cloth) => `${cloth.nome} ${cloth.tamanho}`}
+                        renderOption={(cloth) => `${cloth.nome} ${cloth.tamanho}`}
                         style={{ width: "100%" }}
                         renderInput={(params) => (
                             <TextField
