@@ -4,8 +4,9 @@ type Cloth = {
     id: number;
     nome: string;
     colecao: number;
+    quantidade: number;
     tamanho: number;
-}
+};
 
 type FilterClothByCollectionProviderProps = {
     children: ReactNode;

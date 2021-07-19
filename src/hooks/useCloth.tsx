@@ -5,10 +5,12 @@ type Cloth = {
     id: number;
     nome: string;
     colecao: number;
+    quantidade: number;
     tamanho: number;
 }
 
 type Stock = {
+    id: number;
     quantidade: number
 }
 
@@ -20,6 +22,7 @@ type ClothInput = Omit<Cloth, 'id'>
 
 type ClothContextData = {
     cloths: Cloth[];
+    stocks: Stock[];
     createCloth: (cloth: ClothInput, stock: Stock) => Promise<void>;
 }
 
@@ -29,10 +32,11 @@ const ClothContext = createContext<ClothContextData>(
 
 export function ClothProvider({ children }: ClothProviderProps) {
     const [cloths, setCloths] = useState([]);
-    const [stock, setStock] = useState([]);
+    const [stocks, setStocks] = useState([]);
 
     useEffect(() => {
         api.get("/roupas").then((response) => setCloths(response.data));
+        api.get("/stock").then((response) => setStocks(response.data));
     }, []);
 
     async function createCloth(clothing: ClothInput, clothInStock: Stock) {
@@ -43,14 +47,14 @@ export function ClothProvider({ children }: ClothProviderProps) {
             clothData.data,
         ]);
 
-        setStock([
-            ...stock,
+        setStocks([
+            ...stocks,
             stockData.data,
         ])
     }
 
     return (
-        <ClothContext.Provider value={{ cloths, createCloth }}>
+        <ClothContext.Provider value={{ cloths, stocks, createCloth }}>
             {children}
         </ClothContext.Provider>
     )

@@ -90,67 +90,10 @@
       "id": 1
     },
     {
-      "nome": "Terra",
-      "colecao": 2,
-      "quantidade": 2,
-      "tamanho": 40,
+      "nome": "Lírio",
+      "colecao": 1,
+      "tamanho": 42,
       "id": 2
-    },
-    {
-      "nome": "Marte",
-      "colecao": 2,
-      "quantidade": 1,
-      "tamanho": 55,
-      "id": 3
-    },
-    {
-      "nome": "Mercurio",
-      "colecao": 2,
-      "quantidade": 10,
-      "tamanho": 45,
-      "id": 4
-    },
-    {
-      "nome": "hsajkd",
-      "colecao": 1,
-      "tamanho": 5,
-      "id": 5
-    },
-    {
-      "nome": "JAKLSDJ",
-      "colecao": 1,
-      "tamanho": 1,
-      "id": 6
-    },
-    {
-      "nome": "ksdlçf",
-      "colecao": 1,
-      "tamanho": 1,
-      "id": 7
-    },
-    {
-      "nome": "asdjkasd",
-      "colecao": 2,
-      "tamanho": 1,
-      "id": 8
-    },
-    {
-      "nome": "hjaskdh",
-      "colecao": 3,
-      "tamanho": 1,
-      "id": 9
-    },
-    {
-      "nome": "hsjdhas",
-      "colecao": 3,
-      "tamanho": 20,
-      "id": 10
-    },
-    {
-      "nome": "hjkhasd",
-      "colecao": 1,
-      "tamanho": 2,
-      "id": 11
     }
   ],
   "stock": [
@@ -159,41 +102,8 @@
       "quantidade": 3
     },
     {
+      "quantidade": 10,
       "id": 2
-    },
-    {
-      "id": 3
-    },
-    {
-      "id": 4
-    },
-    {
-      "quantidade": 1,
-      "id": 5
-    },
-    {
-      "quantidade": 1,
-      "id": 6
-    },
-    {
-      "quantidade": 1,
-      "id": 7
-    },
-    {
-      "quantidade": 500,
-      "id": 8
-    },
-    {
-      "quantidade": 1,
-      "id": 9
-    },
-    {
-      "quantidade": 20,
-      "id": 10
-    },
-    {
-      "quantidade": 2,
-      "id": 11
     }
   ],
   "vendas": [

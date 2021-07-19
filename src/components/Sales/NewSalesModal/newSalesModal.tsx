@@ -38,7 +38,7 @@ export function NewSalesModal({
 }: NewScheduleModalProps) {
 
     const [filteredCloths, setFilteredCloths] = useState<Cloth[]>([]);
-    const [selectedCloth, setSelectedCloth] = useState<Cloth>(null);
+    const [selectedCloth, setSelectedCloth] = useState<Cloth>({ id: 0, nome: '', colecao: 0, quantidade: 0, tamanho: 0 });
 
     const { selectedClothingCollection, setSelectedClothingCollection, filterClothByCollection } = useFilterClothByCollection();
     const { clothingCollections } = useClothingCollections();
