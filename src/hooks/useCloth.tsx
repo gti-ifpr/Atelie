@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { api } from "../services/api";
 
 type Cloth = {
@@ -20,10 +21,16 @@ type ClothProviderProps = {
 
 type ClothInput = Omit<Cloth, 'id'>
 
+type updateClothInStock = {
+    stockId: number;
+    amount: number;
+}
+
 type ClothContextData = {
     cloths: Cloth[];
     stocks: Stock[];
     createCloth: (cloth: ClothInput, stock: Stock) => Promise<void>;
+    updateClothInStock: ({ stockId, amount }: updateClothInStock) => void;
 }
 
 const ClothContext = createContext<ClothContextData>(
@@ -53,8 +60,31 @@ export function ClothProvider({ children }: ClothProviderProps) {
         ])
     }
 
+    async function updateClothInStock({ stockId, amount }: updateClothInStock) {
+        try {
+            const updatedStock = [...stocks]
+
+            const stockExists = updatedStock.find(stock => stock.id === stockId);
+            if (amount < 0) {
+                toast.error("Quantidade solicitada fora de estoque");
+                return;
+            }
+
+            if (stockExists) {
+                stockExists.quantidade = amount
+                setStocks(updatedStock)
+
+                await api.put(`/stock/${stockId}`, { quantidade: amount });
+            } else {
+                throw Error;
+            }
+        } catch {
+            toast.error('Erro na atualização de estoque');
+        }
+    }
+
     return (
-        <ClothContext.Provider value={{ cloths, stocks, createCloth }}>
+        <ClothContext.Provider value={{ cloths, stocks, createCloth, updateClothInStock }}>
             {children}
         </ClothContext.Provider>
     )

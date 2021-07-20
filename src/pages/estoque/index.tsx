@@ -7,6 +7,8 @@ import { useFilterClothByCollection } from "../../hooks/useFilterClothByCollecti
 import { MdAdd } from 'react-icons/md';
 import { MdRemove } from 'react-icons/md';
 
+import { Toaster } from "react-hot-toast";
+
 import styles from './styles.module.scss'
 
 type Cloth = {
@@ -21,23 +23,33 @@ type Stock = {
     quantidade: number;
 }
 
-const StockRow: FunctionComponent<{ stock: Stock }> = ({
+const StockRow: FunctionComponent<{ cloth: Cloth, stock: Stock }> = ({
     stock
 }) => {
+    const { updateClothInStock } = useCloth()
+
+    function handleClohIncrement(stock: Stock) {
+        updateClothInStock({ stockId: stock.id, amount: stock.quantidade + 1 });
+    }
+
+    function handleClothDecrement(stock: Stock) {
+        updateClothInStock({ stockId: stock.id, amount: stock.quantidade - 1 });
+    }
+
     return (
         <div className={styles.quantity}>
             <MdRemove
                 color="#737380"
                 size="1.75rem"
                 className={styles.removeAndAddButtons}
-                onClick={() => console.log('remover')}
+                onClick={() => handleClothDecrement(stock)}
             />
             <p>{stock.quantidade}</p>
             <MdAdd
                 color="#737380"
                 size="1.75rem"
                 className={styles.removeAndAddButtons}
-                onClick={() => console.log('adicionar')}
+                onClick={() => handleClohIncrement(stock)}
             />
         </div>
     )
@@ -59,7 +71,7 @@ const ClothRow: FunctionComponent<{ cloth: Cloth, stocks: Stock[] }> = ({
                     <span>Quantidade: </span>
                     {stocks.map((stock) => {
                         if (stock.id === cloth.id) {
-                            return <StockRow key={stock.id} stock={stock} />
+                            return <StockRow key={stock.id} cloth={cloth} stock={stock} />
                         }
                     })}
                 </div>
@@ -71,7 +83,8 @@ const ClothRow: FunctionComponent<{ cloth: Cloth, stocks: Stock[] }> = ({
 export default function Stock() {
     const { cloths, stocks } = useCloth()
     const { filterClothByCollection, selectedClothingCollection } = useFilterClothByCollection()
-    const [filteredCloths, setFilteredCloths] = useState<Cloth[]>([])
+    const [filteredCloths, setFilteredCloths] = useState<Cloth[]>([]);
+
 
     useEffect(() => {
         setFilteredCloths(
@@ -84,6 +97,19 @@ export default function Stock() {
             <Head>
                 <title>Estoque | Artha</title>
             </Head>
+
+            <Toaster
+                toastOptions={{
+                    style: {
+                        border: '0.15rem solid var(--yellow-800)',
+                        padding: '1rem',
+                    },
+                    iconTheme: {
+                        primary: 'var(--yellow-500)',
+                        secondary: '#FFFAEE',
+                    },
+                }}
+            />
 
             <main className={styles.contentContainer}>
                 <ClothingCollectionHeader />
