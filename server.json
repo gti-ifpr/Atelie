@@ -85,7 +85,6 @@
     {
       "nome": "Girassol",
       "colecao": 1,
-      "quantidade": 1,
       "tamanho": 44,
       "id": 1
     },
@@ -98,7 +97,7 @@
   ],
   "stock": [
     {
-      "quantidade": 2,
+      "quantidade": 3,
       "id": 1
     },
     {
@@ -121,6 +120,21 @@
       "colecao": 1,
       "roupa": 7,
       "id": 6
+    },
+    {
+      "colecao": 1,
+      "roupa": 1,
+      "id": 7
+    },
+    {
+      "colecao": 1,
+      "roupa": 1,
+      "id": 8
+    },
+    {
+      "colecao": 1,
+      "roupa": 1,
+      "id": 9
     }
   ]
 }

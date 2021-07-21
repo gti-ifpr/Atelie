@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { FunctionComponent, useEffect, useState } from "react";
 import { ScheduleHeader } from "../../components/Schedule/ScheduleHeader/scheduleHeader";
-import { addOneDay } from "../../utils/addOneDay";
 import { Button } from "../../components/Button/button";
 
+import { addOneDay } from "../../utils/addOneDay";
 import { getCurrentDateInString } from "../../utils/getCurrentDateInString";
 import { getFirstDayOfTheWeek } from "../../utils/getFirstDayOfTheWeek";
 import { isDayAndHourLessThenToday } from "../../utils/isDayAndHourLessThenToday";
