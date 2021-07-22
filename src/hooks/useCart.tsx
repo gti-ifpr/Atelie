@@ -60,6 +60,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
                 updatedCart.push(newCloth);
             }
+
             setCart(updatedCart);
 
         } catch {

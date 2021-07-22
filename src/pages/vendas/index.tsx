@@ -3,7 +3,9 @@ import React from "react";
 
 import { useState, FormEvent, useEffect, FunctionComponent } from "react";
 import { Toaster } from "react-hot-toast";
+
 import { SelectionMenu } from '../../components/Sales/SelectionMenu/selectionMenu'
+import { SalesCart } from "../../components/Sales/SalesCart/SalesCart";
 
 import styles from "./styles.module.scss";
 
@@ -35,6 +37,7 @@ export default function Vendas() {
             <main>
                 <SelectionMenu />
 
+                <SalesCart />
             </main>
         </>
     );
