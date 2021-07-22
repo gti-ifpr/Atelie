@@ -7,6 +7,8 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import { TextField } from "@material-ui/core";
 import { useEffect, useState } from "react";
 
+import styles from "./styles.module.scss";
+
 type ClothingCollection = {
     id: number;
     nome: string;
@@ -45,7 +47,7 @@ export function SelectionMenu() {
     }
 
     return (
-        <>
+        <div className={styles.contentContainer}>
             <Autocomplete
                 value={selectedClothingCollection}
                 onChange={(_, clothingCollection: ClothingCollection) => {
@@ -87,7 +89,9 @@ export function SelectionMenu() {
             />
             <button
                 type="button"
+                className={styles.submitButton}
                 onClick={() => handleAddClothInCart(selectedCloth.id)}
-            >Cadastrar Venda na Tabela</button></>
+            >Cadastrar Venda na Tabela</button>
+        </ div>
     )
 }

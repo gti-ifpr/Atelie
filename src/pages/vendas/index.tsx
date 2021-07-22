@@ -34,10 +34,12 @@ export default function Vendas() {
             </Head>
             <Toaster />
 
-            <main>
-                <SelectionMenu />
-
+            <main className={styles.contentContainer}>
+                <div>
+                    <SelectionMenu />
+                </div>
                 <SalesCart />
+
             </main>
         </>
     );

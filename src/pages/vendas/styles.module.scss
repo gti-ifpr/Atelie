@@ -1,0 +1,14 @@
+.contentContainer{
+    max-width: 1130px;
+  
+    height: calc(100vh - 4rem); 
+    margin: 0 auto;
+
+    margin-top: 1rem;
+
+    display: flex;
+
+    div {
+        flex: 1;
+    }
+}

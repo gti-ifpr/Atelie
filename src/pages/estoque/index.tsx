@@ -4,8 +4,7 @@ import { ClothingCollectionHeader } from "../../components/ClothingCollection/Cl
 import { useCloth } from "../../hooks/useCloth";
 import { useFilterClothByCollection } from "../../hooks/useFilterClothByCollection";
 
-import { MdAdd } from 'react-icons/md';
-import { MdRemove } from 'react-icons/md';
+import { MdAdd, MdRemove } from 'react-icons/md';
 
 import { Toaster } from "react-hot-toast";
 
