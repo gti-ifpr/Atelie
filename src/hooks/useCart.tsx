@@ -15,7 +15,7 @@ interface CartProviderProps {
     children: ReactNode;
 }
 
-interface UpdateProductAmount {
+interface UpdateClothAmount {
     clothId: number;
     amount: number;
 }
@@ -23,8 +23,8 @@ interface UpdateProductAmount {
 interface CartContextData {
     cart: Cloth[];
     addCloth: (clothId: number) => Promise<void>;
-    removeProduct: (clothId: number) => void;
-    updateProductAmount: ({ clothId, amount }: UpdateProductAmount) => void;
+    removeCloth: (clothId: number) => void;
+    updateClothAmount: ({ clothId, amount }: UpdateClothAmount) => void;
 }
 
 const CartContext = createContext<CartContextData>({} as CartContextData);
@@ -68,33 +68,33 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         }
     };
 
-    const removeProduct = (productId: number) => {
+    const removeCloth = (clothId: number) => {
         try {
             const updatedCart = [...cart];
-            const productedIndex = updatedCart.findIndex(product => product.id === productId);
+            const clothIndex = updatedCart.findIndex(cloth => cloth.id === clothId);
 
-            if (productedIndex >= 0) {
-                updatedCart.splice(productedIndex, 1);
+            if (clothIndex >= 0) {
+                updatedCart.splice(clothIndex, 1);
                 setCart(updatedCart);
             } else {
                 throw Error();
             }
         } catch {
-            toast.error('Erro na remoção do produto');
+            toast.error('Erro na remoção da roupa');
         }
     };
 
-    const updateProductAmount = async ({
+    const updateClothAmount = async ({
         clothId,
         amount,
-    }: UpdateProductAmount) => {
+    }: UpdateClothAmount) => {
         try {
             if (amount <= 0) {
                 return;
             }
 
             const stock = await api.get(`/stock/${clothId}`);
-            const stockAmount = stock.data.amount;
+            const stockAmount = stock.data.quantidade;
 
             if (stockAmount < amount) {
                 toast.error('Quantidade solicitada fora de estoque');
@@ -102,7 +102,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
             }
 
             const updatedCart = [...cart];
-            const productExists = updatedCart.find(product => product.id === clothId);
+            const productExists = updatedCart.find(cloth => cloth.id === clothId);
 
             if (productExists) {
                 productExists.quantidade = amount;
@@ -112,13 +112,13 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
                 throw Error();
             }
         } catch {
-            toast.error('Erro na alteração de quantidade do produto');
+            toast.error('Erro na alteração de quantidade');
         }
     };
 
     return (
         <CartContext.Provider
-            value={{ cart, addCloth, removeProduct, updateProductAmount }}
+            value={{ cart, addCloth, removeCloth, updateClothAmount }}
         >
             {children}
         </CartContext.Provider>

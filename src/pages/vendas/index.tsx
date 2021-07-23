@@ -35,11 +35,11 @@ export default function Vendas() {
             <Toaster />
 
             <main className={styles.contentContainer}>
-                <div>
-                    <SelectionMenu />
-                </div>
-                <SalesCart />
 
+                <SelectionMenu />
+                <div>
+                    <SalesCart />
+                </div>
             </main>
         </>
     );

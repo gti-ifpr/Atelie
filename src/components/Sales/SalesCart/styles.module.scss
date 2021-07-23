@@ -2,29 +2,46 @@
     background: white;
     border-radius: 3px;
     padding: 1rem;
+    margin: 1rem 1rem 1rem 0;
 
+    h3 {
+        color: var(--gray-300)
+    }
 
-    span {
-        display: flex;
-         font-weight: 500;
-         color: var(--gray-300);
-     }
+    .saleClothContainer {
+        border-top: 2px solid var(--gray-100);
+        margin: 1rem;
 
-     .quantity{
-        display: flex;
-        align-items: center;
-        
-        p {
-            margin: 0 1rem;
+        .titleContainer {
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .removeAndAddButtons {
-            transition: filter 0.2s;
-            background: transparent;
-
-            &:hover {
-                filter: brightness(0.5)
+        span {
+            display: flex;
+             font-weight: 500;
+             color: var(--gray-300);
+         }
+    
+         .quantity{
+            display: flex;
+            align-items: center;
+            
+            p {
+                margin: 0 1rem;
             }
-        }
-     }
+    
+            .removeAndAddButtons {
+                transition: filter 0.2s;
+                background: transparent;
+    
+                &:hover {
+                    filter: brightness(0.5)
+                }
+            }
+         }
+    }
+    
 }

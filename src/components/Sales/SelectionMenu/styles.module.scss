@@ -1,6 +1,12 @@
 .contentContainer {
+    margin: 1rem;
+
+    .autocompleteContainer {
+        margin-top: 1rem;
+    }
+
     .submitButton {
-        width: 30%;
+        width: 100%;
         padding: 0 1.5rem;
         height: 4rem;
         background: #33CC95;

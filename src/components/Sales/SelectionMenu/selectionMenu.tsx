@@ -48,45 +48,48 @@ export function SelectionMenu() {
 
     return (
         <div className={styles.contentContainer}>
-            <Autocomplete
-                value={selectedClothingCollection}
-                onChange={(_, clothingCollection: ClothingCollection) => {
-                    setSelectedClothingCollection(clothingCollection);
-                }}
-                id="combo-box-demo"
-                options={clothingCollections as ClothingCollection[]}
-                getOptionLabel={(clothingCollection) => clothingCollection.nome}
-                renderOption={(clothingCollection) => clothingCollection.nome}
-                style={{ width: "100%" }}
-                renderInput={(params) => (
-                    <TextField
-                        {...params}
-                        label="Coleção"
-                        variant="outlined"
-                        required
-                    />
-                )}
-            />
-
-            <Autocomplete
-                value={selectedCloth}
-                onChange={(_, cloth: Cloth) => {
-                    setSelectedCloth(cloth);
-                }}
-                id="combo-box-demo"
-                options={filteredCloths as Cloth[]}
-                getOptionLabel={(cloth) => `${cloth.nome} ${cloth.tamanho}`}
-                renderOption={(cloth) => `${cloth.nome} ${cloth.tamanho}`}
-                style={{ width: "100%" }}
-                renderInput={(params) => (
-                    <TextField
-                        {...params}
-                        label="Roupa"
-                        variant="outlined"
-                        required
-                    />
-                )}
-            />
+            <div className={styles.autocompleteContainer}>
+                <Autocomplete
+                    value={selectedClothingCollection}
+                    onChange={(_, clothingCollection: ClothingCollection) => {
+                        setSelectedClothingCollection(clothingCollection);
+                    }}
+                    id="combo-box-demo"
+                    options={clothingCollections as ClothingCollection[]}
+                    getOptionLabel={(clothingCollection) => clothingCollection.nome}
+                    renderOption={(clothingCollection) => clothingCollection.nome}
+                    style={{ width: "100%" }}
+                    renderInput={(params) => (
+                        <TextField
+                            {...params}
+                            label="Coleção"
+                            variant="outlined"
+                            required
+                        />
+                    )}
+                />
+            </div>
+            <div className={styles.autocompleteContainer}>
+                <Autocomplete
+                    value={selectedCloth}
+                    onChange={(_, cloth: Cloth) => {
+                        setSelectedCloth(cloth);
+                    }}
+                    id="combo-box-demo"
+                    options={filteredCloths as Cloth[]}
+                    getOptionLabel={(cloth) => `${cloth.nome} ${cloth.tamanho}`}
+                    renderOption={(cloth) => `${cloth.nome} ${cloth.tamanho}`}
+                    style={{ width: "100%" }}
+                    renderInput={(params) => (
+                        <TextField
+                            {...params}
+                            label="Roupa"
+                            variant="outlined"
+                            required
+                        />
+                    )}
+                />
+            </div>
             <button
                 type="button"
                 className={styles.submitButton}
