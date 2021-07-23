@@ -1,12 +1,11 @@
 .contentContainer {
-    margin: -3rem 1rem 1rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    .autocompleteContainer {
-        margin-top: 1rem;
-    }
-
-    .submitButton {
-        width: 100%;
+    button[type="submit"] {
+        margin: 1rem;
+        width: 50%;
         padding: 0 1.5rem;
         height: 4rem;
         background: #33CC95;
@@ -16,8 +15,6 @@
         border: 0;
 
         font-size: 1rem;
-        margin-top: 1.5rem;
-
         font-weight: 600;
 
         transition: filter 0.2s;

@@ -4,11 +4,16 @@
     height: calc(100vh - 4rem); 
     margin: 0 auto;
 
-    margin-top: 1rem;
+    .wrapper {
+        margin-top: 1rem;
 
-    display: flex;
-
-    div {
-        flex: 1;
+        display: flex;
+        align-items: center;
+    
+        div {
+            flex: 1;
+        }
     }
+
+    
 }

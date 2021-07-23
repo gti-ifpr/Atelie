@@ -10,6 +10,7 @@ import { SalesCart } from "../../components/Sales/SalesCart/SalesCart";
 import styles from "./styles.module.scss";
 
 import { useSale } from "../../hooks/useSale";
+import { FinalizeSale } from "../../components/Sales/FinalizeSale/FinalizeSale";
 
 
 
@@ -35,12 +36,16 @@ export default function Vendas() {
             <Toaster />
 
             <main className={styles.contentContainer}>
-
-                <SelectionMenu />
-                <div>
-                    <SalesCart />
+                <div className={styles.wrapper}>
+                    <SelectionMenu />
+                    <div>
+                        <SalesCart />
+                    </div>
                 </div>
+
+                <FinalizeSale />
             </main>
+
         </>
     );
 }

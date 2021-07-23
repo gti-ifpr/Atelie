@@ -115,7 +115,7 @@
   ],
   "stock": [
     {
-      "quantidade": 3,
+      "quantidade": 2,
       "id": 1
     },
     {
@@ -123,7 +123,7 @@
       "id": 2
     },
     {
-      "quantidade": 1,
+      "quantidade": 2,
       "id": 3
     },
     {
@@ -131,7 +131,7 @@
       "id": 4
     },
     {
-      "quantidade": 1,
+      "quantidade": 2,
       "id": 5
     }
   ],
