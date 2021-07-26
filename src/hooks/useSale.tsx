@@ -1,10 +1,18 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 
+type Cloth = {
+    id: number;
+    nome: string;
+    colecao: number;
+    quantidade: number;
+    tamanho: number;
+};
+
 type Sale = {
     id: number;
-    colecao: number;
-    roupa: number
+    produtos: Cloth[];
+    cliente: number;
 }
 
 type SaleProviderProps = {

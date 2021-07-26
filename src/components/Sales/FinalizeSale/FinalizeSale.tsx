@@ -8,6 +8,8 @@ import React from "react";
 
 import { useCart } from "../../../hooks/useCart";
 import { useClient } from "../../../hooks/useClient";
+import { useSale } from "../../../hooks/useSale";
+import { useCloth } from "../../../hooks/useCloth";
 
 type Client = {
     id: number;
@@ -22,13 +24,7 @@ type Client = {
     };
 };
 
-type Cloth = {
-    id: number;
-    nome: string;
-    colecao: number;
-    quantidade: number;
-    tamanho: number;
-};
+
 
 type NewScheduleModalProps = {
     isOpen: boolean;
@@ -39,38 +35,59 @@ type NewScheduleModalProps = {
 export function FinalizeSale() {
 
     const { clients } = useClient();
+    const { cart } = useCart();
+    const { updateClothInStock, stocks } = useCloth();
+    const { createSale } = useSale();
+
     const [selectedClient, setSelectedClient] = useState<Client>(null);
 
-    async function handleCreateNewSchedule(event: FormEvent) {
+    async function handleCreateNewSale(event: FormEvent) {
         event.preventDefault();
+        console.log(cart);
+
+        cart.map(cloth => {
+            stocks.map(stock => {
+                if (stock.id === cloth.id) {
+                    updateClothInStock({ stockId: cloth.id, amount: stock.quantidade - cloth.quantidade })
+                }
+            })
+        })
+
+        createSale({
+            produtos: cart,
+            cliente: selectedClient.id
+        })
     }
 
     return (
-        <form className={styles.contentContainer}>
-            <Autocomplete
-                value={selectedClient}
-                onChange={(_, client: Client) => {
-                    setSelectedClient(client);
-                }}
-                id="combo-box-demo"
-                options={clients as Client[]}
-                getOptionLabel={(client) => `${client.nome} ${client.sobrenome}`}
-                renderOption={(client) => `${client.nome} ${client.sobrenome}`}
-                style={{ width: "50%", margin: "1rem" }}
-                renderInput={(params) => (
-                    <TextField
-                        {...params}
-                        label="Cliente"
-                        variant="outlined"
-                        required
-                    />
-                )}
-            />
-            <button
-                type="submit"
-            >
-                Finalizar Venda
-            </button>
-        </form>
+        <>
+            <form onSubmit={handleCreateNewSale} className={styles.contentContainer}>
+                <Autocomplete
+                    value={selectedClient}
+                    onChange={(_, client: Client) => {
+                        setSelectedClient(client);
+                    }}
+                    id="combo-box-demo"
+                    options={clients as Client[]}
+                    getOptionLabel={(client) => `${client.nome} ${client.sobrenome}`}
+                    renderOption={(client) => `${client.nome} ${client.sobrenome}`}
+                    style={{ width: "35rem", margin: "1rem" }}
+                    renderInput={(params) => (
+                        <TextField
+                            {...params}
+                            label="Cliente"
+                            variant="outlined"
+                            required
+                        />
+                    )}
+                />
+
+                <button
+                    type="submit"
+                >
+                    Finalizar Venda
+                </button>
+            </form>
+        </>
     );
 }

@@ -66,7 +66,6 @@ export function NewScheduleModal({
     const materialUiStyles = useStyles();
 
 
-
     async function handleCreateNewSchedule(event: FormEvent) {
         event.preventDefault();
 

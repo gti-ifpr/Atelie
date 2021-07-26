@@ -66,7 +66,7 @@ export function ClothProvider({ children }: ClothProviderProps) {
 
             const stockExists = updatedStock.find(stock => stock.id === stockId);
             if (amount < 0) {
-                toast.error("Quantidade solicitada fora de estoque");
+                toast.error("Não é possível possuir menos de 0 em estoque");
                 return;
             }
 
