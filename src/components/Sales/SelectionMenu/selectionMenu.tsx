@@ -43,6 +43,7 @@ export function SelectionMenu() {
     }, [selectedClothingCollection])
 
     function handleAddClothInCart(clothId: number) {
+        setSelectedCloth({ id: 0, nome: '', colecao: 0, tamanho: 0 })
         addCloth(clothId);
     }
 

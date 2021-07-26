@@ -115,23 +115,23 @@
   ],
   "stock": [
     {
-      "quantidade": 0,
+      "quantidade": 3,
       "id": 1
     },
     {
-      "quantidade": 0,
+      "quantidade": 3,
       "id": 2
     },
     {
-      "quantidade": 0,
+      "quantidade": 3,
       "id": 3
     },
     {
-      "quantidade": 0,
+      "quantidade": 3,
       "id": 4
     },
     {
-      "quantidade": 2,
+      "quantidade": 3,
       "id": 5
     }
   ],
@@ -241,6 +241,33 @@
       ],
       "cliente": 2,
       "id": 6
+    },
+    {
+      "produtos": [
+        {
+          "nome": "Girassol",
+          "colecao": 1,
+          "tamanho": 44,
+          "id": 1,
+          "quantidade": 1
+        },
+        {
+          "nome": "Lírio",
+          "colecao": 1,
+          "tamanho": 42,
+          "id": 2,
+          "quantidade": 1
+        },
+        {
+          "nome": "Terra",
+          "colecao": 2,
+          "tamanho": 49,
+          "id": 4,
+          "quantidade": 1
+        }
+      ],
+      "cliente": 1,
+      "id": 7
     }
   ]
 }

@@ -25,6 +25,7 @@ interface CartContextData {
     addCloth: (clothId: number) => Promise<void>;
     removeCloth: (clothId: number) => void;
     updateClothAmount: ({ clothId, amount }: UpdateClothAmount) => void;
+    setCartEmpty: () => void;
 }
 
 const CartContext = createContext<CartContextData>({} as CartContextData);
@@ -116,9 +117,13 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         }
     };
 
+    const setCartEmpty = async () => {
+        setCart([]);
+    }
+
     return (
         <CartContext.Provider
-            value={{ cart, addCloth, removeCloth, updateClothAmount }}
+            value={{ cart, addCloth, removeCloth, updateClothAmount, setCartEmpty }}
         >
             {children}
         </CartContext.Provider>

@@ -2,6 +2,7 @@ import { useState, FormEvent, useEffect } from "react";
 
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { TextField } from "@material-ui/core";
+import { NewClientModal } from "../../Client/NewClientModal/newClientModal";
 
 import styles from "./styles.module.scss";
 import React from "react";
@@ -25,17 +26,10 @@ type Client = {
 };
 
 
-
-type NewScheduleModalProps = {
-    isOpen: boolean;
-    onRequestClose: () => void;
-};
-
-
 export function FinalizeSale() {
 
     const { clients } = useClient();
-    const { cart } = useCart();
+    const { cart, setCartEmpty } = useCart();
     const { updateClothInStock, stocks } = useCloth();
     const { createSale } = useSale();
 
@@ -43,8 +37,6 @@ export function FinalizeSale() {
 
     async function handleCreateNewSale(event: FormEvent) {
         event.preventDefault();
-        console.log(cart);
-
         cart.map(cloth => {
             stocks.map(stock => {
                 if (stock.id === cloth.id) {
@@ -53,10 +45,24 @@ export function FinalizeSale() {
             })
         })
 
-        createSale({
+        await setCartEmpty()
+
+        await createSale({
             produtos: cart,
             cliente: selectedClient.id
         })
+
+        setSelectedClient(null);
+    }
+
+    const [isNewClientModalOpen, setIsNewClientModalOpen] = useState(false);
+
+    function handleOpenNewClientModal() {
+        setIsNewClientModalOpen(true);
+    }
+
+    function handleCloseNewClientModal() {
+        setIsNewClientModalOpen(false);
     }
 
     return (
@@ -88,6 +94,14 @@ export function FinalizeSale() {
                     Finalizar Venda
                 </button>
             </form>
+
+            <span className={styles.createNewClientSpan}>Cliente ainda não cadastrado? <button type="button" onClick={handleOpenNewClientModal}>Cadastrar cliente</button></span>
+
+            <NewClientModal
+                isOpen={isNewClientModalOpen}
+                onRequestClose={handleCloseNewClientModal}
+            />
+
         </>
     );
 }
