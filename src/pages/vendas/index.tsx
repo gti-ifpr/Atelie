@@ -33,7 +33,6 @@ export default function Vendas() {
             <Head>
                 <title>Vendas | Artha</title>
             </Head>
-            <Toaster />
 
             <main className={styles.contentContainer}>
                 <div className={styles.wrapper}>

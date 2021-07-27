@@ -97,19 +97,6 @@ export default function Stock() {
                 <title>Estoque | Artha</title>
             </Head>
 
-            <Toaster
-                toastOptions={{
-                    style: {
-                        border: '0.15rem solid var(--yellow-800)',
-                        padding: '1rem',
-                    },
-                    iconTheme: {
-                        primary: 'var(--yellow-500)',
-                        secondary: '#FFFAEE',
-                    },
-                }}
-            />
-
             <main className={styles.contentContainer}>
                 <ClothingCollectionHeader />
                 <div className={styles.cardContainer}>

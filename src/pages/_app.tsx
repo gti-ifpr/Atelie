@@ -10,6 +10,7 @@ import { SaleProvider } from '../hooks/useSale'
 import { CartProvider } from '../hooks/useCart'
 
 import '../styles/global.scss';
+import { Toaster } from 'react-hot-toast'
 
 function MyApp({ Component, pageProps }: AppProps) {
 
@@ -21,6 +22,18 @@ function MyApp({ Component, pageProps }: AppProps) {
             <FilterClothByCollectionProvider>
               <SaleProvider>
                 <CartProvider>
+                  <Toaster
+                    toastOptions={{
+                      style: {
+                        border: '0.15rem solid var(--yellow-800)',
+                        padding: '1rem',
+                      },
+                      iconTheme: {
+                        primary: 'var(--yellow-500)',
+                        secondary: '#FFFAEE',
+                      },
+                    }} />
+
                   <Header />
 
 
