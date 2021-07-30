@@ -2,6 +2,14 @@ import { useState } from 'react';
 import { ActiveLink } from '../ActiveLink'
 import { NewJobModal } from '../NewJobModal/newJobModal';
 import { Button } from '../Button/button'
+import React from 'react';
+import Button1 from '@material-ui/core/Button';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
 
 import styles from './styles.module.scss';
 
@@ -14,6 +22,28 @@ export function Header() {
 
     function handleCloseNewJobModal() {
         setIsNewJobModalOpen(false);
+    }
+
+    const [open, setOpen] = React.useState(false);
+    const anchorRef = React.useRef<HTMLButtonElement>(null);
+
+    const handleToggle = () => {
+        setOpen((prevOpen) => !prevOpen);
+    };
+
+    const handleClose = (event: React.MouseEvent<EventTarget>) => {
+        if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
+            return;
+        }
+
+        setOpen(false);
+    };
+
+    function handleListKeyDown(event: React.KeyboardEvent) {
+        if (event.key === 'Tab') {
+            event.preventDefault();
+            setOpen(false);
+        }
     }
 
     return (
