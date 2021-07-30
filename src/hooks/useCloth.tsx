@@ -6,6 +6,7 @@ type Cloth = {
     id: number;
     nome: string;
     colecao: number;
+    quantidade: number;
     tamanho: number;
 }
 
@@ -18,7 +19,7 @@ type ClothProviderProps = {
     children: ReactNode;
 }
 
-type ClothInput = Omit<Cloth, 'id'>
+type ClothInput = Omit<Cloth, 'id' | 'quantidade'>
 
 type StockInput = Omit<Stock, 'id'>
 

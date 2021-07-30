@@ -29,6 +29,8 @@ type updateClothInStock = {
 }
 
 type FabricContextData = {
+    fabrics: Fabric[];
+    fabricStocks: FabricStock[];
     createFabric: (fabricInput: FabricInput, fabricInStock: FabricStockInput) => Promise<void>;
 }
 
@@ -37,11 +39,11 @@ const FabricContext = createContext<FabricContextData>(
 );
 
 export function FabricProvider({ children }: ClothProviderProps) {
-    const [fabric, setFabric] = useState([]);
+    const [fabrics, setFabrics] = useState([]);
     const [fabricStocks, setFabricStocks] = useState([]);
 
     useEffect(() => {
-        api.get("/tecidos").then((response) => setFabric(response.data));
+        api.get("/tecidos").then((response) => setFabrics(response.data));
         api.get("/estoque_de_tecidos").then((response) => setFabricStocks(response.data));
     }, []);
 
@@ -49,8 +51,8 @@ export function FabricProvider({ children }: ClothProviderProps) {
         const clothData = await api.post("/tecidos", fabricInput);
         const stockData = await api.post("/estoque_de_tecidos", fabricInStock);
 
-        setFabric([
-            ...fabric,
+        setFabrics([
+            ...fabrics,
             clothData.data,
         ]);
 
@@ -84,7 +86,7 @@ export function FabricProvider({ children }: ClothProviderProps) {
     } */
 
     return (
-        <FabricContext.Provider value={{ createFabric }}>
+        <FabricContext.Provider value={{ createFabric, fabrics, fabricStocks }}>
             {children}
         </FabricContext.Provider>
     )
