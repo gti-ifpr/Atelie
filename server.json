@@ -298,5 +298,20 @@
       "cliente": 1,
       "id": 8
     }
+  ],
+  "tecidos": [
+    {
+      "nome": "Poliester",
+      "fabricante": "Gingulino",
+      "referenciaDoFabricante": "16541651",
+      "largura": 20,
+      "id": 1
+    }
+  ],
+  "estoque_de_tecidos": [
+    {
+      "quantidade": 100,
+      "id": 1
+    }
   ]
 }

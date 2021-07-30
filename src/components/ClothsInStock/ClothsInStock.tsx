@@ -77,7 +77,7 @@ const ClothRow: FunctionComponent<{ cloth: Cloth, stocks: Stock[] }> = ({
     );
 };
 
-export default function ClothInStock() {
+export function ClothsInStock() {
     const { cloths, stocks } = useCloth()
     const { filterClothByCollection, selectedClothingCollection } = useFilterClothByCollection()
     const [filteredCloths, setFilteredCloths] = useState<Cloth[]>([]);

@@ -6,7 +6,6 @@ type Cloth = {
     id: number;
     nome: string;
     colecao: number;
-    quantidade: number;
     tamanho: number;
 }
 
@@ -21,6 +20,8 @@ type ClothProviderProps = {
 
 type ClothInput = Omit<Cloth, 'id'>
 
+type StockInput = Omit<Stock, 'id'>
+
 type updateClothInStock = {
     stockId: number;
     amount: number;
@@ -29,7 +30,7 @@ type updateClothInStock = {
 type ClothContextData = {
     cloths: Cloth[];
     stocks: Stock[];
-    createCloth: (cloth: ClothInput, stock: Stock) => Promise<void>;
+    createCloth: (cloth: ClothInput, stock: StockInput) => Promise<void>;
     updateClothInStock: ({ stockId, amount }: updateClothInStock) => void;
 }
 
@@ -46,9 +47,10 @@ export function ClothProvider({ children }: ClothProviderProps) {
         api.get("/stock").then((response) => setStocks(response.data));
     }, []);
 
-    async function createCloth(clothing: ClothInput, clothInStock: Stock) {
+    async function createCloth(clothing: ClothInput, clothInStock: StockInput) {
         const clothData = await api.post("/roupas", clothing);
         const stockData = await api.post("/stock", clothInStock);
+
         setCloths([
             ...cloths,
             clothData.data,

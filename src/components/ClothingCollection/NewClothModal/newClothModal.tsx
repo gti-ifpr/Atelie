@@ -21,7 +21,6 @@ type ClothingCollection = {
     nome: string;
 }
 
-
 export function NewClothModal({
     isOpen,
     onRequestClose,

@@ -8,6 +8,7 @@ import { ClothProvider } from '../hooks/useCloth'
 import { CommitmentProvider } from '../hooks/useCommitment'
 import { SaleProvider } from '../hooks/useSale'
 import { CartProvider } from '../hooks/useCart'
+import { FabricProvider } from '../hooks/useFabric'
 
 import '../styles/global.scss';
 import { Toaster } from 'react-hot-toast'
@@ -19,28 +20,30 @@ function MyApp({ Component, pageProps }: AppProps) {
       <CommitmentProvider>
         <ClothingCollectionsProvider>
           <ClothProvider>
-            <FilterClothByCollectionProvider>
-              <SaleProvider>
-                <CartProvider>
-                  <Toaster
-                    toastOptions={{
-                      style: {
-                        border: '0.15rem solid var(--yellow-800)',
-                        padding: '1rem',
-                      },
-                      iconTheme: {
-                        primary: 'var(--yellow-500)',
-                        secondary: '#FFFAEE',
-                      },
-                    }} />
+            <FabricProvider>
+              <FilterClothByCollectionProvider>
+                <SaleProvider>
+                  <CartProvider>
+                    <Toaster
+                      toastOptions={{
+                        style: {
+                          border: '0.15rem solid var(--yellow-800)',
+                          padding: '1rem',
+                        },
+                        iconTheme: {
+                          primary: 'var(--yellow-500)',
+                          secondary: '#FFFAEE',
+                        },
+                      }} />
 
-                  <Header />
+                    <Header />
 
 
-                  <Component {...pageProps} />
-                </CartProvider>
-              </SaleProvider>
-            </FilterClothByCollectionProvider>
+                    <Component {...pageProps} />
+                  </CartProvider>
+                </SaleProvider>
+              </FilterClothByCollectionProvider>
+            </FabricProvider>
           </ClothProvider>
         </ClothingCollectionsProvider>
       </CommitmentProvider>
