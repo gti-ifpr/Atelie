@@ -15,7 +15,7 @@ type FabricStock = {
     quantidade: number
 }
 
-type ClothProviderProps = {
+type FabricProviderProps = {
     children: ReactNode;
 }
 
@@ -23,7 +23,7 @@ type FabricInput = Omit<Fabric, 'id'>
 
 type FabricStockInput = Omit<FabricStock, 'id'>
 
-type updateClothInStock = {
+type updateFabricInStock = {
     stockId: number;
     amount: number;
 }
@@ -32,13 +32,14 @@ type FabricContextData = {
     fabrics: Fabric[];
     fabricStocks: FabricStock[];
     createFabric: (fabricInput: FabricInput, fabricInStock: FabricStockInput) => Promise<void>;
+    updateFabricInStock: ({ stockId, amount }: updateFabricInStock) => void;
 }
 
 const FabricContext = createContext<FabricContextData>(
     {} as FabricContextData
 );
 
-export function FabricProvider({ children }: ClothProviderProps) {
+export function FabricProvider({ children }: FabricProviderProps) {
     const [fabrics, setFabrics] = useState([]);
     const [fabricStocks, setFabricStocks] = useState([]);
 
@@ -62,9 +63,9 @@ export function FabricProvider({ children }: ClothProviderProps) {
         ])
     }
 
-    /* async function updateFabricInStock({ stockId, amount }: updateClothInStock) {
+    async function updateFabricInStock({ stockId, amount }: updateFabricInStock) {
         try {
-            const updatedStock = [...stocks]
+            const updatedStock = [...fabricStocks]
 
             const stockExists = updatedStock.find(stock => stock.id === stockId);
             if (amount < 0) {
@@ -74,19 +75,19 @@ export function FabricProvider({ children }: ClothProviderProps) {
 
             if (stockExists) {
                 stockExists.quantidade = amount
-                setStocks(updatedStock)
+                setFabricStocks(updatedStock)
 
-                await api.put(`/stock/${stockId}`, { quantidade: amount });
+                await api.put(`/estoque_de_tecidos/${stockId}`, { quantidade: amount });
             } else {
                 throw Error;
             }
         } catch {
             toast.error('Erro na atualização de estoque');
         }
-    } */
+    }
 
     return (
-        <FabricContext.Provider value={{ createFabric, fabrics, fabricStocks }}>
+        <FabricContext.Provider value={{ createFabric, fabrics, fabricStocks, updateFabricInStock }}>
             {children}
         </FabricContext.Provider>
     )
