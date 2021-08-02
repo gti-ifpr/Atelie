@@ -12,7 +12,7 @@ export function FabricsInStock() {
 
             <div className={styles.cardContainer}></div>
             {fabrics.map(fabric => (
-                <FabricRow fabric={fabric} fabricStocks={fabricStocks} />
+                <FabricRow key={fabric.id} fabric={fabric} fabricStocks={fabricStocks} />
             ))}
         </ main>
     );

@@ -20,31 +20,37 @@ export const FabricRow: FunctionComponent<{ fabric, fabricStocks }> = ({
 
     return (
         <div key={fabric.id} className={styles.card}>
-            <p>{fabric.nome}</p>
-            <p>{fabric.fabricante}</p>
-            <p>{fabric.referenciaDoFabricante}</p>
-            <p>{fabric.largura}</p>
-            <p>
+            <h1>{fabric.nome}</h1>
+            <div className={styles.makerContainer}>
+                <span>Fabricante: </span>
+                <p>{fabric.fabricante}</p>
+                <span>Referência: </span>
+                <p>{fabric.referenciaDoFabricante}</p>
+            </div>
+            <div className={styles.numbersContainer}>
+                <span>Largura: </span>
+                <p>{fabric.largura}</p>
+                <span>Quantidade: </span>
                 {fabricStocks.map(stock => {
                     if (fabric.id === stock.id) {
                         return (
-                            <div key={stock.id}>
+                            <div key={stock.id} className={styles.quantityContainer}>
                                 <p>{stock.quantidade} metros</p>
                                 <MdAddCircle
-                                    color="#737380"
-                                    size="1.75rem"
+                                    color="#1a9c6d"
+                                    size="2rem"
                                     onClick={() => handleOpenUpdateFabricInStockModal()}
+                                />
+                                <UpdateFabricInStockModal
+                                    isOpen={isUpdateFabricInStockOpen}
+                                    onRequestClose={handleCloseUpdateFabricInStockModal}
+                                    stock={stock}
                                 />
                             </div>
                         )
                     }
                 })}
-            </p>
-
-            <UpdateFabricInStockModal
-                isOpen={isUpdateFabricInStockOpen}
-                onRequestClose={handleCloseUpdateFabricInStockModal}
-            />
+            </div>
         </div>
     )
 }

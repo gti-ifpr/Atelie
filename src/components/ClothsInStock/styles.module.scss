@@ -32,18 +32,18 @@
         align-items: center;
         justify-content:center;
 
-        p {
-            margin: 0 1rem;
-        }
-
-        .removeAndAddButtons{
-            transition: filter 0.2s;
-            background: transparent;
-
-            &:hover {
-                filter: brightness(0.5)
+            p {
+                margin: 0 1rem;
             }
-        }
+
+            .removeAndAddButtons{
+                transition: filter 0.2s;
+                background: transparent;
+
+                &:hover {
+                    filter: brightness(0.5)
+                }
+            }
        }
 
        div{

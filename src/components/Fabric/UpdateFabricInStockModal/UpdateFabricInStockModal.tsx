@@ -2,21 +2,36 @@ import Modal from "react-modal";
 import { FiX } from "react-icons/fi";
 
 import styles from './styles.module.scss';
-import { useState } from "react";
+import { useState, FormEvent } from "react";
+import { useFabric } from "../../../hooks/useFabric";
+
+type FabricStock = {
+    id: number;
+    quantidade: number
+}
 
 type NewScheduleModalProps = {
     isOpen: boolean;
     onRequestClose: () => void;
+    stock: FabricStock
 };
 
 export function UpdateFabricInStockModal({
     isOpen,
     onRequestClose,
+    stock
 }: NewScheduleModalProps) {
-    const [amount, setAmount] = useState<number>();
+    const [fabricAmount, setAmount] = useState(0);
+    const { updateFabricInStock } = useFabric();
 
-    function handleUpdateFabricStock() {
+    async function handleUpdateFabricStock(event: FormEvent) {
+        event.preventDefault();
 
+        await updateFabricInStock({ stockId: stock.id, amount: stock.quantidade + fabricAmount })
+
+        onRequestClose();
+
+        setAmount(0);
     }
 
     return (
@@ -42,10 +57,10 @@ export function UpdateFabricInStockModal({
                         <input
                             required
                             placeholder="0 metros"
-                            value={amount}
+                            value={fabricAmount}
                             onChange={(event) => setAmount(Number(event.target.value))}
                         />
-                        <button type="submit">Cadastrar Tecido</button>
+                        <button type="submit">Atualizar Quantidade</button>
                     </div>
                 </form>
             </div>
