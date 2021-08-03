@@ -1,14 +1,14 @@
 import Head from "next/head";
 
-export default function Stock() {
+export default function Orcamento() {
     return (
         <>
             <Head>
-                <title>Fornecedor | Artha</title>
+                <title>Orçamento | Artha</title>
             </Head>
 
             <main>
-                <h1>Fornecedor</h1>
+                <h1>Orçamento</h1>
             </main>
         </>
     );
