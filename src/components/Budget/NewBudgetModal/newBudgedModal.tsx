@@ -58,7 +58,7 @@ export function NewBudgedModal({ isOpen, onRequestClose }: NewClientModalProps) 
             <FiX color="#737380" size="2rem" className="react-modal-close" onClick={() => onRequestClose()} />
 
             <div className={styles.modal}>
-                <h1>Cadastrar Novo Cliente</h1>
+                <h1>Cadastrar Orçamento</h1>
 
                 <form onSubmit={handleCreateNewClient}>
                     <Autocomplete
