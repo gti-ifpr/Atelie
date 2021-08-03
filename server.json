@@ -306,20 +306,6 @@
       "referenciaDoFabricante": "16541651",
       "largura": 20,
       "id": 1
-    },
-    {
-      "nome": "Arroy",
-      "fabricante": "asd",
-      "referenciaDoFabricante": "asd",
-      "largura": 10,
-      "id": 2
-    },
-    {
-      "nome": "Poliester",
-      "fabricante": "hasdjk",
-      "referenciaDoFabricante": "hjaskdh",
-      "largura": 20,
-      "id": 3
     }
   ],
   "estoque_de_tecidos": [
@@ -334,6 +320,13 @@
     {
       "quantidade": 690,
       "id": 3
+    }
+  ],
+  "orcamento": [
+    {
+      "cliente": 1,
+      "orcamento": 7.09,
+      "id": 1
     }
   ]
 }

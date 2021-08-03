@@ -17,9 +17,8 @@ export function BudgedHeader() {
     return (
         <>
             <div className={styles.contentContainer}>
-                <input type="text" />
                 <button type="button" onClick={handleOpenNewBudgetModal}>
-                    Cadastrar Novo Cliente
+                    Cadastrar Orçamento
                 </button>
             </div>
             <NewBudgedModal

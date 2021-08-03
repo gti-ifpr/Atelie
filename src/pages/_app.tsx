@@ -9,6 +9,7 @@ import { CommitmentProvider } from '../hooks/useCommitment'
 import { SaleProvider } from '../hooks/useSale'
 import { CartProvider } from '../hooks/useCart'
 import { FabricProvider } from '../hooks/useFabric'
+import { BudgedProvider } from '../hooks/useBudged'
 
 import '../styles/global.scss';
 import { Toaster } from 'react-hot-toast'
@@ -21,28 +22,32 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ClothingCollectionsProvider>
           <ClothProvider>
             <FabricProvider>
-              <FilterClothByCollectionProvider>
-                <SaleProvider>
-                  <CartProvider>
-                    <Toaster
-                      toastOptions={{
-                        style: {
-                          border: '0.15rem solid var(--yellow-800)',
-                          padding: '1rem',
-                        },
-                        iconTheme: {
-                          primary: 'var(--yellow-500)',
-                          secondary: '#FFFAEE',
-                        },
-                      }} />
+              <BudgedProvider>
+                <FilterClothByCollectionProvider>
+                  <SaleProvider>
+                    <CartProvider>
 
-                    <Header />
+                      <Toaster
+                        toastOptions={{
+                          style: {
+                            border: '0.15rem solid var(--yellow-800)',
+                            padding: '1rem',
+                          },
+                          iconTheme: {
+                            primary: 'var(--yellow-500)',
+                            secondary: '#FFFAEE',
+                          },
+                        }} />
+
+                      <Header />
 
 
-                    <Component {...pageProps} />
-                  </CartProvider>
-                </SaleProvider>
-              </FilterClothByCollectionProvider>
+                      <Component {...pageProps} />
+
+                    </CartProvider>
+                  </SaleProvider>
+                </FilterClothByCollectionProvider>
+              </BudgedProvider>
             </FabricProvider>
           </ClothProvider>
         </ClothingCollectionsProvider>

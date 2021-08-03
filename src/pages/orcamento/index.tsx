@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { BudgedHeader } from "../../components/Budget/BudgetHeader/budgedHeader";
 
 export default function Orcamento() {
     return (
@@ -8,7 +9,7 @@ export default function Orcamento() {
             </Head>
 
             <main>
-                <h1>Orçamento</h1>
+                <BudgedHeader />
             </main>
         </>
     );

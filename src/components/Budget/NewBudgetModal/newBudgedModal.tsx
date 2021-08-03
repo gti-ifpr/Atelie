@@ -8,6 +8,7 @@ import { FiX } from 'react-icons/fi';
 import { useClient } from '../../../hooks/useClient';
 
 import styles from './styles.module.scss';
+import { useBudged } from '../../../hooks/useBudged';
 
 type Client = {
     id: number;
@@ -31,26 +32,19 @@ export function NewBudgedModal({ isOpen, onRequestClose }: NewClientModalProps) 
     const [orcamento, setOrcamento] = useState(0)
     const [selectedClient, setSelectedClient] = useState(null);
     const { clients } = useClient();
+    const { createBudged } = useBudged();
 
 
     async function handleCreateNewClient(event: FormEvent) {
         event.preventDefault();
 
-        /* await createClient({
-            nome: name,
-            sobrenome,
-            email,
-            telefone,
-            endereco: {
-                endereco,
-                cidade,
-                cep
-            }
+        await createBudged({
+            cliente: selectedClient.id,
+            orcamento: orcamento
         })
 
         onRequestClose();
 
-        */
     }
 
     return (
@@ -89,7 +83,9 @@ export function NewBudgedModal({ isOpen, onRequestClose }: NewClientModalProps) 
 
                     <span>Orçamento: </span>
                     <input
-                        placeholder="Endereço"
+                        type="number"
+                        step="0.01"
+                        placeholder="Orçamento"
                         value={orcamento}
                         onChange={event => setOrcamento(Number(event.target.value))}
                     />

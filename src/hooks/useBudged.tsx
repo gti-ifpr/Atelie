@@ -22,7 +22,7 @@ const BudgedContext = createContext<BudgedContextData>(
     {} as BudgedContextData
 );
 
-export function BudgedsProvider({ children }: BudgedProviderProps) {
+export function BudgedProvider({ children }: BudgedProviderProps) {
     const [budgeds, setBudgeds] = useState([]);
 
     useEffect(() => {
@@ -45,7 +45,7 @@ export function BudgedsProvider({ children }: BudgedProviderProps) {
     )
 }
 
-export function useClothingCollections() {
+export function useBudged() {
     const context = useContext(BudgedContext);
 
     return context;
