@@ -1,0 +1,36 @@
+.contentContainer {
+    max-width: 1130px;
+  
+    height: calc(100vh - 4rem); 
+    margin: 0 auto;
+    
+    .cardContainer {
+        max-width: 925px;
+        margin: 0 auto;
+    }
+    .card {
+        width: 100%;
+        padding: 1rem;
+        margin: 1rem;
+        background: var(--white);
+        border: 1px solid var(--white);
+        border-radius: 3px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+       p {
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        font-size: 1.5rem;
+        text-align: center;
+       }
+
+       span {
+        display: flex;
+         font-weight: 500;
+         color: var(--gray-300);
+        }
+    }
+}

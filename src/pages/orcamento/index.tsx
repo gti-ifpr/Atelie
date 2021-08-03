@@ -2,6 +2,8 @@ import Head from "next/head";
 import { BudgedHeader } from "../../components/Budget/BudgetHeader/budgedHeader";
 import { useBudged } from "../../hooks/useBudged";
 
+import styles from './styles.module.scss'
+
 export default function Orcamento() {
     const { budgeds } = useBudged();
 
@@ -11,15 +13,23 @@ export default function Orcamento() {
                 <title>Orçamento | Artha</title>
             </Head>
 
-            <main>
+            <main className={styles.contentContainer}>
                 <BudgedHeader />
 
-                {budgeds.map(budged => (
-                    <div>
-                        <p>{budged.cliente}</p>
-                        <p>{budged.orcamento}</p>
-                    </div>
-                ))}
+                <div className={styles.cardContainer}>
+                    {budgeds.map(budged => (
+                        <div key={budged.id} className={styles.card}>
+                            <div>
+                                <span>Cliente: </span>
+                                <p>{budged.cliente}</p>
+                            </div>
+                            <div>
+                                <span>Orçamento: </span>
+                                <p>R$ {budged.orcamento}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </main>
         </>
     );
