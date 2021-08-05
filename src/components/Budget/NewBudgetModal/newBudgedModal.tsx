@@ -45,6 +45,9 @@ export function NewBudgedModal({ isOpen, onRequestClose }: NewClientModalProps) 
 
         onRequestClose();
 
+        setSelectedClient(null);
+        setOrcamento(0);
+
     }
 
     return (

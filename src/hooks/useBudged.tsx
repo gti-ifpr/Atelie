@@ -41,6 +41,7 @@ export function BudgedProvider({ children }: BudgedProviderProps) {
     }
 
     async function removeBudged(budgedId: number) {
+        //TO DO EXCLUIR DA API
         try {
             const updatedBudged = [...budgeds];
             const budgedIndex = updatedBudged.findIndex(budged => budged.id === budgedId);

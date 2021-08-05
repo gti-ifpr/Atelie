@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { TechnicalFileHeader } from '../../components/TechnicalFile/TechnicalFileHeader/technicalFileHeader'
 
 export default function fichaTecnica() {
     return (
@@ -7,7 +8,7 @@ export default function fichaTecnica() {
                 <title>Clientes | Artha</title>
             </Head>
             <main>
-                <h1>Oi</h1>
+                <TechnicalFileHeader />
             </main>
         </>
     )
