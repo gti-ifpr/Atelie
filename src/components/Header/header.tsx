@@ -56,6 +56,9 @@ export function Header() {
                     <ActiveLink activeClassName={styles.active} href="/agenda">
                         <a>Agenda</a>
                     </ActiveLink>
+                    <ActiveLink activeClassName={styles.active} href="/fichaTecnica">
+                        <a>Ficha Téc.</a>
+                    </ActiveLink>
                     <ActiveLink activeClassName={styles.active} href="/clientes">
                         <a>Clientes</a>
                     </ActiveLink>
