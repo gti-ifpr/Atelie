@@ -2,10 +2,12 @@ import Head from "next/head";
 import { BudgedHeader } from "../../components/Budget/BudgetHeader/budgedHeader";
 import { useBudged } from "../../hooks/useBudged";
 
+import { MdDelete } from "react-icons/md";
+
 import styles from './styles.module.scss'
 
 export default function Orcamento() {
-    const { budgeds } = useBudged();
+    const { budgeds, removeBudged } = useBudged();
 
     return (
         <>
@@ -27,6 +29,12 @@ export default function Orcamento() {
                                 <span>Orçamento: </span>
                                 <p>R$ {budged.orcamento}</p>
                             </div>
+                            <MdDelete
+                                color="#737380"
+                                size="1.75rem"
+                                className={styles.removeAndAddButtons}
+                                onClick={() => removeBudged(budged.id)}
+                            />
                         </div>
                     ))}
                 </div>

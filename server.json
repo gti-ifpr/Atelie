@@ -327,6 +327,21 @@
       "cliente": 1,
       "orcamento": 7.09,
       "id": 1
+    },
+    {
+      "cliente": 1,
+      "orcamento": 50,
+      "id": 2
+    },
+    {
+      "cliente": 1,
+      "orcamento": 20.5,
+      "id": 3
+    },
+    {
+      "cliente": 2,
+      "orcamento": 50.55,
+      "id": 4
     }
   ]
 }

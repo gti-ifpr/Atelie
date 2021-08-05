@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { api } from "../services/api";
 
 type Budged = {
@@ -16,6 +17,7 @@ type BudgedInput = Omit<Budged, 'id'>
 type BudgedContextData = {
     budgeds: Budged[];
     createBudged: (budgedInput: BudgedInput) => Promise<void>;
+    removeBudged: (budgedId: number) => void;
 }
 
 const BudgedContext = createContext<BudgedContextData>(
@@ -38,8 +40,24 @@ export function BudgedProvider({ children }: BudgedProviderProps) {
         ]);
     }
 
+    async function removeBudged(budgedId: number) {
+        try {
+            const updatedBudged = [...budgeds];
+            const budgedIndex = updatedBudged.findIndex(budged => budged.id === budgedId);
+
+            if (budgedIndex >= 0) {
+                updatedBudged.splice(budgedIndex, 1);
+                setBudgeds(updatedBudged);
+            } else {
+                throw Error();
+            }
+        } catch {
+            toast.error('Erro na remoção do orçamento');
+        }
+    };
+
     return (
-        <BudgedContext.Provider value={{ budgeds, createBudged }}>
+        <BudgedContext.Provider value={{ budgeds, createBudged, removeBudged }}>
             {children}
         </BudgedContext.Provider>
     )
