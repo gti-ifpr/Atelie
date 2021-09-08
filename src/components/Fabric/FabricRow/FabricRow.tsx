@@ -27,6 +27,7 @@ export const FabricRow: FunctionComponent<{ fabric, fabricStocks }> = ({
                 <span>Referência: </span>
                 <p>{fabric.referenciaDoFabricante}</p>
             </div>
+
             <div className={styles.numbersContainer}>
                 <span>Largura: </span>
                 <p>{fabric.largura}</p>

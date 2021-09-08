@@ -8,8 +8,8 @@ export default function Stock() {
 
     return (
         <>
-            <Button isActive={isClothStockActive} onClick={() => setIsClothStockActive(true)}>Tecidos</Button>
-            <Button isActive={!isClothStockActive} onClick={() => setIsClothStockActive(false)}>Roupas</Button>
+            <Button isActive={isClothStockActive} onClick={() => setIsClothStockActive(true)}>Roupas</Button>
+            <Button isActive={!isClothStockActive} onClick={() => setIsClothStockActive(false)}>Tecidos</Button>
 
 
             {isClothStockActive ?

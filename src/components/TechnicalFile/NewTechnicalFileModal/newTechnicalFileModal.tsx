@@ -8,11 +8,19 @@ import { FiX } from 'react-icons/fi';
 
 import styles from './styles.module.scss';
 import { useBudged } from '../../../hooks/useBudged';
+import { useFabric } from '../../../hooks/useFabric';
 import { useTechnicalFile } from '../../../hooks/useTechnicalFile';
 
 type Budged = {
     cliente: number;
     orcamento: number
+}
+
+type Fabric = {
+    nome: string;
+    fabricante: string;
+    referenciaDoFabricante: string;
+    largura: number;
 }
 
 type NewTechnicalFileModalProps = {
@@ -23,24 +31,36 @@ type NewTechnicalFileModalProps = {
 export function NewTechnicalFileModal({ isOpen, onRequestClose }: NewTechnicalFileModalProps) {
     const [desenho, setDesenho] = useState('')
     const [selectedBudged, setSelectedBudged] = useState(null);
+    const [selectedFabric, setSelectedFabric] = useState(null);
     const [quantidadeDeTecido, setQuantidadeDeTecido] = useState(0);
+
     const { budgeds } = useBudged();
+    const { fabrics, updateFabricInStock, fabricStocks } = useFabric();
     const { createTechnicalFile } = useTechnicalFile();
 
 
     async function handleCreateNewClient(event: FormEvent) {
         event.preventDefault();
 
+        await fabricStocks.map(stock => {
+            if (selectedFabric.id === stock.id) {
+                updateFabricInStock({ stockId: stock.id, amount: stock.quantidade - quantidadeDeTecido })
+            }
+        })
+
+
         await createTechnicalFile({
             cliente: selectedBudged.cliente,
             orcamento: selectedBudged.orcamento,
-            desenho: 'string',
+            desenho: desenho,
+            tipoTecido: selectedFabric.nome,
             quantidadeTecido: quantidadeDeTecido
         })
 
         onRequestClose();
 
         setSelectedBudged(null);
+        setSelectedFabric(null);
         setDesenho('');
         setQuantidadeDeTecido(0);
 
@@ -87,6 +107,28 @@ export function NewTechnicalFileModal({ isOpen, onRequestClose }: NewTechnicalFi
                         value={desenho}
                         onChange={event => setDesenho(event.target.value)}
                     />
+
+                    <Autocomplete
+                        value={selectedFabric}
+                        onChange={(_, fabric: Fabric) => {
+                            setSelectedFabric(fabric);
+                        }}
+                        id="combo-box-demo"
+                        options={fabrics}
+                        getOptionLabel={(fabric) => `${fabric.nome}`}
+                        renderOption={(fabric) => `${fabric.nome}`}
+                        style={{ width: "100%" }}
+                        renderInput={(params) => (
+                            <TextField
+                                {...params}
+                                label="Tipo do Tecido"
+                                variant="outlined"
+                                required
+                            />
+                        )}
+                    />
+
+
                     <span>Quantidade De Tecido: </span>
                     <input
                         type="string"
@@ -94,6 +136,7 @@ export function NewTechnicalFileModal({ isOpen, onRequestClose }: NewTechnicalFi
                         value={quantidadeDeTecido}
                         onChange={event => setQuantidadeDeTecido(Number(event.target.value))}
                     />
+
                     <button type="submit">
                         Cadastrar Ficha Técnica
                     </button>

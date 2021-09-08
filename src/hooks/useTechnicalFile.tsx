@@ -6,6 +6,7 @@ type TechnicalFile = {
     cliente: number;
     orcamento: number;
     desenho: string;
+    tipoTecido: string;
     quantidadeTecido: number;
 };
 
