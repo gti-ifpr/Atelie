@@ -310,7 +310,7 @@
   ],
   "estoque_de_tecidos": [
     {
-      "quantidade": 300,
+      "quantidade": 290,
       "id": 1
     }
   ],
@@ -344,6 +344,14 @@
       "tipoTecido": "Poliester",
       "quantidadeTecido": 200,
       "id": 2
+    },
+    {
+      "cliente": 1,
+      "orcamento": 20.5,
+      "desenho": "Imagem",
+      "tipoTecido": "Poliester",
+      "quantidadeTecido": 10,
+      "id": 3
     }
   ]
 }
