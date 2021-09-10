@@ -302,7 +302,7 @@
   "tecidos": [
     {
       "nome": "Poliester",
-      "fabricante": "Gingulino",
+      "fabricante": "fabricante joão",
       "referenciaDoFabricante": "16541651",
       "largura": 20,
       "id": 1
@@ -314,44 +314,6 @@
       "id": 1
     }
   ],
-  "orcamento": [
-    {
-      "cliente": 1,
-      "orcamento": 7.09,
-      "id": 1
-    },
-    {
-      "cliente": 1,
-      "orcamento": 50,
-      "id": 2
-    },
-    {
-      "cliente": 1,
-      "orcamento": 20.5,
-      "id": 3
-    },
-    {
-      "cliente": 2,
-      "orcamento": 50.55,
-      "id": 4
-    }
-  ],
-  "ficha_tecnica": [
-    {
-      "cliente": 1,
-      "orcamento": 7.09,
-      "desenho": "desenho",
-      "tipoTecido": "Poliester",
-      "quantidadeTecido": 200,
-      "id": 2
-    },
-    {
-      "cliente": 1,
-      "orcamento": 20.5,
-      "desenho": "Imagem",
-      "tipoTecido": "Poliester",
-      "quantidadeTecido": 10,
-      "id": 3
-    }
-  ]
+  "orcamento": [],
+  "ficha_tecnica": []
 }
