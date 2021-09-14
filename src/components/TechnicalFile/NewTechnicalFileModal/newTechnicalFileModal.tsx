@@ -35,7 +35,7 @@ export function NewTechnicalFileModal({ isOpen, onRequestClose }: NewTechnicalFi
     const [quantidadeDeTecido, setQuantidadeDeTecido] = useState(0);
 
     const { budgeds } = useBudged();
-    const { fabrics, updateFabricInStock, fabricStocks } = useFabric();
+    const { fabrics, addReserve, fabricStocks } = useFabric();
     const { createTechnicalFile } = useTechnicalFile();
 
 
@@ -44,7 +44,7 @@ export function NewTechnicalFileModal({ isOpen, onRequestClose }: NewTechnicalFi
 
         await fabricStocks.map(stock => {
             if (selectedFabric.id === stock.id) {
-                updateFabricInStock({ stockId: stock.id, amount: stock.quantidade - quantidadeDeTecido })
+                addReserve({ stockId: stock.id, amount: stock.reserva + quantidadeDeTecido })
             }
         })
 

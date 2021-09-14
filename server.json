@@ -302,15 +302,16 @@
   "tecidos": [
     {
       "nome": "Poliester",
-      "fabricante": "fabricante joão",
-      "referenciaDoFabricante": "16541651",
+      "fabricante": "Fabricante 1",
+      "referenciaDoFabricante": "Referência ",
       "largura": 20,
       "id": 1
     }
   ],
   "estoque_de_tecidos": [
     {
-      "quantidade": 890,
+      "quantidade": 2200,
+      "reserva": 200,
       "id": 1
     }
   ],
@@ -330,9 +331,9 @@
     {
       "cliente": 1,
       "orcamento": 200,
-      "desenho": "Imagem",
+      "desenho": "Desenho",
       "tipoTecido": "Poliester",
-      "quantidadeTecido": 100,
+      "quantidadeTecido": 200,
       "id": 1
     }
   ]

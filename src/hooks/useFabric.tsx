@@ -84,7 +84,7 @@ export function FabricProvider({ children }: FabricProviderProps) {
                 stockExists.quantidade = amount
                 setFabricStocks(updatedStock)
 
-                await api.put(`/estoque_de_tecidos/${stockId}`, { quantidade: amount });
+                await api.put(`/estoque_de_tecidos/${stockId}`, { quantidade: amount, reserva: stockExists.reserva });
             } else {
                 throw Error;
             }
@@ -98,17 +98,16 @@ export function FabricProvider({ children }: FabricProviderProps) {
             const updatedStock = [...fabricStocks]
 
             const stockExists = updatedStock.find(stock => stock.id === stockId);
-
             if (stockExists) {
                 stockExists.reserva = amount
                 setFabricStocks(updatedStock)
 
-                await api.put(`/estoque_de_tecidos/${stockId}`, { reserva: amount });
+                await api.put(`/estoque_de_tecidos/${stockId}`, { quantidade: stockExists.quantidade, reserva: amount });
             } else {
                 throw Error;
             }
         } catch {
-            toast.error('Erro na atualização de estoque');
+            toast.error('Erro na inserção da reserva');
         }
     }
 
