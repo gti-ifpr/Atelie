@@ -34,6 +34,7 @@ export function NewFabricModal({
             largura: largura,
         }, {
             quantidade: quantidade,
+            reserva: 0
         })
 
         onRequestClose();

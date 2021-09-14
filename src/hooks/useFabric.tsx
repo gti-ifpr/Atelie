@@ -12,7 +12,8 @@ type Fabric = {
 
 type FabricStock = {
     id: number;
-    quantidade: number
+    quantidade: number;
+    reserva: number;
 }
 
 type FabricProviderProps = {
@@ -28,11 +29,17 @@ type updateFabricInStock = {
     amount: number;
 }
 
+type addReserve = {
+    stockId: number;
+    amount: number;
+}
+
 type FabricContextData = {
     fabrics: Fabric[];
     fabricStocks: FabricStock[];
     createFabric: (fabricInput: FabricInput, fabricInStock: FabricStockInput) => Promise<void>;
     updateFabricInStock: ({ stockId, amount }: updateFabricInStock) => void;
+    addReserve: ({ stockId, amount }: addReserve) => void;
 }
 
 const FabricContext = createContext<FabricContextData>(
@@ -86,8 +93,27 @@ export function FabricProvider({ children }: FabricProviderProps) {
         }
     }
 
+    async function addReserve({ stockId, amount }: addReserve) {
+        try {
+            const updatedStock = [...fabricStocks]
+
+            const stockExists = updatedStock.find(stock => stock.id === stockId);
+
+            if (stockExists) {
+                stockExists.reserva = amount
+                setFabricStocks(updatedStock)
+
+                await api.put(`/estoque_de_tecidos/${stockId}`, { reserva: amount });
+            } else {
+                throw Error;
+            }
+        } catch {
+            toast.error('Erro na atualização de estoque');
+        }
+    }
+
     return (
-        <FabricContext.Provider value={{ createFabric, fabrics, fabricStocks, updateFabricInStock }}>
+        <FabricContext.Provider value={{ createFabric, fabrics, fabricStocks, updateFabricInStock, addReserve }}>
             {children}
         </FabricContext.Provider>
     )
