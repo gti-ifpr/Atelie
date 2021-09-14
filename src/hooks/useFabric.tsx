@@ -98,6 +98,13 @@ export function FabricProvider({ children }: FabricProviderProps) {
             const updatedStock = [...fabricStocks]
 
             const stockExists = updatedStock.find(stock => stock.id === stockId);
+
+            if (stockExists.quantidade <= amount) {
+                toast('Quantidade reservada maior que a quantidade em estoque', {
+                    icon: '⚠️'
+                });
+            }
+
             if (stockExists) {
                 stockExists.reserva = amount
                 setFabricStocks(updatedStock)
