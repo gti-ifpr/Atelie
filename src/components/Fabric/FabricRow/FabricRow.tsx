@@ -26,27 +26,31 @@ export const FabricRow: FunctionComponent<{ fabric, fabricStocks }> = ({
                 <p>{fabric.fabricante}</p>
                 <span>Referência: </span>
                 <p>{fabric.referenciaDoFabricante}</p>
+                <span>Largura: </span>
+                <p>{fabric.largura}</p>
             </div>
 
             <div className={styles.numbersContainer}>
-                <span>Largura: </span>
-                <p>{fabric.largura}</p>
-                <span>Quantidade: </span>
                 {fabricStocks.map(stock => {
                     if (fabric.id === stock.id) {
                         return (
-                            <div key={stock.id} className={styles.quantityContainer}>
-                                <p>{stock.quantidade} metros</p>
-                                <MdAddCircle
-                                    color="#1a9c6d"
-                                    size="2rem"
-                                    onClick={() => handleOpenUpdateFabricInStockModal()}
-                                />
-                                <UpdateFabricInStockModal
-                                    isOpen={isUpdateFabricInStockOpen}
-                                    onRequestClose={handleCloseUpdateFabricInStockModal}
-                                    stock={stock}
-                                />
+                            <div key={stock.id}>
+                                <span>Reservados: </span>
+                                <p>{stock.reserva}</p>
+                                <span>Quantidade: </span>
+                                <div className={styles.quantityContainer}>
+                                    <p>{stock.quantidade} metros</p>
+                                    <MdAddCircle
+                                        color="#1a9c6d"
+                                        size="2rem"
+                                        onClick={() => handleOpenUpdateFabricInStockModal()}
+                                    />
+                                    <UpdateFabricInStockModal
+                                        isOpen={isUpdateFabricInStockOpen}
+                                        onRequestClose={handleCloseUpdateFabricInStockModal}
+                                        stock={stock}
+                                    />
+                                </div>
                             </div>
                         )
                     }
