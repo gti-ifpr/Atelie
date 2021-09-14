@@ -317,11 +317,6 @@
   "orcamento": [
     {
       "cliente": 1,
-      "orcamento": 500.55,
-      "id": 1
-    },
-    {
-      "cliente": 1,
       "orcamento": 200,
       "id": 2
     },
