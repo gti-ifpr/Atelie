@@ -2,11 +2,7 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 import toast from "react-hot-toast";
 import { api } from "../services/api";
 
-type Budged = {
-    id: number;
-    cliente: number;
-    orcamento: number;
-}
+import { Budged } from '../types';
 
 type BudgedProviderProps = {
     children: ReactNode;

@@ -2,14 +2,7 @@ import { createContext, ReactNode, useContext, useEffect, useRef, useState } fro
 import { api } from '../services/api';
 import toast from "react-hot-toast";
 
-
-type Cloth = {
-    id: number;
-    nome: string;
-    colecao: number;
-    quantidade: number;
-    tamanho: number;
-}
+import { Cloth } from '../types'
 
 interface CartProviderProps {
     children: ReactNode;

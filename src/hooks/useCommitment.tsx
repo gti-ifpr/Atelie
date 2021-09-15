@@ -2,28 +2,8 @@ import { createContext, useEffect, useState, ReactNode, useContext } from 'react
 import { api } from '../services/api';
 import { addOneDay } from '../utils/addOneDay';
 
-type CommitmentFromBd = {
-    id: number;
-    compromisso_status: string,
-    tipo_compromisso: string,
-    cliente_selecionado: number,
-    horario_inicio: string,
-    horario_termino: string,
-    data_agendada: string,
-};
+import { CommitmentFromBd, CommitmentReturn } from '../types'
 
-type CommitmentReturn = {
-    id: number;
-    horarioInicio: string;
-    horarioTermino: string;
-    dataAgendadaPtBr: string;
-    dataAgendadaString: string;
-    dataAgendadaDayOfTheWeek: number;
-    dataAgendadaCurrentDate: number;
-    selectedClient: number;
-    tipo: string;
-    status: string;
-};
 
 type CommitmentInput = Omit<CommitmentFromBd, 'id'>
 

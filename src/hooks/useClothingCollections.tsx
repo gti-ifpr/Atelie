@@ -1,10 +1,8 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 
-type ClothingCollection = {
-    id: number;
-    nome: string;
-}
+import { ClothingCollection } from '../types'
+
 
 type ClothingCollectionProviderProps = {
     children: ReactNode;

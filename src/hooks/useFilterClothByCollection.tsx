@@ -1,12 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
-type Cloth = {
-    id: number;
-    nome: string;
-    colecao: number;
-    quantidade: number;
-    tamanho: number;
-};
+import { Cloth } from '../types'
 
 type FilterClothByCollectionProviderProps = {
     children: ReactNode;

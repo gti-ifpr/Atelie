@@ -2,13 +2,7 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 import toast from "react-hot-toast";
 import { api } from "../services/api";
 
-type Fabric = {
-    id: number;
-    nome: string;
-    fabricante: string;
-    referenciaDoFabricante: string;
-    largura: number;
-}
+import { Fabric } from '../types'
 
 type FabricStock = {
     id: number;

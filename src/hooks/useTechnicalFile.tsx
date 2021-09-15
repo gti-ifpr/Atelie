@@ -1,14 +1,8 @@
 import { createContext, useEffect, useState, ReactNode, useContext } from 'react'
 import { api } from '../services/api';
 
-type TechnicalFile = {
-    id: number;
-    cliente: number;
-    orcamento: number;
-    desenho: string;
-    tipoTecido: string;
-    quantidadeTecido: number;
-};
+import { TechnicalFile } from '../types'
+
 
 type TechnicalFileInput = Omit<TechnicalFile, 'id'>
 

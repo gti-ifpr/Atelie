@@ -1,18 +1,9 @@
 import { createContext, useEffect, useState, ReactNode, useContext } from 'react'
 import { api } from '../services/api';
 
-type Client = {
-    id: number;
-    nome: string;
-    sobrenome: string;
-    email: string;
-    telefone: string;
-    endereco: {
-        endereco: string;
-        cidade: string;
-        cep: string;
-    };
-};
+import { Client } from '../types'
+
+
 
 type ClientInput = Omit<Client, 'id'>
 
