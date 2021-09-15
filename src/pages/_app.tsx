@@ -6,6 +6,7 @@ import { ClothingCollectionsProvider } from '../hooks/useClothingCollections'
 import { FilterClothByCollectionProvider } from '../hooks/useFilterClothByCollection'
 import { ClothProvider } from '../hooks/useCloth'
 import { CommitmentProvider } from '../hooks/useCommitment'
+import { ProductionProvider } from '../hooks/useProduction'
 import { SaleProvider } from '../hooks/useSale'
 import { CartProvider } from '../hooks/useCart'
 import { FabricProvider } from '../hooks/useFabric'
@@ -20,40 +21,42 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ClientProvider>
       <CommitmentProvider>
-        <ClothingCollectionsProvider>
-          <ClothProvider>
-            <FabricProvider>
-              <BudgedProvider>
-                <TechnicalFileProvider>
-                  <FilterClothByCollectionProvider>
-                    <SaleProvider>
-                      <CartProvider>
+        <ProductionProvider>
+          <ClothingCollectionsProvider>
+            <ClothProvider>
+              <FabricProvider>
+                <BudgedProvider>
+                  <TechnicalFileProvider>
+                    <FilterClothByCollectionProvider>
+                      <SaleProvider>
+                        <CartProvider>
 
-                        <Toaster
-                          toastOptions={{
-                            style: {
-                              border: '0.15rem solid var(--yellow-800)',
-                              padding: '1rem',
-                            },
-                            iconTheme: {
-                              primary: 'var(--yellow-500)',
-                              secondary: '#FFFAEE',
-                            },
-                          }} />
+                          <Toaster
+                            toastOptions={{
+                              style: {
+                                border: '0.15rem solid var(--yellow-800)',
+                                padding: '1rem',
+                              },
+                              iconTheme: {
+                                primary: 'var(--yellow-500)',
+                                secondary: '#FFFAEE',
+                              },
+                            }} />
 
-                        <Header />
+                          <Header />
 
 
-                        <Component {...pageProps} />
+                          <Component {...pageProps} />
 
-                      </CartProvider>
-                    </SaleProvider>
-                  </FilterClothByCollectionProvider>
-                </TechnicalFileProvider>
-              </BudgedProvider>
-            </FabricProvider>
-          </ClothProvider>
-        </ClothingCollectionsProvider>
+                        </CartProvider>
+                      </SaleProvider>
+                    </FilterClothByCollectionProvider>
+                  </TechnicalFileProvider>
+                </BudgedProvider>
+              </FabricProvider>
+            </ClothProvider>
+          </ClothingCollectionsProvider>
+        </ProductionProvider>
       </CommitmentProvider>
     </ClientProvider>
   )

@@ -1,0 +1,71 @@
+.contentContainer {
+    max-width: 1130px;
+  
+    height: calc(100vh - 4rem); 
+    margin: 0 auto;
+
+    overflow-y: scroll;
+
+    .filterType {
+        max-width: 500px;
+        margin: 0 auto;
+
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+
+    }
+
+    .weekFilterType {
+        width: 100%;
+        display: flex; 
+        margin-top: 1rem;
+    }
+    table {
+        max-width: 1110px;
+        
+        width: 100%;
+        border-spacing: 0 0.5rem;
+
+        th {
+            background: white;
+
+            font-weight: normal;
+            padding: 1rem 2rem;
+
+            text-align: center;
+            font-weight: bold;
+
+            &:first-child {
+                border-radius: 3px 0 0 3px;
+            }
+
+            &:last-child {
+                border-radius: 0 3px 3px 0;
+            }
+        }
+
+        .dayAndHourLessThenToday {
+            opacity: 0.4;
+
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+
+        td {
+            background: white;
+
+            padding: 1rem 2rem;
+            text-align: center;
+
+            &:first-child {
+                border-radius: 3px 0 0 3px;
+            }
+
+            &:last-child {
+                border-radius: 0 3px 3px 0;
+            }
+        }
+    }
+}

@@ -58,6 +58,29 @@ export type CommitmentReturn = {
     status: string;
 };
 
+export type ProductionFromBd = {
+    id: number;
+    compromisso_status: string,
+    tipo_compromisso: string,
+    cliente_selecionado: number,
+    horario_inicio: string,
+    horario_termino: string,
+    data_agendada: string,
+};
+
+export type ProductionReturn = {
+    id: number;
+    horarioInicio: string;
+    horarioTermino: string;
+    dataAgendadaPtBr: string;
+    dataAgendadaString: string;
+    dataAgendadaDayOfTheWeek: number;
+    dataAgendadaCurrentDate: number;
+    selectedClient: number;
+    tipo: string;
+    status: string;
+};
+
 export type Fabric = {
     id: number;
     nome: string;
