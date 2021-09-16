@@ -3,6 +3,8 @@ import { FunctionComponent, useEffect, useState } from "react";
 import { ProductionHeader } from "../../components/Production/ProductionHeader/productionHeader";
 import { Button } from "../../components/Button/button";
 
+import Link from 'next/link';
+
 import { addOneDay } from "../../utils/addOneDay";
 import { getCurrentDateInString } from "../../utils/getCurrentDateInString";
 import { getFirstDayOfTheWeek } from "../../utils/getFirstDayOfTheWeek";
@@ -23,7 +25,12 @@ const ProducaoRow: FunctionComponent<{ producao: ProductionReturn }> = ({
             <tr
                 className={isDayAndHourLessThenToday(producao.dataAgendadaString, producao.horarioInicio) ? styles.dayAndHourLessThenToday : ''}
             >
-                <td>{producao.selectedClient}</td>
+                <Link href={`/producao/${producao.id}`}>
+                    <td>
+                        <p>{producao.selectedClient}</p>
+                    </td>
+                </Link>
+
                 <td>
                     {producao.horarioInicio} - {producao.horarioTermino}
                 </td>
