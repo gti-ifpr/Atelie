@@ -2,22 +2,25 @@ import { ReactNode } from "react";
 
 export type ProductionFromBd = {
     id: number;
-    compromisso_status: string,
-    tipo_compromisso: string,
-    cliente_selecionado: number,
-    horario_inicio: string,
-    horario_termino: string,
-    data_agendada: string,
+    compromissoStatus: string,
+    tipoCompromisso: string,
+    clienteSelecionado: number,
+    horarioInicio: string,
+    horarioTermino: string,
+    dataInicio: string,
+    dataTermino: string,
 };
 
 export type ProductionReturn = {
     id: number;
     horarioInicio: string;
     horarioTermino: string;
-    dataAgendadaPtBr: string;
-    dataAgendadaString: string;
-    dataAgendadaDayOfTheWeek: number;
-    dataAgendadaCurrentDate: number;
+    dataInicioPtBr: string;
+    dataTerminoPtBr: string;
+    dataInicioString: string;
+    dataInicioDayOfTheWeek: number;
+    dataTerminoDayOfTheWeek: number;
+    dataInicioCurrentDate: number;
     selectedClient: number;
     tipo: string;
     status: string;

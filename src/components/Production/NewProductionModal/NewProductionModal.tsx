@@ -1,6 +1,6 @@
 import Modal from "react-modal";
 import { FiX } from "react-icons/fi";
-import { useState, FormEvent, useContext } from "react";
+import { useState, FormEvent } from "react";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { TextField, FormControl, InputLabel, MenuItem, Select, makeStyles, } from "@material-ui/core";
 
@@ -8,7 +8,7 @@ import styles from "./styles.module.scss";
 import React from "react";
 import { isDayAndHourLessThenToday } from "../../../utils/isDayAndHourLessThenToday";
 
-import { Client } from '../../../types'
+import { Client } from '../../../types/client'
 
 import { useProduction } from "../../../hooks/useProduction";
 import { useClient } from "../../../hooks/useClient";
@@ -47,7 +47,8 @@ export function NewProductionModal({
     );
     const [producaoType, setProducaoType] = useState("");
     const [horarioTermino, setHorarioTermino] = useState("");
-    const [dataAgendada, setDataAgendada] = useState('');
+    const [dataInicio, setDataInicio] = useState('');
+    const [dataTermino, setDataTermino] = useState('');
     const [selectedClient, setSelectedClient] = useState(null);
 
     const { createProduction } = useProduction();
@@ -59,16 +60,17 @@ export function NewProductionModal({
     async function handleCreateNewProducao(event: FormEvent) {
         event.preventDefault();
 
-        if (isDayAndHourLessThenToday(dataAgendada, horarioInicio)) {
+        if (isDayAndHourLessThenToday(dataInicio, horarioInicio)) {
             alert("Erro: Data inválida")
         } else {
             await createProduction({
-                compromisso_status: producaoStatus,
-                tipo_compromisso: producaoType,
-                cliente_selecionado: selectedClient.id,
-                horario_inicio: horarioInicio,
-                horario_termino: horarioTermino,
-                data_agendada: dataAgendada,
+                compromissoStatus: producaoStatus,
+                tipoCompromisso: producaoType,
+                clienteSelecionado: selectedClient.id,
+                horarioInicio: horarioInicio,
+                horarioTermino: horarioTermino,
+                dataInicio: dataInicio,
+                dataTermino: dataTermino == "" ? dataInicio : dataTermino,
             })
 
             onRequestClose();
@@ -76,7 +78,8 @@ export function NewProductionModal({
 
         setHorarioInicio('');
         setHorarioTermino('');
-        setDataAgendada('');
+        setDataInicio('');
+        setDataTermino('');
         setSelectedClient(null);
     }
 
@@ -175,19 +178,37 @@ export function NewProductionModal({
                             />
                         </div>
                     </div>
-                    <span>Data do Agendamento:</span>
-                    <input
-                        required
-                        type="date"
-                        placeholder="Data do Agendamento"
-                        value={dataAgendada}
-                        onChange={(event) => {
-                            const newDate = Date.parse(event.target.value);
-                            if (!isNaN(newDate)) {
-                                setDataAgendada(event.target.value);
-                            }
-                        }}
-                    />
+                    <div className={styles.time}>
+                        <div>
+                            <span>Data Início:</span>
+                            <input
+                                required
+                                type="date"
+                                placeholder="Data do Agendamento"
+                                value={dataInicio}
+                                onChange={(event) => {
+                                    const newDate = Date.parse(event.target.value);
+                                    if (!isNaN(newDate)) {
+                                        setDataInicio(event.target.value);
+                                    }
+                                }}
+                            />
+                        </div>
+                        <div>
+                            <span>Data Término:</span>
+                            <input
+                                type="date"
+                                placeholder="Data do Agendamento"
+                                value={dataTermino}
+                                onChange={(event) => {
+                                    const newDate = Date.parse(event.target.value);
+                                    if (!isNaN(newDate)) {
+                                        setDataTermino(event.target.value);
+                                    }
+                                }}
+                            />
+                        </div>
+                    </div>
                     <button type="submit">Cadastrar Producao</button>
                 </form>
             </div>

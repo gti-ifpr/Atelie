@@ -26,7 +26,7 @@ const ProducaoRow: FunctionComponent<{ producao: ProductionReturn }> = ({
     return (
         <>
             <tr
-                className={isDayAndHourLessThenToday(producao.dataAgendadaString, producao.horarioInicio) ? styles.dayAndHourLessThenToday : ''}
+                className={isDayAndHourLessThenToday(producao.dataInicioString, producao.horarioInicio) ? styles.dayAndHourLessThenToday : ''}
             >
                 <Link href={`/producao/${producao.id}`}>
                     <td>
@@ -50,7 +50,7 @@ const ProducaoRow: FunctionComponent<{ producao: ProductionReturn }> = ({
                 </td>
                 <td>{producao.tipo}</td>
                 <td>{producao.status}</td>
-                <td>{producao.dataAgendadaPtBr}</td>
+                <td>{producao.dataInicioPtBr} {producao.dataTerminoPtBr == producao.dataInicioPtBr ? '' : `- ${producao.dataTerminoPtBr}`}</td>
                 <td></td>
             </tr>
         </>
@@ -66,16 +66,16 @@ function filterProducaoByType(
     switch (filterType) {
         case "hoje":
             return producoes.filter(
-                (producao) => producao.dataAgendadaString === getCurrentDateInString(new Date()));
+                (producao) => producao.dataInicioString === getCurrentDateInString(new Date()));
 
         case "semana":
             const { firstDayOfTheWeek, lastDayOfTheWeek } = getFirstDayOfTheWeek(new Date());
 
             return producoes.filter(
                 (producao) =>
-                ((producao.dataAgendadaCurrentDate >= new Date(addOneDay(firstDayOfTheWeek)).getTime() &&
-                    producao.dataAgendadaCurrentDate <= new Date(addOneDay(lastDayOfTheWeek)).getTime()) &&
-                    (producao.dataAgendadaDayOfTheWeek === selectedDayOfTheWeek))
+                ((producao.dataInicioCurrentDate >= new Date(addOneDay(firstDayOfTheWeek)).getTime() ||
+                    producao.dataTerminoCurrentDate <= new Date(addOneDay(lastDayOfTheWeek)).getTime()) &&
+                    (producao.dataInicioDayOfTheWeek === selectedDayOfTheWeek) || (producao.dataTerminoDayOfTheWeek === selectedDayOfTheWeek))
             );
         default:
             return producoes;

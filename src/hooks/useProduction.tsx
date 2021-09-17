@@ -27,15 +27,18 @@ export function ProductionProvider({ children }: ProductionProviderProps) {
     const producoes: ProductionReturn[] = producoesFromBD.map((compromisso) => {
         return {
             id: compromisso.id,
-            horarioInicio: compromisso.horario_inicio,
-            horarioTermino: compromisso.horario_termino,
-            dataAgendadaString: compromisso.data_agendada,
-            dataAgendadaPtBr: new Date(addOneDay(compromisso.data_agendada)).toLocaleDateString('pt-BR'),
-            dataAgendadaDayOfTheWeek: new Date(addOneDay(compromisso.data_agendada)).getDay(),
-            dataAgendadaCurrentDate: new Date(addOneDay(compromisso.data_agendada)).getTime(),
-            selectedClient: compromisso.cliente_selecionado,
-            tipo: compromisso.tipo_compromisso,
-            status: compromisso.compromisso_status,
+            horarioInicio: compromisso.horarioInicio,
+            horarioTermino: compromisso.horarioTermino,
+            dataInicioString: compromisso.dataInicio,
+            dataInicioPtBr: new Date(addOneDay(compromisso.dataInicio)).toLocaleDateString('pt-BR'),
+            dataTerminoPtBr: new Date(addOneDay(compromisso.dataTermino)).toLocaleDateString('pt-BR'),
+            dataInicioDayOfTheWeek: new Date(addOneDay(compromisso.dataInicio)).getDay(),
+            dataTerminoDayOfTheWeek: new Date(addOneDay(compromisso.dataTermino)).getDay(),
+            dataInicioCurrentDate: new Date(addOneDay(compromisso.dataInicio)).getTime(),
+            dataTerminoCurrentDate: new Date(addOneDay(compromisso.dataTermino)).getTime(),
+            selectedClient: compromisso.clienteSelecionado,
+            tipo: compromisso.tipoCompromisso,
+            status: compromisso.compromissoStatus,
         };
     });
 

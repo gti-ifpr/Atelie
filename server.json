@@ -49,22 +49,44 @@
   ],
   "producoes": [
     {
-      "compromisso_status": "CONFIRMADO",
-      "tipo_compromisso": "ORCAMENTO",
-      "cliente_selecionado": 1,
-      "horario_inicio": "18:30",
-      "horario_termino": "19:00",
-      "data_agendada": "2021-09-17",
+      "compromissoStatus": "CONFIRMADO",
+      "tipoCompromisso": "MEDIDA",
+      "clienteSelecionado": 1,
+      "horarioInicio": "15:15",
+      "horarioTermino": "15:30",
+      "dataInicio": "2021-09-18",
+      "dataTermino": "2021-09-19",
       "id": 1
     },
     {
-      "compromisso_status": "CONFIRMADO",
-      "tipo_compromisso": "ORCAMENTO",
-      "cliente_selecionado": 2,
-      "horario_inicio": "18:30",
-      "horario_termino": "19:00",
-      "data_agendada": "2021-09-17",
-      "id": 2
+      "compromissoStatus": "CONFIRMADO",
+      "tipoCompromisso": "MEDIDA",
+      "clienteSelecionado": 1,
+      "horarioInicio": "15:15",
+      "horarioTermino": "16:00",
+      "dataInicio": "2021-09-18",
+      "dataTermino": "2021-09-18",
+      "id": 3
+    },
+    {
+      "compromissoStatus": "CONFIRMADO",
+      "tipoCompromisso": "MEDIDA",
+      "clienteSelecionado": 1,
+      "horarioInicio": "18:00",
+      "horarioTermino": "19:00",
+      "dataInicio": "2021-09-17",
+      "dataTermino": "2021-09-18",
+      "id": 4
+    },
+    {
+      "compromissoStatus": "CONFIRMADO",
+      "tipoCompromisso": "MEDIDA",
+      "clienteSelecionado": 1,
+      "horarioInicio": "15:15",
+      "horarioTermino": "12:30",
+      "dataInicio": "2021-09-18",
+      "dataTermino": "2021-09-19",
+      "id": 5
     }
   ],
   "clients": [
