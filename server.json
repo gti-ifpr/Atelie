@@ -54,6 +54,15 @@
       "horario_termino": "15:15",
       "data_agendada": "2021-09-19",
       "id": 5
+    },
+    {
+      "compromisso_status": "CONFIRMADO",
+      "tipo_compromisso": "ORCAMENTO",
+      "cliente_selecionado": 2,
+      "horario_inicio": "15:15",
+      "horario_termino": "15:15",
+      "data_agendada": "2021-09-19",
+      "id": 6
     }
   ],
   "producoes": [

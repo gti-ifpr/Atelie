@@ -31,8 +31,8 @@ export function CommitmentProvider({ children }: CommitmentProviderProps) {
         const { data } = await api.post("/schedule", commitmentInput);
 
         setCompromissos([
-            data,
             ...compromissosFromBD,
+            data,
         ]);
     }
 
