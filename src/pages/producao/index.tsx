@@ -33,7 +33,12 @@ const ProducaoRow: FunctionComponent<{ producao: ProductionReturn }> = ({
                         {clients.map((client) => {
                             if (client.id === producao.selectedClient) {
                                 return (
-                                    <p key={client.id}>{client.nome} {client.sobrenome}</p>
+                                    <p
+                                        key={client.id}
+                                        className={styles.link}
+                                    >
+                                        {client.nome} {client.sobrenome}
+                                    </p>
                                 )
                             }
                         })}

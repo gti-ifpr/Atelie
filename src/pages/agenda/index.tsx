@@ -45,7 +45,12 @@ const CompromissoRow: FunctionComponent<{ compromisso: Compromisso }> = ({
                         {clients.map((client) => {
                             if (client.id === compromisso.selectedClient) {
                                 return (
-                                    <p key={client.id}>{client.nome} {client.sobrenome}</p>
+                                    <p
+                                        key={client.id}
+                                        className={styles.link}
+                                    >
+                                        {client.nome} {client.sobrenome}
+                                    </p>
                                 )
                             }
                         })}
