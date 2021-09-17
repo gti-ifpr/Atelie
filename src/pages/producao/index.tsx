@@ -12,6 +12,7 @@ import { isDayAndHourLessThenToday } from "../../utils/isDayAndHourLessThenToday
 
 import styles from './styles.module.scss'
 import { useProduction } from "../../hooks/useProduction";
+import { useClient } from "../../hooks/useClient";
 
 import { ProductionReturn } from '../../types'
 
@@ -20,6 +21,8 @@ type FilterType = "hoje" | "semana" | "semFiltro";
 const ProducaoRow: FunctionComponent<{ producao: ProductionReturn }> = ({
     producao,
 }) => {
+    const { clients } = useClient();
+
     return (
         <>
             <tr
@@ -27,7 +30,13 @@ const ProducaoRow: FunctionComponent<{ producao: ProductionReturn }> = ({
             >
                 <Link href={`/producao/${producao.id}`}>
                     <td>
-                        <p>{producao.selectedClient}</p>
+                        {clients.map((client) => {
+                            if (client.id === producao.selectedClient) {
+                                return (
+                                    <p key={client.id}>{client.nome} {client.sobrenome}</p>
+                                )
+                            }
+                        })}
                     </td>
                 </Link>
 

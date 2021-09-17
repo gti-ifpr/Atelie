@@ -10,6 +10,7 @@ import { isDayAndHourLessThenToday } from "../../utils/isDayAndHourLessThenToday
 
 import styles from './styles.module.scss'
 import { useCommitment } from "../../hooks/useCommitment";
+import { useClient } from "../../hooks/useClient";
 
 import Link from 'next/link';
 
@@ -31,6 +32,8 @@ type FilterType = "hoje" | "semana" | "semFiltro";
 const CompromissoRow: FunctionComponent<{ compromisso: Compromisso }> = ({
     compromisso,
 }) => {
+    const { clients } = useClient();
+
     return (
         <>
             <tr
@@ -38,7 +41,14 @@ const CompromissoRow: FunctionComponent<{ compromisso: Compromisso }> = ({
             >
                 <Link href={`/agenda/${compromisso.id}`}>
                     <td>
-                        <p>{compromisso.selectedClient}</p>
+
+                        {clients.map((client) => {
+                            if (client.id === compromisso.selectedClient) {
+                                return (
+                                    <p key={client.id}>{client.nome} {client.sobrenome}</p>
+                                )
+                            }
+                        })}
                     </td>
                 </Link>
                 <td>
