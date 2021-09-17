@@ -51,7 +51,7 @@ export function Header() {
             <div className={styles.headerContent}>
                 <nav>
                     <ActiveLink activeClassName={styles.active} href="/producao">
-                        <a>Home</a>
+                        <a>Produc.</a>
                     </ActiveLink>
                     <ActiveLink activeClassName={styles.active} href="/agenda">
                         <a>Agenda</a>

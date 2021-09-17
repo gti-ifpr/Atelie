@@ -2,39 +2,9 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 import toast from "react-hot-toast";
 import { api } from "../services/api";
 
-import { Fabric } from '../types'
+import { FabricStockInput, FabricProviderProps, FabricInput, updateFabricInStock, addReserve, FabricContextData } from '../types/fabric'
 
-type FabricStock = {
-    id: number;
-    quantidade: number;
-    reserva: number;
-}
 
-type FabricProviderProps = {
-    children: ReactNode;
-}
-
-type FabricInput = Omit<Fabric, 'id'>
-
-type FabricStockInput = Omit<FabricStock, 'id'>
-
-type updateFabricInStock = {
-    stockId: number;
-    amount: number;
-}
-
-type addReserve = {
-    stockId: number;
-    amount: number;
-}
-
-type FabricContextData = {
-    fabrics: Fabric[];
-    fabricStocks: FabricStock[];
-    createFabric: (fabricInput: FabricInput, fabricInStock: FabricStockInput) => Promise<void>;
-    updateFabricInStock: ({ stockId, amount }: updateFabricInStock) => void;
-    addReserve: ({ stockId, amount }: addReserve) => void;
-}
 
 const FabricContext = createContext<FabricContextData>(
     {} as FabricContextData

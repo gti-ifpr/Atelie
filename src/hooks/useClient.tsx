@@ -1,20 +1,7 @@
 import { createContext, useEffect, useState, ReactNode, useContext } from 'react'
 import { api } from '../services/api';
 
-import { Client } from '../types'
-
-
-
-type ClientInput = Omit<Client, 'id'>
-
-type ClientProviderProps = {
-    children: ReactNode;
-}
-
-type ClientContextData = {
-    clients: Client[];
-    createClient: (client: ClientInput) => Promise<void>;
-}
+import { ClientContextData, ClientInput, ClientProviderProps } from '../types/client'
 
 const ClientContext = createContext<ClientContextData>(
     {} as ClientContextData

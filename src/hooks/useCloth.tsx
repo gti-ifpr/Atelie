@@ -2,27 +2,7 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 import toast from "react-hot-toast";
 import { api } from "../services/api";
 
-import { Cloth, Stock } from '../types'
-
-type ClothProviderProps = {
-    children: ReactNode;
-}
-
-type ClothInput = Omit<Cloth, 'id' | 'quantidade'>
-
-type StockInput = Omit<Stock, 'id'>
-
-type updateClothInStock = {
-    stockId: number;
-    amount: number;
-}
-
-type ClothContextData = {
-    cloths: Cloth[];
-    stocks: Stock[];
-    createCloth: (cloth: ClothInput, stock: StockInput) => Promise<void>;
-    updateClothInStock: ({ stockId, amount }: updateClothInStock) => void;
-}
+import { ClothProviderProps, ClothInput, StockInput, updateClothInStock, ClothContextData } from '../types/cloth'
 
 const ClothContext = createContext<ClothContextData>(
     {} as ClothContextData

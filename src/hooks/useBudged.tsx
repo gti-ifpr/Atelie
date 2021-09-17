@@ -1,20 +1,9 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { api } from "../services/api";
 
-import { Budged } from '../types';
+import { Budged, BudgedProviderProps, BudgedInput, BudgedContextData } from '../types/budged';
 
-type BudgedProviderProps = {
-    children: ReactNode;
-}
-
-type BudgedInput = Omit<Budged, 'id'>
-
-type BudgedContextData = {
-    budgeds: Budged[];
-    createBudged: (budgedInput: BudgedInput) => Promise<void>;
-    removeBudged: (budgedId: number) => void;
-}
 
 const BudgedContext = createContext<BudgedContextData>(
     {} as BudgedContextData

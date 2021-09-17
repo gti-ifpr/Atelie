@@ -2,19 +2,7 @@ import { createContext, useEffect, useState, ReactNode, useContext } from 'react
 import { api } from '../services/api';
 import { addOneDay } from '../utils/addOneDay';
 
-import { CommitmentFromBd, CommitmentReturn } from '../types'
-
-
-type CommitmentInput = Omit<CommitmentFromBd, 'id'>
-
-type CommitmentProviderProps = {
-    children: ReactNode;
-}
-
-type CommitmentContextData = {
-    compromissos: CommitmentReturn[];
-    createCommitment: (compromisso: CommitmentInput) => Promise<void>;
-}
+import { CommitmentFromBd, CommitmentReturn, CommitmentInput, CommitmentProviderProps, CommitmentContextData } from '../types/commitment'
 
 const CommitmentContext = createContext<CommitmentContextData>(
     {} as CommitmentContextData
@@ -31,8 +19,8 @@ export function CommitmentProvider({ children }: CommitmentProviderProps) {
         const { data } = await api.post("/schedule", commitmentInput);
 
         setCompromissos([
-            ...compromissosFromBD,
             data,
+            ...compromissosFromBD,
         ]);
     }
 

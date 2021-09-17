@@ -1,19 +1,9 @@
 import { createContext, useEffect, useState, ReactNode, useContext } from 'react'
 import { api } from '../services/api';
 
-import { TechnicalFile } from '../types'
+import { TechnicalFile, TechnicalFileInput, TechnicalFileProviderProps, TechnicalFileContextData } from '../types/technicalFile'
 
 
-type TechnicalFileInput = Omit<TechnicalFile, 'id'>
-
-type TechnicalFileProviderProps = {
-    children: ReactNode;
-}
-
-type TechnicalFileContextData = {
-    technicalFiles: TechnicalFile[];
-    createTechnicalFile: (tecnicalFile: TechnicalFileInput) => Promise<void>;
-}
 
 const TechnicalFileContext = createContext<TechnicalFileContextData>(
     {} as TechnicalFileContextData

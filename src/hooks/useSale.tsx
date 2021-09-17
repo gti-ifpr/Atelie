@@ -1,19 +1,8 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 
-import { Sale } from '../types'
+import { Sale, SaleProviderProps, SaleInput, SaleContextData } from '../types/sale'
 
-
-type SaleProviderProps = {
-    children: ReactNode;
-}
-
-type SaleInput = Omit<Sale, 'id'>
-
-type SaleContextData = {
-    sales: Sale[];
-    createSale: (sale: SaleInput) => Promise<void>;
-}
 
 const SaleContext = createContext<SaleContextData>(
     {} as SaleContextData

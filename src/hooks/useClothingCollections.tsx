@@ -1,19 +1,8 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 
-import { ClothingCollection } from '../types'
+import { ClothingCollectionProviderProps, ClothingCollectionInput, ClothingCollectionContextData } from '../types/clothingCollection'
 
-
-type ClothingCollectionProviderProps = {
-    children: ReactNode;
-}
-
-type ClothingCollectionInput = Omit<ClothingCollection, 'id'>
-
-type ClothingCollectionContextData = {
-    clothingCollections: ClothingCollection[];
-    createClothingCollection: (clothCollection: ClothingCollectionInput) => Promise<void>;
-}
 
 const ClothingCollectionContext = createContext<ClothingCollectionContextData>(
     {} as ClothingCollectionContextData

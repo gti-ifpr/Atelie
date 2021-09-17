@@ -2,19 +2,7 @@ import { createContext, useEffect, useState, ReactNode, useContext } from 'react
 import { api } from '../services/api';
 import { addOneDay } from '../utils/addOneDay';
 
-import { ProductionFromBd, ProductionReturn } from '../types'
-
-
-type ProductionInput = Omit<ProductionFromBd, 'id'>
-
-type ProductionProviderProps = {
-    children: ReactNode;
-}
-
-type ProductionContextData = {
-    producoes: ProductionReturn[];
-    createProduction: (compromisso: ProductionInput) => Promise<void>;
-}
+import { ProductionFromBd, ProductionReturn, ProductionInput, ProductionProviderProps, ProductionContextData } from '../types/production'
 
 const ProductionContext = createContext<ProductionContextData>(
     {} as ProductionContextData
