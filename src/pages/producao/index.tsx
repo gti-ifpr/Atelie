@@ -14,7 +14,7 @@ import styles from './styles.module.scss'
 import { useProduction } from "../../hooks/useProduction";
 import { useClient } from "../../hooks/useClient";
 
-import { ProductionReturn } from '../../types'
+import { ProductionReturn } from '../../types/production'
 
 type FilterType = "hoje" | "semana" | "semFiltro";
 
