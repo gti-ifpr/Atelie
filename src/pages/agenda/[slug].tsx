@@ -40,14 +40,14 @@ export default function Schedule({ schedule }: ScheduleProps) {
                             return (
                                 <tbody key={producao.id}>
                                     <tr
-                                        className={isDayAndHourLessThenToday(producao.dataAgendadaString, producao.horarioInicio) ? styles.dayAndHourLessThenToday : ''}
+                                        className={isDayAndHourLessThenToday(producao.dataInicioString, producao.horarioInicio) ? styles.dayAndHourLessThenToday : ''}
                                     >
                                         <td>
                                             {producao.horarioInicio} - {producao.horarioTermino}
                                         </td>
                                         <td>{producao.tipo}</td>
                                         <td>{producao.status}</td>
-                                        <td>{producao.dataAgendadaPtBr}</td>
+                                        <td>{producao.dataInicioPtBr} {producao.dataTerminoPtBr == producao.dataInicioPtBr ? '' : `- ${producao.dataTerminoPtBr}`}</td>
                                     </tr>
                                 </tbody>
                             )

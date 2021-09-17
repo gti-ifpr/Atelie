@@ -21,6 +21,7 @@ export type ProductionReturn = {
     dataInicioDayOfTheWeek: number;
     dataTerminoDayOfTheWeek: number;
     dataInicioCurrentDate: number;
+    dataTerminoCurrentDate: number;
     selectedClient: number;
     tipo: string;
     status: string;
