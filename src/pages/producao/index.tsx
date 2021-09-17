@@ -68,7 +68,7 @@ function filterProducaoByType(
     }
 }
 
-export default function Agenda() {
+export default function Production() {
     const [producaoFilter, setProducaoFilter] = useState<FilterType>("hoje");
     const [producoesFiltrados, setProducoesFiltrados] = useState<ProductionReturn[]>([])
     const [selectedDayOfTheWeek, setSelectedDayOfTheWeek] = useState<number>(0)

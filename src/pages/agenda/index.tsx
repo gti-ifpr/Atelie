@@ -11,6 +11,8 @@ import { isDayAndHourLessThenToday } from "../../utils/isDayAndHourLessThenToday
 import styles from './styles.module.scss'
 import { useCommitment } from "../../hooks/useCommitment";
 
+import Link from 'next/link';
+
 type Compromisso = {
     id: number;
     horarioInicio: string;
@@ -34,7 +36,11 @@ const CompromissoRow: FunctionComponent<{ compromisso: Compromisso }> = ({
             <tr
                 className={isDayAndHourLessThenToday(compromisso.dataAgendadaString, compromisso.horarioInicio) ? styles.dayAndHourLessThenToday : ''}
             >
-                <td>{compromisso.selectedClient}</td>
+                <Link href={`/agenda/${compromisso.id}`}>
+                    <td>
+                        <p>{compromisso.selectedClient}</p>
+                    </td>
+                </Link>
                 <td>
                     {compromisso.horarioInicio} - {compromisso.horarioTermino}
                 </td>

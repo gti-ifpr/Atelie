@@ -2,27 +2,27 @@ import { api } from '../../services/api';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 
-import { useCommitment } from "../../hooks/useCommitment";
+import { useProduction } from "../../hooks/useProduction";
 
-import styles from './production.module.scss';
+import styles from './schedule.module.scss';
 import { isDayAndHourLessThenToday } from '../../utils/isDayAndHourLessThenToday';
 
-type Production = {
-    clienteSelecionado: number;
+type Schedule = {
+    selectedClient: number;
     id: number
 };
 
-type ProductionProps = {
-    production: Production;
+type ScheduleProps = {
+    schedule: Schedule;
 }
 
-export default function Prodution({ production }: ProductionProps) {
-    const { compromissos } = useCommitment();
+export default function Schedule({ schedule }: ScheduleProps) {
+    const { producoes } = useProduction();
 
     return (
         <>
             <Head>
-                <title>{production.id} | Artha</title>
+                <title>{schedule.id} | Artha</title>
             </Head>
 
             <main className={styles.contentContainer}>
@@ -35,19 +35,19 @@ export default function Prodution({ production }: ProductionProps) {
                             <th>Data</th>
                         </tr>
                     </thead>
-                    {compromissos.map((compromisso) => {
-                        if (compromisso.selectedClient === production.clienteSelecionado) {
+                    {producoes.map((producao) => {
+                        if (producao.selectedClient === schedule.selectedClient) {
                             return (
-                                <tbody key={compromisso.id}>
+                                <tbody key={producao.id}>
                                     <tr
-                                        className={isDayAndHourLessThenToday(compromisso.dataAgendadaString, compromisso.horarioInicio) ? styles.dayAndHourLessThenToday : ''}
+                                        className={isDayAndHourLessThenToday(producao.dataAgendadaString, producao.horarioInicio) ? styles.dayAndHourLessThenToday : ''}
                                     >
                                         <td>
-                                            {compromisso.horarioInicio} - {compromisso.horarioTermino}
+                                            {producao.horarioInicio} - {producao.horarioTermino}
                                         </td>
-                                        <td>{compromisso.tipo}</td>
-                                        <td>{compromisso.status}</td>
-                                        <td>{compromisso.dataAgendadaPtBr}</td>
+                                        <td>{producao.tipo}</td>
+                                        <td>{producao.status}</td>
+                                        <td>{producao.dataAgendadaPtBr}</td>
                                     </tr>
                                 </tbody>
                             )
@@ -63,16 +63,16 @@ export default function Prodution({ production }: ProductionProps) {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const { slug } = ctx.params
 
-    const { data } = await api.get(`/producoes/${slug}`)
+    const { data } = await api.get(`/schedule/${slug}`)
 
-    const production = {
-        clienteSelecionado: data.cliente_selecionado,
+    const schedule = {
+        selectedClient: data.cliente_selecionado,
         id: data.id
     };
 
     return {
         props: {
-            production,
+            schedule,
         }
     }
 }
