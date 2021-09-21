@@ -12,10 +12,15 @@ import { useCommitment } from "../../../hooks/useCommitment";
 import { useClient } from "../../../hooks/useClient";
 
 enum CompromissoType {
-    AJUSTE = "AJUSTE",
-    MEDIDA = "MEDIDA",
-    ORCAMENTO = "ORCAMENTO",
+    Desenho = "Desenho",
+    Contrato = "Contrato",
+    Medidas = "Medidas",
+    Prova1 = "Prova1",
+    Prova2 = "Prova2",
+    Prova3 = "Prova3",
+    Entrega = "Entrega",
 }
+
 enum CompromissoStatus {
     CONFIRMADO = "CONFIRMADO",
     CANCELADO = "CANCELADO",
@@ -157,9 +162,13 @@ export function NewScheduleModal({
                                 setCompromissoType(event.target.value as string);
                             }}
                         >
-                            <MenuItem value={CompromissoType.AJUSTE}>Ajuste</MenuItem>
-                            <MenuItem value={CompromissoType.MEDIDA}>Medida</MenuItem>
-                            <MenuItem value={CompromissoType.ORCAMENTO}>Orçamento</MenuItem>
+                            <MenuItem value={CompromissoType.Desenho}>Desenho</MenuItem>
+                            <MenuItem value={CompromissoType.Contrato}>Contrato</MenuItem>
+                            <MenuItem value={CompromissoType.Medidas}>Medidas</MenuItem>
+                            <MenuItem value={CompromissoType.Prova1}>Prova1</MenuItem>
+                            <MenuItem value={CompromissoType.Prova2}>Prova2</MenuItem>
+                            <MenuItem value={CompromissoType.Prova3}>Prova3</MenuItem>
+                            <MenuItem value={CompromissoType.Entrega}>Entrega</MenuItem>
                         </Select>
                     </FormControl>
 
