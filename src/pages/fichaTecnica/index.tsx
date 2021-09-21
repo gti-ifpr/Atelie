@@ -20,30 +20,33 @@ export default function fichaTecnica() {
 
                 {technicalFiles.map(technicalFile => {
                     return (
-                        <div key={technicalFile.id} className={styles.card}>
+                        <div key={technicalFile.id}>
                             <Link href={`/fichaTecnica/${technicalFile.id}`}>
                                 <button className={styles.card}>
-                                    <div className={styles.drawn}>
-                                        <h2>{technicalFile.desenho}</h2>
+                                    <h2>{technicalFile.nome}</h2>
+                                    <div className={styles.cardContentContainer}>
+                                        <div className={styles.drawn}>
+                                            <h2>{technicalFile.desenho}</h2>
+                                        </div>
+
+                                        <div className={styles.contents}>
+                                            <span>Orçamento: </span>
+                                            <p>R$ {technicalFile.orcamento}</p>
+
+                                            <span className={styles.span}>Cliente: </span>
+                                            <p>{technicalFile.cliente}</p>
+
+                                            <span>Quantidade de Tecido: </span>
+                                            <p>{technicalFile.quantidadeTecido}</p>
+
+                                            <span className={styles.span}>Tipo Tecido: </span>
+                                            <p>{technicalFile.tipoTecido}</p>
+                                        </div>
                                     </div>
 
-                                    <div className={styles.contents}>
-                                        <span>Orçamento: </span>
-                                        <p>R$ {technicalFile.orcamento}</p>
-
-                                        <span className={styles.span}>Cliente: </span>
-                                        <p>{technicalFile.cliente}</p>
-
-                                        <span>Quantidade de Tecido: </span>
-                                        <p>{technicalFile.quantidadeTecido}</p>
-
-                                        <span className={styles.span}>Tipo Tecido: </span>
-                                        <p>{technicalFile.tipoTecido}</p>
-                                    </div>
                                 </button>
                             </Link>
                         </div>
-
                     )
                 })}
             </main>

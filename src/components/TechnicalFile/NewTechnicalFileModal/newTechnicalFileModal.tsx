@@ -33,6 +33,7 @@ export function NewTechnicalFileModal({ isOpen, onRequestClose }: NewTechnicalFi
     const [selectedBudged, setSelectedBudged] = useState(null);
     const [selectedFabric, setSelectedFabric] = useState(null);
     const [quantidadeDeTecido, setQuantidadeDeTecido] = useState(0);
+    const [nome, setNome] = useState('');
 
     const { budgeds } = useBudged();
     const { fabrics, addReserve, fabricStocks } = useFabric();
@@ -50,6 +51,7 @@ export function NewTechnicalFileModal({ isOpen, onRequestClose }: NewTechnicalFi
 
 
         await createTechnicalFile({
+            nome: nome,
             cliente: selectedBudged.cliente,
             orcamento: selectedBudged.orcamento,
             desenho: desenho,
@@ -80,6 +82,14 @@ export function NewTechnicalFileModal({ isOpen, onRequestClose }: NewTechnicalFi
                 <h1>Cadastrar Orçamento</h1>
 
                 <form onSubmit={handleCreateNewClient}>
+                    <span>Nome do vestido: </span>
+                    <input
+                        type="string"
+                        placeholder="Nome"
+                        value={nome}
+                        onChange={event => setNome(event.target.value)}
+                    />
+
                     <Autocomplete
                         value={selectedBudged}
                         onChange={(_, budged: Budged) => {

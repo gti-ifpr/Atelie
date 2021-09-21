@@ -11,9 +11,12 @@
         background: var(--white);
         border: 1px solid var(--white);
         border-radius: 3px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        
+        .cardContentContainer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
        
        span {

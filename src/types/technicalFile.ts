@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 export type TechnicalFile = {
     id: number;
+    nome: string;
     cliente: number;
     orcamento: number;
     desenho: string;

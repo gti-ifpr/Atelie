@@ -217,7 +217,7 @@
   "estoque_de_tecidos": [
     {
       "quantidade": 2200,
-      "reserva": 200,
+      "reserva": 220,
       "id": 1
     }
   ],
@@ -235,12 +235,13 @@
   ],
   "ficha_tecnica": [
     {
+      "nome": "1",
       "cliente": 1,
       "orcamento": 200,
-      "desenho": "ashdjk",
+      "desenho": "desenho",
       "tipoTecido": "Poliester",
-      "quantidadeTecido": 200,
-      "id": 1
+      "quantidadeTecido": 20,
+      "id": 2
     }
   ]
 }
