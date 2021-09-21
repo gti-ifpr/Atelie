@@ -14,10 +14,20 @@ import { useProduction } from "../../../hooks/useProduction";
 import { useClient } from "../../../hooks/useClient";
 
 enum ProducaoType {
-    AJUSTE = "AJUSTE",
-    MEDIDA = "MEDIDA",
-    ORCAMENTO = "ORCAMENTO",
+    Estamparia = "Estamparia",
+    Modelagem = "Modelagem",
+    Corte = "Corte",
+    Montagem = "Montagem",
+    Ajuste = "Ajuste",
+    AjusteFinal = "AjusteFinal",
+    AjusteFinal1 = "AjusteFinal1",
+    ComposiçãoRenda = "ComposiçãoRenda",
+    RendaTerceiros = "RendaTerceiros",
+    ComposiçãoBordado = "ComposiçãoBordado",
+    BordadoTerceiros = "BordadoTerceiros",
+    Acessório = "Acessório",
 }
+
 enum ProducaoStatus {
     CONFIRMADO = "CONFIRMADO",
     CANCELADO = "CANCELADO",
@@ -150,9 +160,18 @@ export function NewProductionModal({
                                 setProducaoType(event.target.value as string);
                             }}
                         >
-                            <MenuItem value={ProducaoType.AJUSTE}>Ajuste</MenuItem>
-                            <MenuItem value={ProducaoType.MEDIDA}>Medida</MenuItem>
-                            <MenuItem value={ProducaoType.ORCAMENTO}>Orçamento</MenuItem>
+                            <MenuItem value={ProducaoType.Estamparia}>Estamparia</MenuItem>
+                            <MenuItem value={ProducaoType.Modelagem}>Modelagem</MenuItem>
+                            <MenuItem value={ProducaoType.Corte}>Corte</MenuItem>
+                            <MenuItem value={ProducaoType.Montagem}>Montagem</MenuItem>
+                            <MenuItem value={ProducaoType.Ajuste}>Ajuste</MenuItem>
+                            <MenuItem value={ProducaoType.AjusteFinal}>Ajuste Final</MenuItem>
+                            <MenuItem value={ProducaoType.AjusteFinal1}>Ajuste Final*</MenuItem>
+                            <MenuItem value={ProducaoType.ComposiçãoRenda}>Composição Renda</MenuItem>
+                            <MenuItem value={ProducaoType.RendaTerceiros}>Renda Terceiros</MenuItem>
+                            <MenuItem value={ProducaoType.ComposiçãoBordado}>Composição Bordado</MenuItem>
+                            <MenuItem value={ProducaoType.BordadoTerceiros}>Bordado Terceiros</MenuItem>
+                            <MenuItem value={ProducaoType.Acessório}>Acessório</MenuItem>
                         </Select>
                     </FormControl>
 
