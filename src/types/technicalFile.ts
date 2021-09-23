@@ -7,6 +7,7 @@ export type TechnicalFile = {
     orcamento: number;
     desenho: string;
     tipoTecido: string;
+    idTecido: number;
     quantidadeTecido: number;
 };
 

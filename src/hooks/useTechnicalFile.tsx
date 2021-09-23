@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState, ReactNode, useContext } from 'react'
 import { api } from '../services/api';
 
-import { TechnicalFile, TechnicalFileInput, TechnicalFileProviderProps, TechnicalFileContextData } from '../types/technicalFile'
+import { TechnicalFileInput, TechnicalFileProviderProps, TechnicalFileContextData } from '../types/technicalFile'
 
 
 

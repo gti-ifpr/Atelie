@@ -56,6 +56,7 @@ export function NewTechnicalFileModal({ isOpen, onRequestClose }: NewTechnicalFi
             orcamento: selectedBudged.orcamento,
             desenho: desenho,
             tipoTecido: selectedFabric.nome,
+            idTecido: selectedFabric.id,
             quantidadeTecido: quantidadeDeTecido
         })
 
