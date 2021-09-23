@@ -66,7 +66,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const { data } = await api.get(`/producoes/${slug}`)
 
     const production = {
-        clienteSelecionado: data.cliente_selecionado,
+        clienteSelecionado: data.clienteSelecionado,
         id: data.id
     };
 

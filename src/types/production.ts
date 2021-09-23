@@ -5,6 +5,7 @@ export type ProductionFromBd = {
     compromissoStatus: string,
     tipoCompromisso: string,
     clienteSelecionado: number,
+    fichaTecnicaSelecionada: number,
     horarioInicio: string,
     horarioTermino: string,
     dataInicio: string,

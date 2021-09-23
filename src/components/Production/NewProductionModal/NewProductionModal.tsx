@@ -8,10 +8,10 @@ import styles from "./styles.module.scss";
 import React from "react";
 import { isDayAndHourLessThenToday } from "../../../utils/isDayAndHourLessThenToday";
 
-import { Client } from '../../../types/client'
+import { TechnicalFile } from '../../../types/technicalFile'
 
 import { useProduction } from "../../../hooks/useProduction";
-import { useClient } from "../../../hooks/useClient";
+import { useTechnicalFile } from "../../../hooks/useTechnicalFile";
 
 enum ProducaoType {
     Estamparia = "Estamparia",
@@ -59,10 +59,10 @@ export function NewProductionModal({
     const [horarioTermino, setHorarioTermino] = useState("");
     const [dataInicio, setDataInicio] = useState('');
     const [dataTermino, setDataTermino] = useState('');
-    const [selectedClient, setSelectedClient] = useState(null);
+    const [selectedTechnicalFile, setSelectedTechnicalFile] = useState(null);
 
     const { createProduction } = useProduction();
-    const { clients } = useClient();
+    const { technicalFiles } = useTechnicalFile();
 
     const materialUiStyles = useStyles();
 
@@ -76,7 +76,8 @@ export function NewProductionModal({
             await createProduction({
                 compromissoStatus: producaoStatus,
                 tipoCompromisso: producaoType,
-                clienteSelecionado: selectedClient.id,
+                clienteSelecionado: selectedTechnicalFile.cliente,
+                fichaTecnicaSelecionada: selectedTechnicalFile.id,
                 horarioInicio: horarioInicio,
                 horarioTermino: horarioTermino,
                 dataInicio: dataInicio,
@@ -90,7 +91,7 @@ export function NewProductionModal({
         setHorarioTermino('');
         setDataInicio('');
         setDataTermino('');
-        setSelectedClient(null);
+        setSelectedTechnicalFile(null);
     }
 
     return (
@@ -112,19 +113,19 @@ export function NewProductionModal({
 
                 <form autoComplete="off" onSubmit={handleCreateNewProducao}>
                     <Autocomplete
-                        value={selectedClient}
-                        onChange={(_, client: Client) => {
-                            setSelectedClient(client);
+                        value={selectedTechnicalFile}
+                        onChange={(_, technicalFile: TechnicalFile) => {
+                            setSelectedTechnicalFile(technicalFile);
                         }}
                         id="combo-box-demo"
-                        options={clients as Client[]}
-                        getOptionLabel={(client) => `${client.nome} ${client.sobrenome}`}
-                        renderOption={(client) => `${client.nome} ${client.sobrenome}`}
+                        options={technicalFiles as TechnicalFile[]}
+                        getOptionLabel={(technicalFile) => `${technicalFile.cliente} (${technicalFile.nome})`}
+                        renderOption={(technicalFile) => `${technicalFile.cliente} (${technicalFile.nome})`}
                         style={{ width: "100%" }}
                         renderInput={(params) => (
                             <TextField
                                 {...params}
-                                label="Cliente"
+                                label="Ficha Técnica"
                                 variant="outlined"
                                 required
                             />
