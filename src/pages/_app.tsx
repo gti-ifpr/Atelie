@@ -12,6 +12,7 @@ import { CartProvider } from '../hooks/useCart'
 import { FabricProvider } from '../hooks/useFabric'
 import { BudgedProvider } from '../hooks/useBudged'
 import { TechnicalFileProvider } from '../hooks/useTechnicalFile'
+import { AviamentoProvider } from '../hooks/useAviamento'
 
 import '../styles/global.scss';
 import { Toaster } from 'react-hot-toast'
@@ -25,34 +26,36 @@ function MyApp({ Component, pageProps }: AppProps) {
           <ClothingCollectionsProvider>
             <ClothProvider>
               <FabricProvider>
-                <BudgedProvider>
-                  <TechnicalFileProvider>
-                    <FilterClothByCollectionProvider>
-                      <SaleProvider>
-                        <CartProvider>
+                <AviamentoProvider>
+                  <BudgedProvider>
+                    <TechnicalFileProvider>
+                      <FilterClothByCollectionProvider>
+                        <SaleProvider>
+                          <CartProvider>
 
-                          <Toaster
-                            toastOptions={{
-                              style: {
-                                border: '0.15rem solid var(--yellow-800)',
-                                padding: '1rem',
-                              },
-                              iconTheme: {
-                                primary: 'var(--yellow-500)',
-                                secondary: '#FFFAEE',
-                              },
-                            }} />
+                            <Toaster
+                              toastOptions={{
+                                style: {
+                                  border: '0.15rem solid var(--yellow-800)',
+                                  padding: '1rem',
+                                },
+                                iconTheme: {
+                                  primary: 'var(--yellow-500)',
+                                  secondary: '#FFFAEE',
+                                },
+                              }} />
 
-                          <Header />
+                            <Header />
 
 
-                          <Component {...pageProps} />
+                            <Component {...pageProps} />
 
-                        </CartProvider>
-                      </SaleProvider>
-                    </FilterClothByCollectionProvider>
-                  </TechnicalFileProvider>
-                </BudgedProvider>
+                          </CartProvider>
+                        </SaleProvider>
+                      </FilterClothByCollectionProvider>
+                    </TechnicalFileProvider>
+                  </BudgedProvider>
+                </AviamentoProvider>
               </FabricProvider>
             </ClothProvider>
           </ClothingCollectionsProvider>

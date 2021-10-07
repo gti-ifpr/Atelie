@@ -69,6 +69,17 @@
       "dataInicio": "2021-12-17",
       "dataTermino": "2021-12-17",
       "id": 2
+    },
+    {
+      "compromissoStatus": "CONFIRMADO",
+      "tipoCompromisso": "Corte",
+      "clienteSelecionado": 1,
+      "fichaTecnicaSelecionada": 1,
+      "horarioInicio": "15:15",
+      "horarioTermino": "15:30",
+      "dataInicio": "2021-09-24",
+      "dataTermino": "2021-09-24",
+      "id": 3
     }
   ],
   "clients": [
@@ -205,12 +216,38 @@
   ],
   "estoque_de_tecidos": [
     {
-      "quantidade": 2000,
-      "reserva": 20,
+      "quantidade": 1980,
+      "reserva": 0,
       "id": 1
     },
     {
       "quantidade": 200,
+      "reserva": 50,
+      "id": 2
+    }
+  ],
+  "aviamentos": [
+    {
+      "nome": "ola",
+      "fornecedor": "fornecedor 1",
+      "referencia": "Referência ",
+      "id": 1
+    },
+    {
+      "nome": "Aviamento 50",
+      "fornecedor": "fornecedor",
+      "referencia": "123123",
+      "id": 2
+    }
+  ],
+  "estoque_de_aviamentos": [
+    {
+      "quantidade": 2000,
+      "reserva": 0,
+      "id": 1
+    },
+    {
+      "quantidade": 70,
       "reserva": 0,
       "id": 2
     }
@@ -229,22 +266,23 @@
   ],
   "ficha_tecnica": [
     {
-      "nome": "Vestido",
+      "nome": "Vestido ",
       "cliente": 1,
       "orcamento": 200,
-      "desenho": "desenho",
+      "desenho": "Desenho",
       "tipoTecido": "Poliester",
+      "idTecido": 1,
       "quantidadeTecido": 20,
       "id": 1
     },
     {
-      "nome": "Blusa",
+      "nome": "Vestido 2",
       "cliente": 2,
       "orcamento": 500,
-      "desenho": "Desenho1",
-      "tipoTecido": "Poliester",
-      "idTecido": 1,
-      "quantidadeTecido": 200,
+      "desenho": "Desnho 2",
+      "tipoTecido": "Tecido 2",
+      "idTecido": 2,
+      "quantidadeTecido": 50,
       "id": 2
     }
   ]
