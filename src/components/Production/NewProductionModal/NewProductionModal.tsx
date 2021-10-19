@@ -64,7 +64,6 @@ export function NewProductionModal({
 
     const { createProduction } = useProduction();
     const { technicalFiles } = useTechnicalFile();
-    const { updateFabricInStock, fabricStocks, addReserve } = useFabric();
 
     const materialUiStyles = useStyles();
 
@@ -75,18 +74,10 @@ export function NewProductionModal({
         if (isDayAndHourLessThenToday(dataInicio, horarioInicio)) {
             alert("Erro: Data inválida")
         } else {
-            if (producaoType == "Corte") {
-                await fabricStocks.map(fabricStock => {
-                    if (fabricStock.id == selectedTechnicalFile.idTecido) {
-                        updateFabricInStock({ stockId: selectedTechnicalFile.idTecido, amount: fabricStock.quantidade - selectedTechnicalFile.quantidadeTecido })
-                        addReserve({ stockId: selectedTechnicalFile.idTecido, amount: fabricStock.reserva - selectedTechnicalFile.quantidadeTecido })
-                    }
-                })
-            }
 
             await createProduction({
-                compromissoStatus: producaoStatus,
-                tipoCompromisso: producaoType,
+                producaoStatus: producaoStatus,
+                tipoProducao: producaoType,
                 clienteSelecionado: selectedTechnicalFile.cliente,
                 fichaTecnicaSelecionada: selectedTechnicalFile.id,
                 horarioInicio: horarioInicio,

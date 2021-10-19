@@ -15,6 +15,9 @@ import { useProduction } from "../../hooks/useProduction";
 import { useClient } from "../../hooks/useClient";
 
 import { ProductionReturn } from '../../types/production'
+import { useFabric } from "../../hooks/useFabric";
+import { useTechnicalFile } from "../../hooks/useTechnicalFile";
+import { useAviamento } from "../../hooks/useAviamento";
 
 type FilterType = "hoje" | "semana" | "semFiltro";
 
@@ -88,6 +91,37 @@ export default function Production() {
     const [selectedDayOfTheWeek, setSelectedDayOfTheWeek] = useState<number>(0)
 
     const { producoes } = useProduction();
+
+    const { addReserve, updateFabricInStock, fabricStocks } = useFabric();
+    const { addAviamentoReserve, updateAviamentoInStock, aviamentosStock } = useAviamento();
+    const { technicalFiles } = useTechnicalFile();
+
+
+    const currentDateString = getCurrentDateInString(new Date());
+
+    useEffect(() => {
+        producoes.map((producao) => {
+            if ((producao.dataInicioString === getCurrentDateInString(new Date())) && (producao.tipo == 'Corte')) {
+                fabricStocks.map((fabricStock) => {
+                    aviamentosStock.map((aviamentoStock) => {
+                        technicalFiles.map((technicalFile) => {
+                            if (technicalFile.id == producao.fichaTecnicaSelecionada) {
+                                if (fabricStock.id == technicalFile.idTecido && aviamentoStock.id == technicalFile.idAviamento) {
+                                    updateFabricInStock({ stockId: technicalFile.idTecido, amount: fabricStock.quantidade - technicalFile.quantidadeTecido })
+                                    addReserve({ stockId: technicalFile.idTecido, amount: fabricStock.reserva - technicalFile.quantidadeTecido })
+
+                                    updateAviamentoInStock({ stockId: technicalFile.idAviamento, amount: aviamentoStock.quantidade - technicalFile.quantidadeAviamento })
+                                    addAviamentoReserve({ stockId: technicalFile.idAviamento, amount: aviamentoStock.reserva - technicalFile.quantidadeAviamento })
+                                }
+                            }
+                        })
+                    })
+                })
+            }
+        })
+    }, [currentDateString])
+
+
 
     useEffect(() => {
         setProducoesFiltrados(

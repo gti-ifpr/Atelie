@@ -2,7 +2,7 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 import toast from "react-hot-toast";
 import { api } from "../services/api";
 
-import { AviamentoStockInput, AviamentoProviderProps, AviamentoInput, updateAviamentoInStock, addReserve, AviamentoContextData } from '../types/aviamento'
+import { AviamentoStockInput, AviamentoProviderProps, AviamentoInput, updateAviamentoInStock, addAviamentoReserve, AviamentoContextData } from '../types/aviamento'
 
 
 
@@ -57,7 +57,7 @@ export function AviamentoProvider({ children }: AviamentoProviderProps) {
         }
     }
 
-    async function addReserve({ stockId, amount }: addReserve) {
+    async function addAviamentoReserve({ stockId, amount }: addAviamentoReserve) {
         try {
             const updatedStock = [...aviamentosStock]
 
@@ -83,7 +83,7 @@ export function AviamentoProvider({ children }: AviamentoProviderProps) {
     }
 
     return (
-        <AviamentoContext.Provider value={{ createAviamento, aviamentos, aviamentosStock, updateAviamentoInStock, addReserve }}>
+        <AviamentoContext.Provider value={{ createAviamento, aviamentos, aviamentosStock, updateAviamentoInStock, addAviamentoReserve }}>
             {children}
         </AviamentoContext.Provider>
     )

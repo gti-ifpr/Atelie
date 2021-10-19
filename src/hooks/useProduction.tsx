@@ -37,8 +37,9 @@ export function ProductionProvider({ children }: ProductionProviderProps) {
             dataInicioCurrentDate: new Date(addOneDay(compromisso.dataInicio)).getTime(),
             dataTerminoCurrentDate: new Date(addOneDay(compromisso.dataTermino)).getTime(),
             selectedClient: compromisso.clienteSelecionado,
-            tipo: compromisso.tipoCompromisso,
-            status: compromisso.compromissoStatus,
+            fichaTecnicaSelecionada: compromisso.fichaTecnicaSelecionada,
+            tipo: compromisso.tipoProducao,
+            status: compromisso.producaoStatus,
         };
     });
 

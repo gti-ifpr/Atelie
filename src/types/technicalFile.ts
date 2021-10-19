@@ -9,6 +9,8 @@ export type TechnicalFile = {
     tipoTecido: string;
     idTecido: number;
     quantidadeTecido: number;
+    idAviamento: number;
+    quantidadeAviamento: number;
 };
 
 export type TechnicalFileInput = Omit<TechnicalFile, 'id'>

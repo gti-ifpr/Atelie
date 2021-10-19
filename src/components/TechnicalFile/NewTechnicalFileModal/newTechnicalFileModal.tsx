@@ -10,6 +10,9 @@ import styles from './styles.module.scss';
 import { useBudged } from '../../../hooks/useBudged';
 import { useFabric } from '../../../hooks/useFabric';
 import { useTechnicalFile } from '../../../hooks/useTechnicalFile';
+import { useAviamento } from '../../../hooks/useAviamento';
+
+import { Aviamento } from '../../../types/aviamento';
 
 type Budged = {
     cliente: number;
@@ -33,10 +36,14 @@ export function NewTechnicalFileModal({ isOpen, onRequestClose }: NewTechnicalFi
     const [selectedBudged, setSelectedBudged] = useState(null);
     const [selectedFabric, setSelectedFabric] = useState(null);
     const [quantidadeDeTecido, setQuantidadeDeTecido] = useState(0);
+
+    const [selectedAviamento, setSelectedAviamento] = useState(null);
+    const [quantidadeDeAviamento, setQuantidadeDeAviamento] = useState(0);
     const [nome, setNome] = useState('');
 
     const { budgeds } = useBudged();
     const { fabrics, addReserve, fabricStocks } = useFabric();
+    const { aviamentosStock, addAviamentoReserve, aviamentos } = useAviamento();
     const { createTechnicalFile } = useTechnicalFile();
 
 
@@ -49,6 +56,12 @@ export function NewTechnicalFileModal({ isOpen, onRequestClose }: NewTechnicalFi
             }
         })
 
+        await aviamentosStock.map(stock => {
+            if (selectedAviamento.id === stock.id) {
+                addAviamentoReserve({ stockId: stock.id, amount: stock.reserva + quantidadeDeAviamento })
+            }
+        })
+
 
         await createTechnicalFile({
             nome: nome,
@@ -57,15 +70,19 @@ export function NewTechnicalFileModal({ isOpen, onRequestClose }: NewTechnicalFi
             desenho: desenho,
             tipoTecido: selectedFabric.nome,
             idTecido: selectedFabric.id,
-            quantidadeTecido: quantidadeDeTecido
+            quantidadeTecido: quantidadeDeTecido,
+            idAviamento: selectedAviamento.id,
+            quantidadeAviamento: quantidadeDeAviamento
         })
 
         onRequestClose();
 
         setSelectedBudged(null);
         setSelectedFabric(null);
+        setSelectedAviamento(null);
         setDesenho('');
         setQuantidadeDeTecido(0);
+        setQuantidadeDeAviamento(0);
 
     }
 
@@ -143,9 +160,38 @@ export function NewTechnicalFileModal({ isOpen, onRequestClose }: NewTechnicalFi
                     <span>Quantidade De Tecido: </span>
                     <input
                         type="string"
-                        placeholder="Desenho"
+                        placeholder="QuantidadeTecido"
                         value={quantidadeDeTecido}
                         onChange={event => setQuantidadeDeTecido(Number(event.target.value))}
+                    />
+
+                    <Autocomplete
+                        value={selectedAviamento}
+                        onChange={(_, aviamento: Aviamento) => {
+                            setSelectedAviamento(aviamento);
+                        }}
+                        id="combo-box-demo"
+                        options={aviamentos}
+                        getOptionLabel={(aviamento) => `${aviamento.nome}`}
+                        renderOption={(aviamento) => `${aviamento.nome}`}
+                        style={{ width: "100%" }}
+                        renderInput={(params) => (
+                            <TextField
+                                {...params}
+                                label="Nome Aviamento"
+                                variant="outlined"
+                                required
+                            />
+                        )}
+                    />
+
+
+                    <span>Quantidade De Aviamento: </span>
+                    <input
+                        type="string"
+                        placeholder="Aviamento"
+                        value={quantidadeDeAviamento}
+                        onChange={event => setQuantidadeDeAviamento(Number(event.target.value))}
                     />
 
                     <button type="submit">

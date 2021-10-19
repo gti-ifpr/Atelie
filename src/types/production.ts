@@ -2,8 +2,8 @@ import { ReactNode } from "react";
 
 export type ProductionFromBd = {
     id: number;
-    compromissoStatus: string,
-    tipoCompromisso: string,
+    producaoStatus: string,
+    tipoProducao: string,
     clienteSelecionado: number,
     fichaTecnicaSelecionada: number,
     horarioInicio: string,
@@ -24,6 +24,7 @@ export type ProductionReturn = {
     dataInicioCurrentDate: number;
     dataTerminoCurrentDate: number;
     selectedClient: number;
+    fichaTecnicaSelecionada: number,
     tipo: string;
     status: string;
 };

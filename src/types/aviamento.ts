@@ -26,7 +26,7 @@ export type AviamentoContextData = {
     aviamentosStock: AviamentoStock[];
     createAviamento: (fabricInput: AviamentoInput, fabricInStock: AviamentoStockInput) => Promise<void>;
     updateAviamentoInStock: ({ stockId, amount }: updateAviamentoInStock) => void;
-    addReserve: ({ stockId, amount }: addReserve) => void;
+    addAviamentoReserve: ({ stockId, amount }: addAviamentoReserve) => void;
 }
 
 export type updateAviamentoInStock = {
@@ -34,7 +34,7 @@ export type updateAviamentoInStock = {
     amount: number;
 }
 
-export type addReserve = {
+export type addAviamentoReserve = {
     stockId: number;
     amount: number;
 }
